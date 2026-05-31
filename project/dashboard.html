@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STRATUM — Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared-styles.css">
+  <style>
+    .dashboard-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .dashboard-main {
+      flex: 1;
+      padding: 48px 0 60px;
+    }
+
+    .dashboard-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .dashboard-title {
+      font-weight: 500;
+      font-size: 32px;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+
+    /* Stats Row */
+    .dashboard-main .stats-row {
+      display: flex;
+      gap: 56px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 48px;
+    }
+
+    .dashboard-main .stat-value {
+      font-size: 40px;
+      font-family: var(--disp);
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .dashboard-main .stat-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--mut);
+      margin-top: 6px;
+    }
+
+    /* Project Grid */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: 32px;
+    }
+
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      background: var(--bg2);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 28px;
+      transition: border-color 0.2s, transform 0.2s;
+      text-decoration: none;
+      color: inherit;
+      min-height: 260px;
+      height: 100%;
+    }
+
+    .project-card:hover {
+      border-color: var(--mut);
+      transform: translateY(-2px);
+    }
+
+    .project-card.loading {
+      pointer-events: none;
+    }
+
+    .project-card.failed {
+      border-color: var(--acc);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .card-title {
+      font-weight: 500;
+      font-size: 18px;
+      letter-spacing: -0.01em;
+      word-break: break-word;
+    }
+
+    .card-stats {
+      display: flex;
+      gap: 28px;
+      padding: 18px 0;
+      border-top: 1px solid var(--line2);
+      border-bottom: 1px solid var(--line2);
+      margin-bottom: 18px;
+    }
+
+    .stat-mini {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .stat-mini .stat-value {
+      font-family: var(--disp);
+      font-size: 22px;
+      font-weight: 500;
+    }
+
+    .stat-mini .stat-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--faint);
+    }
+
+    .card-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    /* Card wrapper for delete button positioning */
+    .project-card-wrapper {
+      position: relative;
+      display: flex;
+      height: 100%;
+    }
+
+    .card-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-badges {
+      margin-top: auto;
+    }
+
+    .card-sub {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--mut);
+      margin-top: 6px;
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      min-height: 36px;
+    }
+
+    .card-delete-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      background: var(--bg);
+      border: 1px solid var(--line);
+      color: var(--mut);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: all 0.2s;
+      z-index: 5;
+    }
+
+    .project-card-wrapper:hover .card-delete-btn {
+      opacity: 1;
+    }
+
+    .card-delete-btn:hover {
+      background: var(--acc);
+      border-color: var(--acc);
+      color: #fff;
+    }
+
+    .card-error {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--mut);
+      margin-top: 12px;
+    }
+
+    /* Add Card */
+    .add-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      min-height: 260px;
+      height: 100%;
+      background: transparent;
+      border: 2px dashed var(--line);
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: var(--mono);
+      font-size: 14px;
+      color: var(--mut);
+      transition: all 0.2s;
+    }
+
+    .add-card:hover {
+      border-color: var(--acc);
+      color: var(--ink);
+      transform: none;
+    }
+
+    .add-icon {
+      font-size: 32px;
+      font-weight: 300;
+      line-height: 1;
+    }
+
+    /* User Menu */
+    .user-menu {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .user-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--bg3);
+      border: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--mut);
+    }
+
+    /* Modal Styles */
+    .modal-body {
+      margin-bottom: 24px;
+    }
+
+    .form-error {
+      display: none;
+      margin-top: 12px;
+      padding: 12px;
+      background: var(--accg);
+      border: 1px solid var(--acc);
+      border-radius: var(--radius);
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--acc);
+    }
+
+    .input-hint {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--faint);
+      margin-top: 8px;
+    }
+
+    /* Empty State */
+    .empty-state {
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    .empty-icon {
+      font-size: 48px;
+      color: var(--faint);
+      margin-bottom: 24px;
+    }
+
+    .empty-title {
+      font-size: 24px;
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
+
+    .empty-text {
+      color: var(--mut);
+      max-width: 400px;
+      margin: 0 auto 32px;
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard-page">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="wrap">
+        <a href="STRATUM%20Editorial.html" class="brand">
+          <span class="logo">STRATUM<span class="dot">.</span></span>
+        </a>
+        <div class="user-menu">
+          <button class="btn btn-fill" onclick="dashboard.openModal()">
+            + Scan New Repo
+          </button>
+          <div class="user-avatar">U</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+      <div class="wrap">
+        <div class="dashboard-header">
+          <h1 class="dashboard-title" style="color: #F3F1EA !important;">Your Projects</h1>
+        </div>
+
+        <!-- Stats Row -->
+        <div class="stats-row" style="display: flex !important;">
+          <div class="stat">
+            <div class="stat-value" id="statTotal" style="color: #F3F1EA !important; font-size: 40px;">0</div>
+            <div class="stat-label" style="color: #8C8B83 !important;">Total Repos</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value" id="statIssues" style="color: #F3F1EA !important; font-size: 40px;">0</div>
+            <div class="stat-label" style="color: #8C8B83 !important;">Issues Found</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value text-acc" id="statCritical" style="color: #FF362E !important; font-size: 40px;">0</div>
+            <div class="stat-label" style="color: #8C8B83 !important;">Critical</div>
+          </div>
+        </div>
+
+        <!-- Project Grid -->
+        <div class="project-grid" id="projectGrid">
+          <!-- Cards rendered by JavaScript -->
+          <div class="skeleton" style="height: 200px;"></div>
+          <div class="skeleton" style="height: 200px;"></div>
+          <div class="skeleton" style="height: 200px;"></div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Add Repo Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+      <div class="modal">
+        <div class="modal-header">
+          <h2 class="modal-title">Add Repository</h2>
+          <button class="modal-close" onclick="dashboard.closeModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+          <form id="repoForm">
+            <div class="login-field">
+              <label class="label" for="repoUrl">GitHub Repository</label>
+              <input
+                type="text"
+                id="repoUrl"
+                class="input"
+                placeholder="https://github.com/owner/repo"
+                autocomplete="off"
+              >
+              <p class="input-hint">Enter a GitHub URL or owner/repo format</p>
+            </div>
+            <div class="form-error" id="formError"></div>
+            <button type="submit" class="btn btn-fill w-full mt-md" id="submitBtn">
+              Analyze Repository
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

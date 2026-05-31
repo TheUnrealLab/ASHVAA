@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>STRATUM — App Wireframes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="wf-screens.jsx"></script>
+<style>
+  @page { size: landscape; margin: 0; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #0c0c0e; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  .page {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0c0c0e;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .page + .page {
+    break-before: page;
+    page-break-before: always;
+  }
+
+  .page-label {
+    position: absolute;
+    bottom: 10px;
+    right: 16px;
+    font-family: 'Caveat', cursive;
+    font-size: 13px;
+    color: rgba(212, 175, 55, 0.45);
+    z-index: 100;
+    pointer-events: none;
+    letter-spacing: 1px;
+  }
+
+  .scale-wrap {
+    transform-origin: top center;
+    flex-shrink: 0;
+  }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel">
+const screens = [
+  { label: 'App Flow — Dashboard',          C: WFDashboard,  w: 1440, h: 820 },
+  { label: 'App Flow — Submit Repo',         C: WFSubmitRepo, w: 800,  h: 620 },
+  { label: 'Variation A · Left Navigation',  C: WFReportA,    w: 1440, h: 900 },
+  { label: 'Variation B · Top Tabs',         C: WFReportB,    w: 1440, h: 900 },
+  { label: 'Variation C · Dense Dashboard',  C: WFReportC,    w: 1440, h: 900 },
+];
+
+function Page({ label, C, w, h }) {
+  const [scale, setScale] = React.useState(1);
+
+  React.useLayoutEffect(() => {
+    const compute = () => {
+      const s = Math.min(window.innerWidth / w, window.innerHeight / h) * 0.97;
+      setScale(s);
+    };
+    compute();
+    window.addEventListener('resize', compute);
+    return () => window.removeEventListener('resize', compute);
+  }, [w, h]);
+
+  return (
+    <div className="page">
+      <div className="scale-wrap" style={{ transform: `scale(${scale})` }}>
+        <C />
+      </div>
+      <div className="page-label">STRATUM Wireframes · {label}</div>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <div>
+      {screens.map((s, i) => <Page key={i} label={s.label} C={s.C} w={s.w} h={s.h} />)}
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+
+// Auto-print: wait for fonts + a tick for React to paint
+document.fonts.ready.then(() => setTimeout(() => window.print(), 500));
+</script>
+</body>
+</html>

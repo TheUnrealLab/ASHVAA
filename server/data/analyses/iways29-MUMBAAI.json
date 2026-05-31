@@ -1,0 +1,5071 @@
+{
+  "fingerprint": {
+    "repoId": "iways29-MUMBAAI",
+    "owner": "iways29",
+    "repo": "MUMBAAI",
+    "analyzedAt": "2026-05-31T04:17:47.278Z",
+    "analysisVersion": "1.0"
+  },
+  "summary": {
+    "owner": "iways29",
+    "repo": "MUMBAAI",
+    "fileCount": 49,
+    "totalFiles": 85,
+    "estimatedTokens": 101252,
+    "languages": [
+      "TypeScript",
+      "TypeScript",
+      ".mjs"
+    ],
+    "framework": "React",
+    "nodeCount": 43,
+    "edgeCount": 47,
+    "clusterCount": 6,
+    "deadCodeCount": 22,
+    "criticalPathLength": 1,
+    "securityFindingsCount": 1
+  },
+  "clusters": [
+    {
+      "id": "entry",
+      "label": "Entry",
+      "files": [
+        "src/index.tsx",
+        "src/App.tsx"
+      ]
+    },
+    {
+      "id": "components",
+      "label": "Components",
+      "files": [
+        "src/components/Admin/UserLimitsModal.tsx",
+        "src/components/Chat/ChatInput.tsx",
+        "src/components/Chat/ChatPanel.tsx",
+        "src/components/Chat/ConversationSelector.tsx",
+        "src/components/Chat/LLMSelector.tsx",
+        "src/components/Chat/MessageThread.tsx",
+        "src/components/Conversations/ConversationsListPage.tsx",
+        "src/components/FeedbackForm.tsx",
+        "src/components/Flow/FlowCanvas.tsx",
+        "src/components/Flow/FlowControls.tsx",
+        "src/components/Flow/FlowPanels.tsx",
+        "src/components/Flow/MessageNode.tsx",
+        "src/components/Layout/FloatingToolbar.tsx",
+        "src/components/Layout/PanelManager.tsx",
+        "src/components/Layout/Sidebar.tsx",
+        "src/components/Login.tsx",
+        "src/components/UI/Button.tsx",
+        "src/components/UI/ErrorBoundary.tsx",
+        "src/components/UI/LoadingSpinner.tsx",
+        "src/components/UI/ProInterestButton.tsx",
+        "src/components/WaitlistForm.tsx"
+      ]
+    },
+    {
+      "id": "hooks",
+      "label": "Hooks",
+      "files": [
+        "src/hooks/useAdmin.ts",
+        "src/hooks/useAuth.ts",
+        "src/hooks/useConversations.ts",
+        "src/hooks/useFlowElements.ts",
+        "src/hooks/useMessageOperations.ts"
+      ]
+    },
+    {
+      "id": "services",
+      "label": "Services",
+      "files": [
+        "src/lib/supabase.ts",
+        "src/services/configService.ts"
+      ]
+    },
+    {
+      "id": "pages",
+      "label": "Pages",
+      "files": [
+        "src/pages/Admin/AdminDashboard.tsx",
+        "src/pages/Admin/AdminLayout.tsx",
+        "src/pages/Admin/AdminModels.tsx",
+        "src/pages/Admin/AdminPrompts.tsx",
+        "src/pages/Admin/AdminTiers.tsx",
+        "src/pages/Admin/AdminUsers.tsx",
+        "src/pages/Admin/index.ts",
+        "src/pages/AuthPage.tsx",
+        "src/pages/HomePage.tsx",
+        "src/pages/MainApp.tsx",
+        "src/pages/UserProfile.tsx",
+        "src/pages/index.ts"
+      ]
+    },
+    {
+      "id": "other",
+      "label": "Other",
+      "files": [
+        "src/sections/WaitlistSection.tsx"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "src-index-tsx",
+      "path": "src/index.tsx",
+      "label": "index.tsx",
+      "cluster": "entry",
+      "critical": false,
+      "dead": false,
+      "exports": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "React",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            }
+          ],
+          "line": 1
+        },
+        {
+          "source": "react-dom/client",
+          "specifiers": [
+            {
+              "local": "ReactDOM",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            }
+          ],
+          "line": 2
+        },
+        {
+          "source": "./index.css",
+          "specifiers": [],
+          "line": 3
+        },
+        {
+          "source": "./App.tsx",
+          "specifiers": [
+            {
+              "local": "App",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            }
+          ],
+          "line": 4
+        }
+      ],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 0,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-App-tsx",
+      "path": "src/App.tsx",
+      "label": "App.tsx",
+      "cluster": "entry",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "default",
+          "type": "default",
+          "line": 130
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "React",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            }
+          ],
+          "line": 1
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            {
+              "local": "BrowserRouter",
+              "imported": "BrowserRouter",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Routes",
+              "imported": "Routes",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Route",
+              "imported": "Route",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Navigate",
+              "imported": "Navigate",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 2
+        },
+        {
+          "source": "@vercel/analytics/react",
+          "specifiers": [
+            {
+              "local": "Analytics",
+              "imported": "Analytics",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        },
+        {
+          "source": "@vercel/speed-insights/react",
+          "specifiers": [
+            {
+              "local": "SpeedInsights",
+              "imported": "SpeedInsights",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 4
+        },
+        {
+          "source": "./pages/index.ts",
+          "specifiers": [
+            {
+              "local": "HomePage",
+              "imported": "HomePage",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "AuthPage",
+              "imported": "AuthPage",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "MainApp",
+              "imported": "MainApp",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "AdminLayout",
+              "imported": "AdminLayout",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "AdminDashboard",
+              "imported": "AdminDashboard",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "AdminPrompts",
+              "imported": "AdminPrompts",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "AdminModels",
+              "imported": "AdminModels",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "AdminTiers",
+              "imported": "AdminTiers",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "AdminUsers",
+              "imported": "AdminUsers",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 7
+        },
+        {
+          "source": "./components/UI/ErrorBoundary.tsx",
+          "specifiers": [
+            {
+              "local": "ErrorBoundary",
+              "imported": "ErrorBoundary",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 20
+        },
+        {
+          "source": "./hooks/useAuth.ts",
+          "specifiers": [
+            {
+              "local": "useAuth",
+              "imported": "useAuth",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 23
+        }
+      ],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 1,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-components-Admin-UserLimitsModal-tsx",
+      "path": "src/components/Admin/UserLimitsModal.tsx",
+      "label": "UserLimitsModal.tsx",
+      "cluster": "components",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "default",
+          "type": "default",
+          "line": 624
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "React",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            },
+            {
+              "local": "useState",
+              "imported": "useState",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useEffect",
+              "imported": "useEffect",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 1
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            {
+              "local": "X",
+              "imported": "X",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Layers",
+              "imported": "Layers",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Zap",
+              "imported": "Zap",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "GitMerge",
+              "imported": "GitMerge",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Clock",
+              "imported": "Clock",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Bot",
+              "imported": "Bot",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Ban",
+              "imported": "Ban",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Save",
+              "imported": "Save",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "RotateCcw",
+              "imported": "RotateCcw",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Infinity",
+              "imported": "Infinity",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "AlertTriangle",
+              "imported": "AlertTriangle",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 2
+        },
+        {
+          "source": "../../lib/supabase.ts",
+          "specifiers": [
+            {
+              "local": "supabase",
+              "imported": "supabase",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 15
+        }
+      ],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 1,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-components-Chat-ChatInput-tsx",
+      "path": "src/components/Chat/ChatInput.tsx",
+      "label": "ChatInput.tsx",
+      "cluster": "components",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "ChatInput",
+          "type": "variable",
+          "line": 25
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "React",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            }
+          ],
+          "line": 1
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            {
+              "local": "ArrowUp",
+              "imported": "ArrowUp",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "History",
+              "imported": "History",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Sparkles",
+              "imported": "Sparkles",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Plus",
+              "imported": "Plus",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 2
+        },
+        {
+          "source": "../../types/conversation.ts",
+          "specifiers": [
+            {
+              "local": "Message",
+              "imported": "Message",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        },
+        {
+          "source": "../../utils/messageHelpers.ts",
+          "specifiers": [
+            {
+              "local": "MessageHelpers",
+              "imported": "MessageHelpers",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 4
+        },
+        {
+          "source": "./LLMSelector.tsx",
+          "specifiers": [
+            {
+              "local": "LLMSelector",
+              "imported": "LLMSelector",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 5
+        }
+      ],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 1,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-components-Chat-ChatPanel-tsx",
+      "path": "src/components/Chat/ChatPanel.tsx",
+      "label": "ChatPanel.tsx",
+      "cluster": "components",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "ChatPanel",
+          "type": "variable",
+          "line": 32
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "React",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            }
+          ],
+          "line": 1
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            {
+              "local": "ChevronLeft",
+              "imported": "ChevronLeft",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 2
+        },
+        {
+          "source": "./MessageThread.tsx",
+          "specifiers": [
+            {
+              "local": "MessageThread",
+              "imported": "MessageThread",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        },
+        {
+          "source": "./ChatInput.tsx",
+          "specifiers": [
+            {
+              "local": "ChatInput",
+              "imported": "ChatInput",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 4
+        },
+        {
+          "source": "../../types/conversation.ts",
+          "specifiers": [
+            {
+              "local": "Message",
+              "imported": "Message",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 5
+        }
+      ],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 1,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-components-Chat-ConversationSelector-tsx",
+      "path": "src/components/Chat/ConversationSelector.tsx",
+      "label": "ConversationSelector.tsx",
+      "cluster": "components",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "ConversationSelector",
+          "type": "variable",
+          "line": 17
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "React",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            }
+          ],
+          "line": 1
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            {
+              "local": "Edit",
+              "imported": "Edit",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 2
+        },
+        {
+          "source": "../../types/conversation",
+          "specifiers": [
+            {
+              "local": "Conversation",
+              "imported": "Conversation",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        }
+      ],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 1,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-components-Chat-LLMSelector-tsx",
+      "path": "src/components/Chat/LLMSelector.tsx",
+      "label": "LLMSelector.tsx",
+      "cluster": "components",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "LLMSelector",
+          "type": "variable",
+          "line": 19
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "React",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            },
+            {
+              "local": "useState",
+              "imported": "useState",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useRef",
+              "imported": "useRef",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useEffect",
+              "imported": "useEffect",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 1
+        },
+        {
+          "source": "../../assets/google-gemini.svg",
+          "specifiers": [
+            {
+              "local": "GoogleIcon",
+              "imported": "ReactComponent",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 2
+        },
+        {
+          "source": "../../assets/anthropic.svg",
+          "specifiers": [
+            {
+              "local": "AnthropicIcon",
+              "imported": "ReactComponent",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        },
+        {
+          "source": "../../assets/openai.svg",
+          "specifiers": [
+            {
+              "local": "OpenAIIcon",
+              "imported": "ReactComponent",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 4
+        },
+        {
+          "source": "../../services/configService.ts",
+          "specifiers": [
+            {
+              "local": "getAllModels",
+              "imported": "getAllModels",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "getProviderInfo",
+              "imported": "getProviderInfo",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "AppModel",
+              "imported": "AppModel",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 5
+        }
+      ],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 1,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-components-Chat-MessageThread-tsx",
+      "path": "src/components/Chat/MessageThread.tsx",
+      "label": "MessageThread.tsx",
+      "cluster": "components",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "MessageThread",
+          "type": "variable",
+          "line": 50
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "React",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            },
+            {
+              "local": "useEffect",
+              "imported": "useEffect",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useRef",
+              "imported": "useRef",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 1
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            {
+              "local": "MessageCircle",
+              "imported": "MessageCircle",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "User",
+              "imported": "User",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Bot",
+              "imported": "Bot",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "GitBranch",
+              "imported": "GitBranch",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Sparkles",
+              "imported": "Sparkles",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Share2",
+              "imported": "Share2",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Bookmark",
+              "imported": "Bookmark",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 2
+        },
+        {
+          "source": "react-markdown",
+          "specifiers": [
+            {
+              "local": "ReactMarkdown",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            }
+          ],
+          "line": 3
+        },
+        {
+          "source": "../../types/conversation.ts",
+          "specifiers": [
+            {
+              "local": "Message",
+              "imported": "Message",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 4
+        },
+        {
+          "source": "../../utils/messageHelpers.ts",
+          "specifiers": [
+            {
+              "local": "MessageHelpers",
+              "imported": "MessageHelpers",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 5
+        },
+        {
+          "source": "../UI/LoadingSpinner.tsx",
+          "specifiers": [
+            {
+              "local": "ThinkingIndicator",
+              "imported": "ThinkingIndicator",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 6
+        },
+        {
+          "source": "../../assets/anthropic.svg",
+          "specifiers": [
+            {
+              "local": "AnthropicIcon",
+              "imported": "ReactComponent",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 7
+        },
+        {
+          "source": "../../assets/openai.svg",
+          "specifiers": [
+            {
+              "local": "OpenAIIcon",
+              "imported": "ReactComponent",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 8
+        },
+        {
+          "source": "../../assets/google-gemini.svg",
+          "specifiers": [
+            {
+              "local": "GoogleIcon",
+              "imported": "ReactComponent",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 9
+        }
+      ],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 1,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-components-Conversations-ConversationsListPage-tsx",
+      "path": "src/components/Conversations/ConversationsListPage.tsx",
+      "label": "ConversationsListPage.tsx",
+      "cluster": "components",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "ConversationsListPage",
+          "type": "variable",
+          "line": 14
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "React",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            },
+            {
+              "local": "useState",
+              "imported": "useState",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 1
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            {
+              "local": "MessageCircle",
+              "imported": "MessageCircle",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Plus",
+              "imported": "Plus",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Search",
+              "imported": "Search",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Clock",
+              "imported": "Clock",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "MessageSquare",
+              "imported": "MessageSquare",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Trash2",
+              "imported": "Trash2",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 2
+        },
+        {
+          "source": "../../types/conversation.ts",
+          "specifiers": [
+            {
+              "local": "Conversation",
+              "imported": "Conversation",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        },
+        {
+          "source": "../../utils/messageHelpers.ts",
+          "specifiers": [
+            {
+              "local": "MessageHelpers",
+              "imported": "MessageHelpers",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 4
+        }
+      ],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 1,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-components-FeedbackForm-tsx",
+      "path": "src/components/FeedbackForm.tsx",
+      "label": "FeedbackForm.tsx",
+      "cluster": "components",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "FeedbackForm",
+          "type": "variable",
+          "line": 9
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "React",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            },
+            {
+              "local": "useState",
+              "imported": "useState",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 1
+        },
+        {
+          "source": "../lib/supabase.ts",
+          "specifiers": [
+            {
+              "local": "supabase",
+              "imported": "supabase",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 2
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            {
+              "local": "MessageSquare",
+              "imported": "MessageSquare",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        }
+      ],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 1,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-components-Flow-FlowCanvas-tsx",
+      "path": "src/components/Flow/FlowCanvas.tsx",
+      "label": "FlowCanvas.tsx",
+      "cluster": "components",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "FlowCanvas",
+          "type": "variable",
+          "line": 56
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "React",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            },
+            {
+              "local": "useCallback",
+              "imported": "useCallback",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useEffect",
+              "imported": "useEffect",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useRef",
+              "imported": "useRef",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 1
+        },
+        {
+          "source": "reactflow",
+          "specifiers": [
+            {
+              "local": "ReactFlow",
+              "imported": "ReactFlow",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Background",
+              "imported": "Background",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Controls",
+              "imported": "Controls",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "ConnectionLineType",
+              "imported": "ConnectionLineType",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useReactFlow",
+              "imported": "useReactFlow",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "BackgroundVariant",
+              "imported": "BackgroundVariant",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "NodeChange",
+              "imported": "NodeChange",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "EdgeChange",
+              "imported": "EdgeChange",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 2
+        },
+        {
+          "source": "reactflow/dist/style.css",
+          "specifiers": [],
+          "line": 12
+        },
+        {
+          "source": "./MessageNode.tsx",
+          "specifiers": [
+            {
+              "local": "MessageNode",
+              "imported": "MessageNode",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 13
+        },
+        {
+          "source": "./FlowControls.tsx",
+          "specifiers": [
+            {
+              "local": "FlowControls",
+              "imported": "FlowControls",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 14
+        },
+        {
+          "source": "./FlowPanels.tsx",
+          "specifiers": [
+            {
+              "local": "FlowPanels",
+              "imported": "FlowPanels",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 15
+        },
+        {
+          "source": "../../utils/layoutUtils.ts",
+          "specifiers": [
+            {
+              "local": "getLayoutedElements",
+              "imported": "getLayoutedElements",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "LayoutDirection",
+              "imported": "LayoutDirection",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 16
+        },
+        {
+          "source": "../../utils/api.ts",
+          "specifiers": [
+            {
+              "local": "MergeTemplate",
+              "imported": "MergeTemplate",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 17
+        }
+      ],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 1,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-components-Flow-FlowControls-tsx",
+      "path": "src/components/Flow/FlowControls.tsx",
+      "label": "FlowControls.tsx",
+      "cluster": "components",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "FlowControls",
+          "type": "variable",
+          "line": 31
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "React",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            },
+            {
+              "local": "useState",
+              "imported": "useState",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useEffect",
+              "imported": "useEffect",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useRef",
+              "imported": "useRef",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 1
+        },
+        {
+          "source": "reactflow",
+          "specifiers": [
+            {
+              "local": "Panel",
+              "imported": "Panel",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useReactFlow",
+              "imported": "useReactFlow",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "getNodesBounds",
+              "imported": "getNodesBounds",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "getViewportForBounds",
+              "imported": "getViewportForBounds",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 2
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            {
+              "local": "Search",
+              "imported": "Search",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Play",
+              "imported": "Play",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Pause",
+              "imported": "Pause",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "RotateCcw",
+              "imported": "RotateCcw",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Download",
+              "imported": "Download",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "ArrowUpDown",
+              "imported": "ArrowUpDown",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "ArrowLeftRight",
+              "imported": "ArrowLeftRight",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        },
+        {
+          "source": "html-to-image",
+          "specifiers": [
+            {
+              "local": "toPng",
+              "imported": "toPng",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 4
+        }
+      ],
+      "functions": [
+        {
+          "name": "downloadImage",
+          "line": 6,
+          "exported": false
+        }
+      ],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 1,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-components-Flow-FlowPanels-tsx",
+      "path": "src/components/Flow/FlowPanels.tsx",
+      "label": "FlowPanels.tsx",
+      "cluster": "components",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "FlowPanels",
+          "type": "variable",
+          "line": 19
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "React",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            },
+            {
+              "local": "useState",
+              "imported": "useState",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useRef",
+              "imported": "useRef",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useEffect",
+              "imported": "useEffect",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 1
+        },
+        {
+          "source": "reactflow",
+          "specifiers": [
+            {
+              "local": "Panel",
+              "imported": "Panel",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 2
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            {
+              "local": "GitBranch",
+              "imported": "GitBranch",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Sparkles",
+              "imported": "Sparkles",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "ChevronDown",
+              "imported": "ChevronDown",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        },
+        {
+          "source": "../../utils/api.ts",
+          "specifiers": [
+            {
+              "local": "MergeTemplate",
+              "imported": "MergeTemplate",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 4
+        }
+      ],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 1,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-components-Flow-MessageNode-tsx",
+      "path": "src/components/Flow/MessageNode.tsx",
+      "label": "MessageNode.tsx",
+      "cluster": "components",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "MessageNode",
+          "type": "variable",
+          "line": 73
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "React",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            }
+          ],
+          "line": 1
+        },
+        {
+          "source": "reactflow",
+          "specifiers": [
+            {
+              "local": "Handle",
+              "imported": "Handle",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Position",
+              "imported": "Position",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 2
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            {
+              "local": "User",
+              "imported": "User",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Bot",
+              "imported": "Bot",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "GitBranch",
+              "imported": "GitBranch",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Sparkles",
+              "imported": "Sparkles",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Star",
+              "imported": "Star",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        },
+        {
+          "source": "react-markdown",
+          "specifiers": [
+            {
+              "local": "ReactMarkdown",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            }
+          ],
+          "line": 4
+        },
+        {
+          "source": "../../types/flow.ts",
+          "specifiers": [
+            {
+              "local": "MessageNodeData",
+              "imported": "MessageNodeData",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 5
+        },
+        {
+          "source": "../../utils/messageHelpers.ts",
+          "specifiers": [
+            {
+              "local": "MessageHelpers",
+              "imported": "MessageHelpers",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 6
+        },
+        {
+          "source": "../../assets/anthropic.svg",
+          "specifiers": [
+            {
+              "local": "AnthropicIcon",
+              "imported": "ReactComponent",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 7
+        },
+        {
+          "source": "../../assets/openai.svg",
+          "specifiers": [
+            {
+              "local": "OpenAIIcon",
+              "imported": "ReactComponent",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 8
+        },
+        {
+          "source": "../../assets/google-gemini.svg",
+          "specifiers": [
+            {
+              "local": "GoogleIcon",
+              "imported": "ReactComponent",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 9
+        }
+      ],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 1,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-components-Layout-FloatingToolbar-tsx",
+      "path": "src/components/Layout/FloatingToolbar.tsx",
+      "label": "FloatingToolbar.tsx",
+      "cluster": "components",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "FloatingToolbar",
+          "type": "variable",
+          "line": 23
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "React",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            },
+            {
+              "local": "useState",
+              "imported": "useState",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useRef",
+              "imported": "useRef",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useEffect",
+              "imported": "useEffect",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useCallback",
+              "imported": "useCallback",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 1
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            {
+              "local": "ArrowLeft",
+              "imported": "ArrowLeft",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Edit3",
+              "imported": "Edit3",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "User",
+              "imported": "User",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Plus",
+              "imported": "Plus",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 2
+        },
+        {
+          "source": "../UI/ProInterestButton.tsx",
+          "specifiers": [
+            {
+              "local": "ProInterestButton",
+              "imported": "ProInterestButton",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        }
+      ],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 1,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-components-Layout-PanelManager-tsx",
+      "path": "src/components/Layout/PanelManager.tsx",
+      "label": "PanelManager.tsx",
+      "cluster": "components",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "usePanelManager",
+          "type": "variable",
+          "line": 4
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "useState",
+              "imported": "useState",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useCallback",
+              "imported": "useCallback",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 1
+        },
+        {
+          "source": "../../types/flow",
+          "specifiers": [
+            {
+              "local": "PanelState",
+              "imported": "PanelState",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "PanelControls",
+              "imported": "PanelControls",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 2
+        }
+      ],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 1,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-components-Layout-Sidebar-tsx",
+      "path": "src/components/Layout/Sidebar.tsx",
+      "label": "Sidebar.tsx",
+      "cluster": "components",
+      "critical": false,
+      "dead": true,
+      "exports": [
+        {
+          "name": "Sidebar",
+          "type": "variable",
+          "line": 22
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "React",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            }
+          ],
+          "line": 1
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            {
+              "local": "Plus",
+              "imported": "Plus",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "ChevronUp",
+              "imported": "ChevronUp",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "ChevronLeft",
+              "imported": "ChevronLeft",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Sparkles",
+              "imported": "Sparkles",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 2
+        },
+        {
+          "source": "../Chat/ConversationSelector.tsx",
+          "specifiers": [
+            {
+              "local": "ConversationSelector",
+              "imported": "ConversationSelector",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        },
+        {
+          "source": "../../types/conversation.ts",
+          "specifiers": [
+            {
+              "local": "Conversation",
+              "imported": "Conversation",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 4
+        }
+      ],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 0,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-components-Login-tsx",
+      "path": "src/components/Login.tsx",
+      "label": "Login.tsx",
+      "cluster": "components",
+      "critical": false,
+      "dead": true,
+      "exports": [
+        {
+          "name": "Login",
+          "type": "variable",
+          "line": 4
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "React",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            },
+            {
+              "local": "useState",
+              "imported": "useState",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 1
+        },
+        {
+          "source": "../lib/supabase.ts",
+          "specifiers": [
+            {
+              "local": "supabase",
+              "imported": "supabase",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 2
+        }
+      ],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 0,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-components-UI-Button-tsx",
+      "path": "src/components/UI/Button.tsx",
+      "label": "Button.tsx",
+      "cluster": "components",
+      "critical": false,
+      "dead": true,
+      "exports": [
+        {
+          "name": "Button",
+          "type": "variable",
+          "line": 17
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "React",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            }
+          ],
+          "line": 1
+        },
+        {
+          "source": "./LoadingSpinner",
+          "specifiers": [
+            {
+              "local": "LoadingSpinner",
+              "imported": "LoadingSpinner",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 2
+        }
+      ],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 0,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-components-UI-ErrorBoundary-tsx",
+      "path": "src/components/UI/ErrorBoundary.tsx",
+      "label": "ErrorBoundary.tsx",
+      "cluster": "components",
+      "critical": false,
+      "dead": true,
+      "exports": [
+        {
+          "name": "ErrorBoundary",
+          "type": "class",
+          "line": 14
+        },
+        {
+          "name": "withErrorBoundary",
+          "type": "variable",
+          "line": 76
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "React",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            },
+            {
+              "local": "Component",
+              "imported": "Component",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "ReactNode",
+              "imported": "ReactNode",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 1
+        }
+      ],
+      "functions": [],
+      "classes": [
+        {
+          "name": "ErrorBoundary",
+          "line": 14,
+          "exported": true
+        }
+      ],
+      "apiCalls": [],
+      "importDepth": 2,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-components-UI-LoadingSpinner-tsx",
+      "path": "src/components/UI/LoadingSpinner.tsx",
+      "label": "LoadingSpinner.tsx",
+      "cluster": "components",
+      "critical": false,
+      "dead": true,
+      "exports": [
+        {
+          "name": "LoadingSpinner",
+          "type": "variable",
+          "line": 9
+        },
+        {
+          "name": "ThinkingIndicator",
+          "type": "variable",
+          "line": 30
+        },
+        {
+          "name": "MergeIndicator",
+          "type": "variable",
+          "line": 41
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "React",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            }
+          ],
+          "line": 1
+        }
+      ],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 2,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-components-UI-ProInterestButton-tsx",
+      "path": "src/components/UI/ProInterestButton.tsx",
+      "label": "ProInterestButton.tsx",
+      "cluster": "components",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "ProInterestButton",
+          "type": "variable",
+          "line": 10
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "React",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            },
+            {
+              "local": "useState",
+              "imported": "useState",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useEffect",
+              "imported": "useEffect",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 1
+        },
+        {
+          "source": "react-dom",
+          "specifiers": [
+            {
+              "local": "createPortal",
+              "imported": "createPortal",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 2
+        },
+        {
+          "source": "../../services/databaseService.ts",
+          "specifiers": [
+            {
+              "local": "DatabaseService",
+              "imported": "DatabaseService",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        }
+      ],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 1,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-components-WaitlistForm-tsx",
+      "path": "src/components/WaitlistForm.tsx",
+      "label": "WaitlistForm.tsx",
+      "cluster": "components",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "WaitlistForm",
+          "type": "variable",
+          "line": 7
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "React",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            },
+            {
+              "local": "useState",
+              "imported": "useState",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        },
+        {
+          "source": "../lib/supabase.ts",
+          "specifiers": [
+            {
+              "local": "supabase",
+              "imported": "supabase",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 4
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            {
+              "local": "Sparkles",
+              "imported": "Sparkles",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "CheckCircle",
+              "imported": "CheckCircle",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 5
+        }
+      ],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 1,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-hooks-useAdmin-ts",
+      "path": "src/hooks/useAdmin.ts",
+      "label": "useAdmin.ts",
+      "cluster": "hooks",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "useAdmin",
+          "type": "variable",
+          "line": 5
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "useState",
+              "imported": "useState",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useEffect",
+              "imported": "useEffect",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 1
+        },
+        {
+          "source": "../lib/supabase.ts",
+          "specifiers": [
+            {
+              "local": "supabase",
+              "imported": "supabase",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 2
+        },
+        {
+          "source": "./useAuth.ts",
+          "specifiers": [
+            {
+              "local": "useAuth",
+              "imported": "useAuth",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        }
+      ],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 1,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-hooks-useAuth-ts",
+      "path": "src/hooks/useAuth.ts",
+      "label": "useAuth.ts",
+      "cluster": "hooks",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "useAuth",
+          "type": "variable",
+          "line": 5
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "useState",
+              "imported": "useState",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useEffect",
+              "imported": "useEffect",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 1
+        },
+        {
+          "source": "../lib/supabase.ts",
+          "specifiers": [
+            {
+              "local": "supabase",
+              "imported": "supabase",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 2
+        },
+        {
+          "source": "@supabase/supabase-js",
+          "specifiers": [
+            {
+              "local": "User",
+              "imported": "User",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        }
+      ],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 4,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-hooks-useConversations-ts",
+      "path": "src/hooks/useConversations.ts",
+      "label": "useConversations.ts",
+      "cluster": "hooks",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "useConversations",
+          "type": "variable",
+          "line": 8
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "useState",
+              "imported": "useState",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useCallback",
+              "imported": "useCallback",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useEffect",
+              "imported": "useEffect",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 2
+        },
+        {
+          "source": "../types/conversation",
+          "specifiers": [
+            {
+              "local": "Conversation",
+              "imported": "Conversation",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Message",
+              "imported": "Message",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        },
+        {
+          "source": "../utils/messageHelpers.ts",
+          "specifiers": [
+            {
+              "local": "MessageHelpers",
+              "imported": "MessageHelpers",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 4
+        },
+        {
+          "source": "../services/databaseService.ts",
+          "specifiers": [
+            {
+              "local": "DatabaseService",
+              "imported": "DatabaseService",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 5
+        },
+        {
+          "source": "./useAuth.ts",
+          "specifiers": [
+            {
+              "local": "useAuth",
+              "imported": "useAuth",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 6
+        }
+      ],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 1,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-hooks-useFlowElements-ts",
+      "path": "src/hooks/useFlowElements.ts",
+      "label": "useFlowElements.ts",
+      "cluster": "hooks",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "useFlowElements",
+          "type": "variable",
+          "line": 10
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "useState",
+              "imported": "useState",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useCallback",
+              "imported": "useCallback",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useMemo",
+              "imported": "useMemo",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useRef",
+              "imported": "useRef",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useEffect",
+              "imported": "useEffect",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 2
+        },
+        {
+          "source": "reactflow",
+          "specifiers": [
+            {
+              "local": "Node",
+              "imported": "Node",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Edge",
+              "imported": "Edge",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "MarkerType",
+              "imported": "MarkerType",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "NodeChange",
+              "imported": "NodeChange",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "EdgeChange",
+              "imported": "EdgeChange",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        },
+        {
+          "source": "../types/conversation",
+          "specifiers": [
+            {
+              "local": "Message",
+              "imported": "Message",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 4
+        },
+        {
+          "source": "../types/flow",
+          "specifiers": [
+            {
+              "local": "MessageNodeData",
+              "imported": "MessageNodeData",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 5
+        },
+        {
+          "source": "../utils/messageHelpers.ts",
+          "specifiers": [
+            {
+              "local": "MessageHelpers",
+              "imported": "MessageHelpers",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 6
+        },
+        {
+          "source": "../services/databaseService.ts",
+          "specifiers": [
+            {
+              "local": "DatabaseService",
+              "imported": "DatabaseService",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 7
+        },
+        {
+          "source": "./useAuth.ts",
+          "specifiers": [
+            {
+              "local": "useAuth",
+              "imported": "useAuth",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 8
+        }
+      ],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 1,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-hooks-useMessageOperations-ts",
+      "path": "src/hooks/useMessageOperations.ts",
+      "label": "useMessageOperations.ts",
+      "cluster": "hooks",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "useMessageOperations",
+          "type": "variable",
+          "line": 49
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "useState",
+              "imported": "useState",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useCallback",
+              "imported": "useCallback",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 1
+        },
+        {
+          "source": "../types/conversation.ts",
+          "specifiers": [
+            {
+              "local": "Message",
+              "imported": "Message",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 2
+        },
+        {
+          "source": "../utils/messageHelpers.ts",
+          "specifiers": [
+            {
+              "local": "MessageHelpers",
+              "imported": "MessageHelpers",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        },
+        {
+          "source": "../utils/api.ts",
+          "specifiers": [
+            {
+              "local": "ApiService",
+              "imported": "ApiService",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "MergeTemplate",
+              "imported": "MergeTemplate",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "LimitExceededError",
+              "imported": "LimitExceededError",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 4
+        },
+        {
+          "source": "../services/databaseService.ts",
+          "specifiers": [
+            {
+              "local": "DatabaseService",
+              "imported": "DatabaseService",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 5
+        }
+      ],
+      "functions": [
+        {
+          "name": "isLimitError",
+          "line": 8,
+          "exported": false
+        },
+        {
+          "name": "formatLimitError",
+          "line": 13,
+          "exported": false
+        }
+      ],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 1,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-lib-supabase-ts",
+      "path": "src/lib/supabase.ts",
+      "label": "supabase.ts",
+      "cluster": "services",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "supabase",
+          "type": "variable",
+          "line": 6
+        }
+      ],
+      "imports": [
+        {
+          "source": "@supabase/supabase-js",
+          "specifiers": [
+            {
+              "local": "createClient",
+              "imported": "createClient",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 1
+        }
+      ],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 14,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-pages-Admin-AdminDashboard-tsx",
+      "path": "src/pages/Admin/AdminDashboard.tsx",
+      "label": "AdminDashboard.tsx",
+      "cluster": "pages",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "default",
+          "type": "default",
+          "line": 662
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "React",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            },
+            {
+              "local": "useState",
+              "imported": "useState",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useEffect",
+              "imported": "useEffect",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 1
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            {
+              "local": "Users",
+              "imported": "Users",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "MessageSquare",
+              "imported": "MessageSquare",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Zap",
+              "imported": "Zap",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "TrendingUp",
+              "imported": "TrendingUp",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "GitBranch",
+              "imported": "GitBranch",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "GitMerge",
+              "imported": "GitMerge",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Activity",
+              "imported": "Activity",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Calendar",
+              "imported": "Calendar",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "BarChart3",
+              "imported": "BarChart3",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Mail",
+              "imported": "Mail",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Flag",
+              "imported": "Flag",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 2
+        },
+        {
+          "source": "../../services/databaseService.ts",
+          "specifiers": [
+            {
+              "local": "DatabaseService",
+              "imported": "DatabaseService",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 15
+        },
+        {
+          "source": "../../lib/supabase.ts",
+          "specifiers": [
+            {
+              "local": "supabase",
+              "imported": "supabase",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 16
+        }
+      ],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 0,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-pages-Admin-AdminLayout-tsx",
+      "path": "src/pages/Admin/AdminLayout.tsx",
+      "label": "AdminLayout.tsx",
+      "cluster": "pages",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "default",
+          "type": "default",
+          "line": 125
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "React",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            }
+          ],
+          "line": 1
+        },
+        {
+          "source": "react-router-dom",
+          "specifiers": [
+            {
+              "local": "NavLink",
+              "imported": "NavLink",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Outlet",
+              "imported": "Outlet",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Navigate",
+              "imported": "Navigate",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 2
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            {
+              "local": "LayoutDashboard",
+              "imported": "LayoutDashboard",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "MessageSquareText",
+              "imported": "MessageSquareText",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Bot",
+              "imported": "Bot",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Users",
+              "imported": "Users",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "ArrowLeft",
+              "imported": "ArrowLeft",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Shield",
+              "imported": "Shield",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Layers",
+              "imported": "Layers",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        },
+        {
+          "source": "../../hooks/useAdmin.ts",
+          "specifiers": [
+            {
+              "local": "useAdmin",
+              "imported": "useAdmin",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 12
+        }
+      ],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 0,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-pages-Admin-AdminModels-tsx",
+      "path": "src/pages/Admin/AdminModels.tsx",
+      "label": "AdminModels.tsx",
+      "cluster": "pages",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "default",
+          "type": "default",
+          "line": 555
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "React",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            },
+            {
+              "local": "useState",
+              "imported": "useState",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useEffect",
+              "imported": "useEffect",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 1
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            {
+              "local": "Bot",
+              "imported": "Bot",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Check",
+              "imported": "Check",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "X",
+              "imported": "X",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Star",
+              "imported": "Star",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Plus",
+              "imported": "Plus",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Pencil",
+              "imported": "Pencil",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Trash2",
+              "imported": "Trash2",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Save",
+              "imported": "Save",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "RotateCcw",
+              "imported": "RotateCcw",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 2
+        },
+        {
+          "source": "../../lib/supabase.ts",
+          "specifiers": [
+            {
+              "local": "supabase",
+              "imported": "supabase",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 13
+        }
+      ],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 0,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-pages-Admin-AdminPrompts-tsx",
+      "path": "src/pages/Admin/AdminPrompts.tsx",
+      "label": "AdminPrompts.tsx",
+      "cluster": "pages",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "default",
+          "type": "default",
+          "line": 291
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "React",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            },
+            {
+              "local": "useState",
+              "imported": "useState",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useEffect",
+              "imported": "useEffect",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 1
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            {
+              "local": "MessageSquareText",
+              "imported": "MessageSquareText",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Check",
+              "imported": "Check",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "X",
+              "imported": "X",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "ChevronDown",
+              "imported": "ChevronDown",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "ChevronUp",
+              "imported": "ChevronUp",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Save",
+              "imported": "Save",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "RotateCcw",
+              "imported": "RotateCcw",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 2
+        },
+        {
+          "source": "../../lib/supabase.ts",
+          "specifiers": [
+            {
+              "local": "supabase",
+              "imported": "supabase",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 11
+        }
+      ],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 0,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-pages-Admin-AdminTiers-tsx",
+      "path": "src/pages/Admin/AdminTiers.tsx",
+      "label": "AdminTiers.tsx",
+      "cluster": "pages",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "default",
+          "type": "default",
+          "line": 737
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "React",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            },
+            {
+              "local": "useState",
+              "imported": "useState",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useEffect",
+              "imported": "useEffect",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 1
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            {
+              "local": "Layers",
+              "imported": "Layers",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Plus",
+              "imported": "Plus",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Pencil",
+              "imported": "Pencil",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Trash2",
+              "imported": "Trash2",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Save",
+              "imported": "Save",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "RotateCcw",
+              "imported": "RotateCcw",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Star",
+              "imported": "Star",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Infinity",
+              "imported": "Infinity",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Zap",
+              "imported": "Zap",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "GitMerge",
+              "imported": "GitMerge",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Clock",
+              "imported": "Clock",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Bot",
+              "imported": "Bot",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 2
+        },
+        {
+          "source": "../../lib/supabase.ts",
+          "specifiers": [
+            {
+              "local": "supabase",
+              "imported": "supabase",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 16
+        }
+      ],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 0,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-pages-Admin-AdminUsers-tsx",
+      "path": "src/pages/Admin/AdminUsers.tsx",
+      "label": "AdminUsers.tsx",
+      "cluster": "pages",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "default",
+          "type": "default",
+          "line": 413
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "React",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            },
+            {
+              "local": "useState",
+              "imported": "useState",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useEffect",
+              "imported": "useEffect",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 1
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            {
+              "local": "Users",
+              "imported": "Users",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Shield",
+              "imported": "Shield",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "ShieldOff",
+              "imported": "ShieldOff",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Mail",
+              "imported": "Mail",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Settings",
+              "imported": "Settings",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Zap",
+              "imported": "Zap",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "GitMerge",
+              "imported": "GitMerge",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Ban",
+              "imported": "Ban",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Search",
+              "imported": "Search",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 2
+        },
+        {
+          "source": "../../lib/supabase.ts",
+          "specifiers": [
+            {
+              "local": "supabase",
+              "imported": "supabase",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 13
+        },
+        {
+          "source": "../../components/Admin/UserLimitsModal.tsx",
+          "specifiers": [
+            {
+              "local": "UserLimitsModal",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            }
+          ],
+          "line": 14
+        }
+      ],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 0,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-pages-Admin-index-ts",
+      "path": "src/pages/Admin/index.ts",
+      "label": "index.ts",
+      "cluster": "pages",
+      "critical": true,
+      "dead": true,
+      "exports": [
+        {
+          "name": "AdminLayout",
+          "type": "reexport",
+          "line": 1
+        },
+        {
+          "name": "AdminDashboard",
+          "type": "reexport",
+          "line": 2
+        },
+        {
+          "name": "AdminPrompts",
+          "type": "reexport",
+          "line": 3
+        },
+        {
+          "name": "AdminModels",
+          "type": "reexport",
+          "line": 4
+        },
+        {
+          "name": "AdminTiers",
+          "type": "reexport",
+          "line": 5
+        },
+        {
+          "name": "AdminUsers",
+          "type": "reexport",
+          "line": 6
+        }
+      ],
+      "imports": [],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 0,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-pages-AuthPage-tsx",
+      "path": "src/pages/AuthPage.tsx",
+      "label": "AuthPage.tsx",
+      "cluster": "pages",
+      "critical": false,
+      "dead": true,
+      "exports": [
+        {
+          "name": "AuthPage",
+          "type": "variable",
+          "line": 9
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "React",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            },
+            {
+              "local": "useState",
+              "imported": "useState",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 1
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            {
+              "local": "Sparkles",
+              "imported": "Sparkles",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "ArrowLeft",
+              "imported": "ArrowLeft",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Mail",
+              "imported": "Mail",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Lock",
+              "imported": "Lock",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 2
+        },
+        {
+          "source": "../lib/supabase.ts",
+          "specifiers": [
+            {
+              "local": "supabase",
+              "imported": "supabase",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        }
+      ],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 0,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-pages-HomePage-tsx",
+      "path": "src/pages/HomePage.tsx",
+      "label": "HomePage.tsx",
+      "cluster": "pages",
+      "critical": false,
+      "dead": true,
+      "exports": [
+        {
+          "name": "HomePage",
+          "type": "variable",
+          "line": 14
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "React",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            },
+            {
+              "local": "useState",
+              "imported": "useState",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useEffect",
+              "imported": "useEffect",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 1
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            {
+              "local": "CheckCircle",
+              "imported": "CheckCircle",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Clock",
+              "imported": "Clock",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Building",
+              "imported": "Building",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Play",
+              "imported": "Play",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Lock",
+              "imported": "Lock",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Layers",
+              "imported": "Layers",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "GitBranch",
+              "imported": "GitBranch",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Combine",
+              "imported": "Combine",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 2
+        },
+        {
+          "source": "../assets/anthropic.svg",
+          "specifiers": [
+            {
+              "local": "AnthropicIcon",
+              "imported": "ReactComponent",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        },
+        {
+          "source": "../assets/openai.svg",
+          "specifiers": [
+            {
+              "local": "OpenAIIcon",
+              "imported": "ReactComponent",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 4
+        },
+        {
+          "source": "../assets/google-gemini.svg",
+          "specifiers": [
+            {
+              "local": "GoogleIcon",
+              "imported": "ReactComponent",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 5
+        },
+        {
+          "source": "../components/FeedbackForm.tsx",
+          "specifiers": [
+            {
+              "local": "FeedbackForm",
+              "imported": "FeedbackForm",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 6
+        },
+        {
+          "source": "../sections/WaitlistSection.tsx",
+          "specifiers": [
+            {
+              "local": "WaitlistSection",
+              "imported": "WaitlistSection",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 7
+        },
+        {
+          "source": "../services/databaseService.ts",
+          "specifiers": [
+            {
+              "local": "DatabaseService",
+              "imported": "DatabaseService",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 8
+        }
+      ],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 0,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-pages-MainApp-tsx",
+      "path": "src/pages/MainApp.tsx",
+      "label": "MainApp.tsx",
+      "cluster": "pages",
+      "critical": false,
+      "dead": true,
+      "exports": [
+        {
+          "name": "MainApp",
+          "type": "variable",
+          "line": 23
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "React",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            },
+            {
+              "local": "useState",
+              "imported": "useState",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useCallback",
+              "imported": "useCallback",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useRef",
+              "imported": "useRef",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useEffect",
+              "imported": "useEffect",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 1
+        },
+        {
+          "source": "reactflow",
+          "specifiers": [
+            {
+              "local": "ReactFlowProvider",
+              "imported": "ReactFlowProvider",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 2
+        },
+        {
+          "source": "reactflow/dist/style.css",
+          "specifiers": [],
+          "line": 3
+        },
+        {
+          "source": "../components/Chat/ChatPanel.tsx",
+          "specifiers": [
+            {
+              "local": "ChatPanel",
+              "imported": "ChatPanel",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 6
+        },
+        {
+          "source": "../components/Flow/FlowCanvas.tsx",
+          "specifiers": [
+            {
+              "local": "FlowCanvas",
+              "imported": "FlowCanvas",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 7
+        },
+        {
+          "source": "../components/Conversations/ConversationsListPage.tsx",
+          "specifiers": [
+            {
+              "local": "ConversationsListPage",
+              "imported": "ConversationsListPage",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 8
+        },
+        {
+          "source": "../components/Layout/FloatingToolbar.tsx",
+          "specifiers": [
+            {
+              "local": "FloatingToolbar",
+              "imported": "FloatingToolbar",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 9
+        },
+        {
+          "source": "../components/UI/ErrorBoundary.tsx",
+          "specifiers": [
+            {
+              "local": "ErrorBoundary",
+              "imported": "ErrorBoundary",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 10
+        },
+        {
+          "source": "./UserProfile.tsx",
+          "specifiers": [
+            {
+              "local": "UserProfile",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            }
+          ],
+          "line": 11
+        },
+        {
+          "source": "../hooks/useConversations.ts",
+          "specifiers": [
+            {
+              "local": "useConversations",
+              "imported": "useConversations",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 14
+        },
+        {
+          "source": "../hooks/useFlowElements.ts",
+          "specifiers": [
+            {
+              "local": "useFlowElements",
+              "imported": "useFlowElements",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 15
+        },
+        {
+          "source": "../hooks/useMessageOperations.ts",
+          "specifiers": [
+            {
+              "local": "useMessageOperations",
+              "imported": "useMessageOperations",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 16
+        },
+        {
+          "source": "../components/Layout/PanelManager.tsx",
+          "specifiers": [
+            {
+              "local": "usePanelManager",
+              "imported": "usePanelManager",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 17
+        }
+      ],
+      "functions": [
+        {
+          "name": "handleNodeClick",
+          "line": 76,
+          "exported": false
+        },
+        {
+          "name": "handleNodeDoubleClick",
+          "line": 92,
+          "exported": false
+        }
+      ],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 0,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-pages-UserProfile-tsx",
+      "path": "src/pages/UserProfile.tsx",
+      "label": "UserProfile.tsx",
+      "cluster": "pages",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "default",
+          "type": "default",
+          "line": 142
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "React",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            },
+            {
+              "local": "useState",
+              "imported": "useState",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 1
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            {
+              "local": "ArrowLeft",
+              "imported": "ArrowLeft",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "User",
+              "imported": "User",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Mail",
+              "imported": "Mail",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Calendar",
+              "imported": "Calendar",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "LogOut",
+              "imported": "LogOut",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 2
+        },
+        {
+          "source": "../lib/supabase.ts",
+          "specifiers": [
+            {
+              "local": "supabase",
+              "imported": "supabase",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        },
+        {
+          "source": "@supabase/supabase-js",
+          "specifiers": [
+            {
+              "local": "SupabaseUser",
+              "imported": "User",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 4
+        }
+      ],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 1,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-pages-index-ts",
+      "path": "src/pages/index.ts",
+      "label": "index.ts",
+      "cluster": "pages",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "HomePage",
+          "type": "reexport",
+          "line": 1
+        },
+        {
+          "name": "AuthPage",
+          "type": "reexport",
+          "line": 2
+        },
+        {
+          "name": "MainApp",
+          "type": "reexport",
+          "line": 3
+        },
+        {
+          "name": "AdminLayout",
+          "type": "reexport",
+          "line": 6
+        },
+        {
+          "name": "AdminDashboard",
+          "type": "reexport",
+          "line": 6
+        },
+        {
+          "name": "AdminPrompts",
+          "type": "reexport",
+          "line": 6
+        },
+        {
+          "name": "AdminModels",
+          "type": "reexport",
+          "line": 6
+        },
+        {
+          "name": "AdminTiers",
+          "type": "reexport",
+          "line": 6
+        },
+        {
+          "name": "AdminUsers",
+          "type": "reexport",
+          "line": 6
+        }
+      ],
+      "imports": [],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 1,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-sections-WaitlistSection-tsx",
+      "path": "src/sections/WaitlistSection.tsx",
+      "label": "WaitlistSection.tsx",
+      "cluster": "other",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "WaitlistSection",
+          "type": "variable",
+          "line": 7
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "React",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            }
+          ],
+          "line": 3
+        },
+        {
+          "source": "../components/WaitlistForm.tsx",
+          "specifiers": [
+            {
+              "local": "WaitlistForm",
+              "imported": "WaitlistForm",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 4
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            {
+              "local": "Sparkles",
+              "imported": "Sparkles",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Users",
+              "imported": "Users",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Rocket",
+              "imported": "Rocket",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 5
+        }
+      ],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 1,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-services-configService-ts",
+      "path": "src/services/configService.ts",
+      "label": "configService.ts",
+      "cluster": "services",
+      "critical": false,
+      "dead": true,
+      "exports": [
+        {
+          "name": "clearConfigCache",
+          "type": "variable",
+          "line": 33
+        },
+        {
+          "name": "getModels",
+          "type": "variable",
+          "line": 41
+        },
+        {
+          "name": "getAllModels",
+          "type": "variable",
+          "line": 47
+        },
+        {
+          "name": "getDefaultModel",
+          "type": "variable",
+          "line": 76
+        },
+        {
+          "name": "getDefaultModelId",
+          "type": "variable",
+          "line": 82
+        },
+        {
+          "name": "getPrompts",
+          "type": "variable",
+          "line": 88
+        },
+        {
+          "name": "getPrompt",
+          "type": "variable",
+          "line": 123
+        },
+        {
+          "name": "getPromptWithVariables",
+          "type": "variable",
+          "line": 136
+        },
+        {
+          "name": "getModelsGroupedByProvider",
+          "type": "variable",
+          "line": 178
+        },
+        {
+          "name": "getProviderInfo",
+          "type": "variable",
+          "line": 192
+        }
+      ],
+      "imports": [
+        {
+          "source": "../lib/supabase.ts",
+          "specifiers": [
+            {
+              "local": "supabase",
+              "imported": "supabase",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 1
+        }
+      ],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 1,
+      "role": null,
+      "plain": null,
+      "notes": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "src-index-tsx",
+      "to": "src-App-tsx",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-App-tsx",
+      "to": "src-pages-index-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-App-tsx",
+      "to": "src-components-UI-ErrorBoundary-tsx",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-App-tsx",
+      "to": "src-hooks-useAuth-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-Admin-UserLimitsModal-tsx",
+      "to": "src-lib-supabase-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-Chat-ChatInput-tsx",
+      "to": "src-components-Chat-LLMSelector-tsx",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-Chat-ChatPanel-tsx",
+      "to": "src-components-Chat-MessageThread-tsx",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-Chat-ChatPanel-tsx",
+      "to": "src-components-Chat-ChatInput-tsx",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-Chat-LLMSelector-tsx",
+      "to": "src-services-configService-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-Chat-MessageThread-tsx",
+      "to": "src-components-UI-LoadingSpinner-tsx",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-FeedbackForm-tsx",
+      "to": "src-lib-supabase-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-Flow-FlowCanvas-tsx",
+      "to": "src-components-Flow-MessageNode-tsx",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-Flow-FlowCanvas-tsx",
+      "to": "src-components-Flow-FlowControls-tsx",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-Flow-FlowCanvas-tsx",
+      "to": "src-components-Flow-FlowPanels-tsx",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-Layout-FloatingToolbar-tsx",
+      "to": "src-components-UI-ProInterestButton-tsx",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-Layout-Sidebar-tsx",
+      "to": "src-components-Chat-ConversationSelector-tsx",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-Login-tsx",
+      "to": "src-lib-supabase-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-UI-Button-tsx",
+      "to": "src-components-UI-LoadingSpinner-tsx",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-WaitlistForm-tsx",
+      "to": "src-lib-supabase-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-hooks-useAdmin-ts",
+      "to": "src-lib-supabase-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-hooks-useAdmin-ts",
+      "to": "src-hooks-useAuth-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-hooks-useAuth-ts",
+      "to": "src-lib-supabase-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-hooks-useConversations-ts",
+      "to": "src-hooks-useAuth-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-hooks-useFlowElements-ts",
+      "to": "src-hooks-useAuth-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-pages-Admin-AdminDashboard-tsx",
+      "to": "src-lib-supabase-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-pages-Admin-AdminLayout-tsx",
+      "to": "src-hooks-useAdmin-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-pages-Admin-AdminModels-tsx",
+      "to": "src-lib-supabase-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-pages-Admin-AdminPrompts-tsx",
+      "to": "src-lib-supabase-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-pages-Admin-AdminTiers-tsx",
+      "to": "src-lib-supabase-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-pages-Admin-AdminUsers-tsx",
+      "to": "src-lib-supabase-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-pages-Admin-AdminUsers-tsx",
+      "to": "src-components-Admin-UserLimitsModal-tsx",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-pages-AuthPage-tsx",
+      "to": "src-lib-supabase-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-pages-HomePage-tsx",
+      "to": "src-components-FeedbackForm-tsx",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-pages-HomePage-tsx",
+      "to": "src-sections-WaitlistSection-tsx",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-pages-MainApp-tsx",
+      "to": "src-components-Chat-ChatPanel-tsx",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-pages-MainApp-tsx",
+      "to": "src-components-Flow-FlowCanvas-tsx",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-pages-MainApp-tsx",
+      "to": "src-components-Conversations-ConversationsListPage-tsx",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-pages-MainApp-tsx",
+      "to": "src-components-Layout-FloatingToolbar-tsx",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-pages-MainApp-tsx",
+      "to": "src-components-UI-ErrorBoundary-tsx",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-pages-MainApp-tsx",
+      "to": "src-pages-UserProfile-tsx",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-pages-MainApp-tsx",
+      "to": "src-hooks-useConversations-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-pages-MainApp-tsx",
+      "to": "src-hooks-useFlowElements-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-pages-MainApp-tsx",
+      "to": "src-hooks-useMessageOperations-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-pages-MainApp-tsx",
+      "to": "src-components-Layout-PanelManager-tsx",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-pages-UserProfile-tsx",
+      "to": "src-lib-supabase-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-sections-WaitlistSection-tsx",
+      "to": "src-components-WaitlistForm-tsx",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-services-configService-ts",
+      "to": "src-lib-supabase-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    }
+  ],
+  "imports": {
+    "src/index.tsx": [
+      "src/App.tsx"
+    ],
+    "src/App.tsx": [
+      "src/pages/index.ts",
+      "src/components/UI/ErrorBoundary.tsx",
+      "src/hooks/useAuth.ts"
+    ],
+    "src/components/Admin/UserLimitsModal.tsx": [
+      "src/lib/supabase.ts"
+    ],
+    "src/components/Chat/ChatInput.tsx": [
+      "src/components/Chat/LLMSelector.tsx"
+    ],
+    "src/components/Chat/ChatPanel.tsx": [
+      "src/components/Chat/MessageThread.tsx",
+      "src/components/Chat/ChatInput.tsx"
+    ],
+    "src/components/Chat/ConversationSelector.tsx": [],
+    "src/components/Chat/LLMSelector.tsx": [
+      "src/services/configService.ts"
+    ],
+    "src/components/Chat/MessageThread.tsx": [
+      "src/components/UI/LoadingSpinner.tsx"
+    ],
+    "src/components/Conversations/ConversationsListPage.tsx": [],
+    "src/components/FeedbackForm.tsx": [
+      "src/lib/supabase.ts"
+    ],
+    "src/components/Flow/FlowCanvas.tsx": [
+      "src/components/Flow/MessageNode.tsx",
+      "src/components/Flow/FlowControls.tsx",
+      "src/components/Flow/FlowPanels.tsx"
+    ],
+    "src/components/Flow/FlowControls.tsx": [],
+    "src/components/Flow/FlowPanels.tsx": [],
+    "src/components/Flow/MessageNode.tsx": [],
+    "src/components/Layout/FloatingToolbar.tsx": [
+      "src/components/UI/ProInterestButton.tsx"
+    ],
+    "src/components/Layout/PanelManager.tsx": [],
+    "src/components/Layout/Sidebar.tsx": [
+      "src/components/Chat/ConversationSelector.tsx"
+    ],
+    "src/components/Login.tsx": [
+      "src/lib/supabase.ts"
+    ],
+    "src/components/UI/Button.tsx": [
+      "src/components/UI/LoadingSpinner.tsx"
+    ],
+    "src/components/UI/ErrorBoundary.tsx": [],
+    "src/components/UI/LoadingSpinner.tsx": [],
+    "src/components/UI/ProInterestButton.tsx": [],
+    "src/components/WaitlistForm.tsx": [
+      "src/lib/supabase.ts"
+    ],
+    "src/hooks/useAdmin.ts": [
+      "src/lib/supabase.ts",
+      "src/hooks/useAuth.ts"
+    ],
+    "src/hooks/useAuth.ts": [
+      "src/lib/supabase.ts"
+    ],
+    "src/hooks/useConversations.ts": [
+      "src/hooks/useAuth.ts"
+    ],
+    "src/hooks/useFlowElements.ts": [
+      "src/hooks/useAuth.ts"
+    ],
+    "src/hooks/useMessageOperations.ts": [],
+    "src/lib/supabase.ts": [],
+    "src/pages/Admin/AdminDashboard.tsx": [
+      "src/lib/supabase.ts"
+    ],
+    "src/pages/Admin/AdminLayout.tsx": [
+      "src/hooks/useAdmin.ts"
+    ],
+    "src/pages/Admin/AdminModels.tsx": [
+      "src/lib/supabase.ts"
+    ],
+    "src/pages/Admin/AdminPrompts.tsx": [
+      "src/lib/supabase.ts"
+    ],
+    "src/pages/Admin/AdminTiers.tsx": [
+      "src/lib/supabase.ts"
+    ],
+    "src/pages/Admin/AdminUsers.tsx": [
+      "src/lib/supabase.ts",
+      "src/components/Admin/UserLimitsModal.tsx"
+    ],
+    "src/pages/Admin/index.ts": [],
+    "src/pages/AuthPage.tsx": [
+      "src/lib/supabase.ts"
+    ],
+    "src/pages/HomePage.tsx": [
+      "src/components/FeedbackForm.tsx",
+      "src/sections/WaitlistSection.tsx"
+    ],
+    "src/pages/MainApp.tsx": [
+      "src/components/Chat/ChatPanel.tsx",
+      "src/components/Flow/FlowCanvas.tsx",
+      "src/components/Conversations/ConversationsListPage.tsx",
+      "src/components/Layout/FloatingToolbar.tsx",
+      "src/components/UI/ErrorBoundary.tsx",
+      "src/pages/UserProfile.tsx",
+      "src/hooks/useConversations.ts",
+      "src/hooks/useFlowElements.ts",
+      "src/hooks/useMessageOperations.ts",
+      "src/components/Layout/PanelManager.tsx"
+    ],
+    "src/pages/UserProfile.tsx": [
+      "src/lib/supabase.ts"
+    ],
+    "src/pages/index.ts": [],
+    "src/sections/WaitlistSection.tsx": [
+      "src/components/WaitlistForm.tsx"
+    ],
+    "src/services/configService.ts": [
+      "src/lib/supabase.ts"
+    ]
+  },
+  "exports": {
+    "src/index.tsx": [],
+    "src/App.tsx": [
+      "default"
+    ],
+    "src/components/Admin/UserLimitsModal.tsx": [
+      "default"
+    ],
+    "src/components/Chat/ChatInput.tsx": [
+      "ChatInput"
+    ],
+    "src/components/Chat/ChatPanel.tsx": [
+      "ChatPanel"
+    ],
+    "src/components/Chat/ConversationSelector.tsx": [
+      "ConversationSelector"
+    ],
+    "src/components/Chat/LLMSelector.tsx": [
+      "LLMSelector"
+    ],
+    "src/components/Chat/MessageThread.tsx": [
+      "MessageThread"
+    ],
+    "src/components/Conversations/ConversationsListPage.tsx": [
+      "ConversationsListPage"
+    ],
+    "src/components/FeedbackForm.tsx": [
+      "FeedbackForm"
+    ],
+    "src/components/Flow/FlowCanvas.tsx": [
+      "FlowCanvas"
+    ],
+    "src/components/Flow/FlowControls.tsx": [
+      "FlowControls"
+    ],
+    "src/components/Flow/FlowPanels.tsx": [
+      "FlowPanels"
+    ],
+    "src/components/Flow/MessageNode.tsx": [
+      "MessageNode"
+    ],
+    "src/components/Layout/FloatingToolbar.tsx": [
+      "FloatingToolbar"
+    ],
+    "src/components/Layout/PanelManager.tsx": [
+      "usePanelManager"
+    ],
+    "src/components/Layout/Sidebar.tsx": [
+      "Sidebar"
+    ],
+    "src/components/Login.tsx": [
+      "Login"
+    ],
+    "src/components/UI/Button.tsx": [
+      "Button"
+    ],
+    "src/components/UI/ErrorBoundary.tsx": [
+      "ErrorBoundary",
+      "withErrorBoundary"
+    ],
+    "src/components/UI/LoadingSpinner.tsx": [
+      "LoadingSpinner",
+      "ThinkingIndicator",
+      "MergeIndicator"
+    ],
+    "src/components/UI/ProInterestButton.tsx": [
+      "ProInterestButton"
+    ],
+    "src/components/WaitlistForm.tsx": [
+      "WaitlistForm"
+    ],
+    "src/hooks/useAdmin.ts": [
+      "useAdmin"
+    ],
+    "src/hooks/useAuth.ts": [
+      "useAuth"
+    ],
+    "src/hooks/useConversations.ts": [
+      "useConversations"
+    ],
+    "src/hooks/useFlowElements.ts": [
+      "useFlowElements"
+    ],
+    "src/hooks/useMessageOperations.ts": [
+      "useMessageOperations"
+    ],
+    "src/lib/supabase.ts": [
+      "supabase"
+    ],
+    "src/pages/Admin/AdminDashboard.tsx": [
+      "default"
+    ],
+    "src/pages/Admin/AdminLayout.tsx": [
+      "default"
+    ],
+    "src/pages/Admin/AdminModels.tsx": [
+      "default"
+    ],
+    "src/pages/Admin/AdminPrompts.tsx": [
+      "default"
+    ],
+    "src/pages/Admin/AdminTiers.tsx": [
+      "default"
+    ],
+    "src/pages/Admin/AdminUsers.tsx": [
+      "default"
+    ],
+    "src/pages/Admin/index.ts": [
+      "AdminLayout",
+      "AdminDashboard",
+      "AdminPrompts",
+      "AdminModels",
+      "AdminTiers",
+      "AdminUsers"
+    ],
+    "src/pages/AuthPage.tsx": [
+      "AuthPage"
+    ],
+    "src/pages/HomePage.tsx": [
+      "HomePage"
+    ],
+    "src/pages/MainApp.tsx": [
+      "MainApp"
+    ],
+    "src/pages/UserProfile.tsx": [
+      "default"
+    ],
+    "src/pages/index.ts": [
+      "HomePage",
+      "AuthPage",
+      "MainApp",
+      "AdminLayout",
+      "AdminDashboard",
+      "AdminPrompts",
+      "AdminModels",
+      "AdminTiers",
+      "AdminUsers"
+    ],
+    "src/sections/WaitlistSection.tsx": [
+      "WaitlistSection"
+    ],
+    "src/services/configService.ts": [
+      "clearConfigCache",
+      "getModels",
+      "getAllModels",
+      "getDefaultModel",
+      "getDefaultModelId",
+      "getPrompts",
+      "getPrompt",
+      "getPromptWithVariables",
+      "getModelsGroupedByProvider",
+      "getProviderInfo"
+    ]
+  },
+  "callers": {
+    "src/App.tsx:default": [
+      "src/index.tsx:4"
+    ],
+    "src/components/Admin/UserLimitsModal.tsx:default": [
+      "src/pages/Admin/AdminUsers.tsx:14"
+    ],
+    "src/components/Chat/ChatInput.tsx:ChatInput": [
+      "src/components/Chat/ChatPanel.tsx:4"
+    ],
+    "src/components/Chat/ChatPanel.tsx:ChatPanel": [
+      "src/pages/MainApp.tsx:6"
+    ],
+    "src/components/Chat/ConversationSelector.tsx:ConversationSelector": [
+      "src/components/Layout/Sidebar.tsx:3"
+    ],
+    "src/components/Chat/LLMSelector.tsx:LLMSelector": [
+      "src/components/Chat/ChatInput.tsx:5"
+    ],
+    "src/components/Chat/MessageThread.tsx:MessageThread": [
+      "src/components/Chat/ChatPanel.tsx:3"
+    ],
+    "src/components/Conversations/ConversationsListPage.tsx:ConversationsListPage": [
+      "src/pages/MainApp.tsx:8"
+    ],
+    "src/components/FeedbackForm.tsx:FeedbackForm": [
+      "src/pages/HomePage.tsx:6"
+    ],
+    "src/components/Flow/FlowCanvas.tsx:FlowCanvas": [
+      "src/pages/MainApp.tsx:7"
+    ],
+    "src/components/Flow/FlowControls.tsx:FlowControls": [
+      "src/components/Flow/FlowCanvas.tsx:14"
+    ],
+    "src/components/Flow/FlowPanels.tsx:FlowPanels": [
+      "src/components/Flow/FlowCanvas.tsx:15"
+    ],
+    "src/components/Flow/MessageNode.tsx:MessageNode": [
+      "src/components/Flow/FlowCanvas.tsx:13"
+    ],
+    "src/components/Layout/FloatingToolbar.tsx:FloatingToolbar": [
+      "src/pages/MainApp.tsx:9"
+    ],
+    "src/components/Layout/PanelManager.tsx:usePanelManager": [
+      "src/pages/MainApp.tsx:17"
+    ],
+    "src/components/Layout/Sidebar.tsx:Sidebar": [],
+    "src/components/Login.tsx:Login": [],
+    "src/components/UI/Button.tsx:Button": [],
+    "src/components/UI/ErrorBoundary.tsx:ErrorBoundary": [
+      "src/App.tsx:20",
+      "src/pages/MainApp.tsx:10"
+    ],
+    "src/components/UI/ErrorBoundary.tsx:withErrorBoundary": [],
+    "src/components/UI/LoadingSpinner.tsx:LoadingSpinner": [
+      "src/components/UI/Button.tsx:2"
+    ],
+    "src/components/UI/LoadingSpinner.tsx:ThinkingIndicator": [
+      "src/components/Chat/MessageThread.tsx:6"
+    ],
+    "src/components/UI/LoadingSpinner.tsx:MergeIndicator": [],
+    "src/components/UI/ProInterestButton.tsx:ProInterestButton": [
+      "src/components/Layout/FloatingToolbar.tsx:3"
+    ],
+    "src/components/WaitlistForm.tsx:WaitlistForm": [
+      "src/sections/WaitlistSection.tsx:4"
+    ],
+    "src/hooks/useAdmin.ts:useAdmin": [
+      "src/pages/Admin/AdminLayout.tsx:12"
+    ],
+    "src/hooks/useAuth.ts:useAuth": [
+      "src/App.tsx:23",
+      "src/hooks/useAdmin.ts:3",
+      "src/hooks/useConversations.ts:6",
+      "src/hooks/useFlowElements.ts:8"
+    ],
+    "src/hooks/useConversations.ts:useConversations": [
+      "src/pages/MainApp.tsx:14"
+    ],
+    "src/hooks/useFlowElements.ts:useFlowElements": [
+      "src/pages/MainApp.tsx:15"
+    ],
+    "src/hooks/useMessageOperations.ts:useMessageOperations": [
+      "src/pages/MainApp.tsx:16"
+    ],
+    "src/lib/supabase.ts:supabase": [
+      "src/components/Admin/UserLimitsModal.tsx:15",
+      "src/components/FeedbackForm.tsx:2",
+      "src/components/Login.tsx:2",
+      "src/components/WaitlistForm.tsx:4",
+      "src/hooks/useAdmin.ts:2",
+      "src/hooks/useAuth.ts:2",
+      "src/pages/Admin/AdminDashboard.tsx:16",
+      "src/pages/Admin/AdminModels.tsx:13",
+      "src/pages/Admin/AdminPrompts.tsx:11",
+      "src/pages/Admin/AdminTiers.tsx:16",
+      "src/pages/Admin/AdminUsers.tsx:13",
+      "src/pages/AuthPage.tsx:3",
+      "src/pages/UserProfile.tsx:3",
+      "src/services/configService.ts:1"
+    ],
+    "src/pages/Admin/AdminDashboard.tsx:default": [],
+    "src/pages/Admin/AdminLayout.tsx:default": [],
+    "src/pages/Admin/AdminModels.tsx:default": [],
+    "src/pages/Admin/AdminPrompts.tsx:default": [],
+    "src/pages/Admin/AdminTiers.tsx:default": [],
+    "src/pages/Admin/AdminUsers.tsx:default": [],
+    "src/pages/Admin/index.ts:AdminLayout": [],
+    "src/pages/Admin/index.ts:AdminDashboard": [],
+    "src/pages/Admin/index.ts:AdminPrompts": [],
+    "src/pages/Admin/index.ts:AdminModels": [],
+    "src/pages/Admin/index.ts:AdminTiers": [],
+    "src/pages/Admin/index.ts:AdminUsers": [],
+    "src/pages/AuthPage.tsx:AuthPage": [],
+    "src/pages/HomePage.tsx:HomePage": [],
+    "src/pages/MainApp.tsx:MainApp": [],
+    "src/pages/UserProfile.tsx:default": [
+      "src/pages/MainApp.tsx:11"
+    ],
+    "src/pages/index.ts:HomePage": [
+      "src/App.tsx:7"
+    ],
+    "src/pages/index.ts:AuthPage": [
+      "src/App.tsx:7"
+    ],
+    "src/pages/index.ts:MainApp": [
+      "src/App.tsx:7"
+    ],
+    "src/pages/index.ts:AdminLayout": [
+      "src/App.tsx:7"
+    ],
+    "src/pages/index.ts:AdminDashboard": [
+      "src/App.tsx:7"
+    ],
+    "src/pages/index.ts:AdminPrompts": [
+      "src/App.tsx:7"
+    ],
+    "src/pages/index.ts:AdminModels": [
+      "src/App.tsx:7"
+    ],
+    "src/pages/index.ts:AdminTiers": [
+      "src/App.tsx:7"
+    ],
+    "src/pages/index.ts:AdminUsers": [
+      "src/App.tsx:7"
+    ],
+    "src/sections/WaitlistSection.tsx:WaitlistSection": [
+      "src/pages/HomePage.tsx:7"
+    ],
+    "src/services/configService.ts:clearConfigCache": [],
+    "src/services/configService.ts:getModels": [],
+    "src/services/configService.ts:getAllModels": [
+      "src/components/Chat/LLMSelector.tsx:5"
+    ],
+    "src/services/configService.ts:getDefaultModel": [],
+    "src/services/configService.ts:getDefaultModelId": [],
+    "src/services/configService.ts:getPrompts": [],
+    "src/services/configService.ts:getPrompt": [],
+    "src/services/configService.ts:getPromptWithVariables": [],
+    "src/services/configService.ts:getModelsGroupedByProvider": [],
+    "src/services/configService.ts:getProviderInfo": [
+      "src/components/Chat/LLMSelector.tsx:5"
+    ]
+  },
+  "criticalPath": [
+    "src/pages/Admin/index.ts"
+  ],
+  "deadCode": [
+    {
+      "file": "src/components/Layout/Sidebar.tsx",
+      "name": "Sidebar",
+      "type": "variable",
+      "line": 22
+    },
+    {
+      "file": "src/components/Login.tsx",
+      "name": "Login",
+      "type": "variable",
+      "line": 4
+    },
+    {
+      "file": "src/components/UI/Button.tsx",
+      "name": "Button",
+      "type": "variable",
+      "line": 17
+    },
+    {
+      "file": "src/components/UI/ErrorBoundary.tsx",
+      "name": "withErrorBoundary",
+      "type": "variable",
+      "line": 76
+    },
+    {
+      "file": "src/components/UI/LoadingSpinner.tsx",
+      "name": "MergeIndicator",
+      "type": "variable",
+      "line": 41
+    },
+    {
+      "file": "src/pages/Admin/index.ts",
+      "name": "AdminLayout",
+      "type": "reexport",
+      "line": 1
+    },
+    {
+      "file": "src/pages/Admin/index.ts",
+      "name": "AdminDashboard",
+      "type": "reexport",
+      "line": 2
+    },
+    {
+      "file": "src/pages/Admin/index.ts",
+      "name": "AdminPrompts",
+      "type": "reexport",
+      "line": 3
+    },
+    {
+      "file": "src/pages/Admin/index.ts",
+      "name": "AdminModels",
+      "type": "reexport",
+      "line": 4
+    },
+    {
+      "file": "src/pages/Admin/index.ts",
+      "name": "AdminTiers",
+      "type": "reexport",
+      "line": 5
+    },
+    {
+      "file": "src/pages/Admin/index.ts",
+      "name": "AdminUsers",
+      "type": "reexport",
+      "line": 6
+    },
+    {
+      "file": "src/pages/AuthPage.tsx",
+      "name": "AuthPage",
+      "type": "variable",
+      "line": 9
+    },
+    {
+      "file": "src/pages/HomePage.tsx",
+      "name": "HomePage",
+      "type": "variable",
+      "line": 14
+    },
+    {
+      "file": "src/pages/MainApp.tsx",
+      "name": "MainApp",
+      "type": "variable",
+      "line": 23
+    },
+    {
+      "file": "src/services/configService.ts",
+      "name": "clearConfigCache",
+      "type": "variable",
+      "line": 33
+    },
+    {
+      "file": "src/services/configService.ts",
+      "name": "getModels",
+      "type": "variable",
+      "line": 41
+    },
+    {
+      "file": "src/services/configService.ts",
+      "name": "getDefaultModel",
+      "type": "variable",
+      "line": 76
+    },
+    {
+      "file": "src/services/configService.ts",
+      "name": "getDefaultModelId",
+      "type": "variable",
+      "line": 82
+    },
+    {
+      "file": "src/services/configService.ts",
+      "name": "getPrompts",
+      "type": "variable",
+      "line": 88
+    },
+    {
+      "file": "src/services/configService.ts",
+      "name": "getPrompt",
+      "type": "variable",
+      "line": 123
+    },
+    {
+      "file": "src/services/configService.ts",
+      "name": "getPromptWithVariables",
+      "type": "variable",
+      "line": 136
+    },
+    {
+      "file": "src/services/configService.ts",
+      "name": "getModelsGroupedByProvider",
+      "type": "variable",
+      "line": 178
+    }
+  ],
+  "securityFindings": [
+    {
+      "ruleId": "sql-injection",
+      "severity": "critical",
+      "title": "Potential SQL injection",
+      "description": "String concatenation in SQL queries can lead to SQL injection",
+      "file": "src/pages/Admin/AdminTiers.tsx",
+      "line": 233,
+      "code": "alert(`Can't delete this tier. ${count} user(s) are assigned to it. Reassign them first.`)"
+    }
+  ]
+}

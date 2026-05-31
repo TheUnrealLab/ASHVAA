@@ -1,0 +1,68 @@
+{
+  "d4b31a2f-1f20-4980-9fc4-b2c8da52b103": {
+    "id": "d4b31a2f-1f20-4980-9fc4-b2c8da52b103",
+    "repoUrl": "https://github.com/kunalsahjwani/Jarvis.git",
+    "status": "complete",
+    "progress": 100,
+    "message": "Analysis complete",
+    "createdAt": "2026-05-31T04:16:46.572Z",
+    "updatedAt": "2026-05-31T04:18:06.427Z",
+    "result": {
+      "repoId": "kunalsahjwani-Jarvis",
+      "summary": {
+        "owner": "kunalsahjwani",
+        "repo": "Jarvis",
+        "fileCount": 18,
+        "totalFiles": 32,
+        "estimatedTokens": 95493,
+        "languages": [
+          "Python",
+          ".md",
+          "JavaScript"
+        ],
+        "framework": "Python",
+        "nodeCount": 16,
+        "edgeCount": 16,
+        "clusterCount": 4,
+        "deadCodeCount": 5,
+        "criticalPathLength": 4,
+        "securityFindingsCount": 0
+      },
+      "healthScore": 78
+    },
+    "error": null
+  },
+  "dbdf0495-0c1d-4db9-ab9d-038f925cbb80": {
+    "id": "dbdf0495-0c1d-4db9-ab9d-038f925cbb80",
+    "repoUrl": "https://github.com/iways29/MUMBAAI.git",
+    "status": "complete",
+    "progress": 100,
+    "message": "Analysis complete",
+    "createdAt": "2026-05-31T04:17:36.257Z",
+    "updatedAt": "2026-05-31T04:20:35.888Z",
+    "result": {
+      "repoId": "iways29-MUMBAAI",
+      "summary": {
+        "owner": "iways29",
+        "repo": "MUMBAAI",
+        "fileCount": 49,
+        "totalFiles": 85,
+        "estimatedTokens": 101252,
+        "languages": [
+          "TypeScript",
+          "TypeScript",
+          ".mjs"
+        ],
+        "framework": "React",
+        "nodeCount": 43,
+        "edgeCount": 47,
+        "clusterCount": 6,
+        "deadCodeCount": 22,
+        "criticalPathLength": 1,
+        "securityFindingsCount": 1
+      },
+      "healthScore": 72
+    },
+    "error": null
+  }
+}

@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STRATUM — Architecture Map</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="shared-styles.css">
+
+  <!-- React Flow styles (v11 for better UMD support) -->
+  <link href="https://cdn.jsdelivr.net/npm/reactflow@11/dist/style.css" rel="stylesheet" />
+
+  <style>
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .report-page {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .report-header {
+      flex-shrink: 0;
+      background: var(--bg);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .report-header .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding-top: 12px;
+      padding-bottom: 12px;
+    }
+
+    .repo-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .repo-title {
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .repo-subtitle {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--mut);
+    }
+
+    /* Main Layout */
+    .report-layout {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+    }
+
+    /* Sidebar */
+    .report-sidebar {
+      width: 300px;
+      flex-shrink: 0;
+      background: var(--bg2);
+      border-right: 1px solid var(--line);
+      overflow-y: auto;
+      padding: 20px;
+    }
+
+    .sidebar-section {
+      margin-bottom: 24px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--line2);
+    }
+
+    .sidebar-section:last-child {
+      border-bottom: none;
+    }
+
+    .sidebar-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .sidebar-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .sidebar-stat .stat-value {
+      font-size: 22px;
+      font-weight: 500;
+    }
+
+    .sidebar-stat .stat-label {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--faint);
+    }
+
+    .sidebar-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .sidebar-list li {
+      position: relative;
+      padding-left: 14px;
+      margin-bottom: 6px;
+      font-size: 13px;
+      color: var(--mut);
+    }
+
+    .sidebar-list li::before {
+      content: '+';
+      position: absolute;
+      left: 0;
+      color: var(--low);
+      font-family: var(--mono);
+    }
+
+    .sidebar-list.concerns li::before {
+      content: '-';
+      color: var(--acc);
+    }
+
+    .sidebar-list code {
+      background: var(--bg);
+      padding: 1px 4px;
+      border-radius: 2px;
+      font-size: 11px;
+    }
+
+    /* Flow Container */
+    .flow-wrapper {
+      flex: 1;
+      position: relative;
+      background: #0a0a0a;
+    }
+
+    #flowContainer {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* React Flow overrides */
+    .react-flow__background {
+      background-color: #0a0a0a !important;
+    }
+
+    .react-flow__minimap {
+      background-color: #1a1a1a !important;
+      border: 1px solid var(--line) !important;
+      border-radius: 4px !important;
+    }
+
+    .react-flow__controls {
+      background: var(--bg2) !important;
+      border: 1px solid var(--line) !important;
+      border-radius: 4px !important;
+    }
+
+    .react-flow__controls-button {
+      background: var(--bg2) !important;
+      border-bottom: 1px solid var(--line) !important;
+      fill: var(--ink) !important;
+    }
+
+    .react-flow__controls-button:hover {
+      background: var(--bg3) !important;
+    }
+
+    /* Custom Node Styles */
+    .custom-node {
+      background: #1a1a1a;
+      border: 1.5px solid #666;
+      border-radius: 8px;
+      padding: 12px 16px;
+      min-width: 180px;
+      font-family: var(--mono);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .custom-node:hover {
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    }
+
+    .custom-node.selected {
+      border-width: 2px;
+    }
+
+    .custom-node.critical {
+      border-color: #D4AF37;
+    }
+
+    .custom-node.dead {
+      border-color: #E0A93B;
+      opacity: 0.7;
+    }
+
+    .custom-node .node-label {
+      font-size: 12px;
+      font-weight: 500;
+      color: #e8e8e8;
+      margin-bottom: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 160px;
+    }
+
+    .custom-node .node-cluster {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #888;
+      margin-bottom: 6px;
+    }
+
+    .custom-node .node-meta {
+      font-size: 9px;
+      color: #666;
+    }
+
+    .custom-node .node-badges {
+      display: flex;
+      gap: 4px;
+      margin-top: 8px;
+    }
+
+    .custom-node .node-badge {
+      font-size: 8px;
+      padding: 2px 6px;
+      border-radius: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .custom-node .node-badge.critical {
+      background: rgba(212, 175, 55, 0.2);
+      color: #D4AF37;
+    }
+
+    .custom-node .node-badge.dead {
+      background: rgba(224, 169, 59, 0.2);
+      color: #E0A93B;
+    }
+
+    /* Node Panel (Right Sidebar) */
+    .node-panel {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 340px;
+      height: 100%;
+      background: var(--bg2);
+      border-left: 1px solid var(--line);
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      overflow-y: auto;
+      z-index: 10;
+    }
+
+    .node-panel.active {
+      transform: translateX(0);
+    }
+
+    .node-panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      background: var(--bg2);
+      z-index: 1;
+    }
+
+    .node-panel-close {
+      background: none;
+      border: none;
+      color: var(--mut);
+      font-size: 22px;
+      cursor: pointer;
+      line-height: 1;
+      padding: 0;
+    }
+
+    .node-panel-close:hover {
+      color: var(--ink);
+    }
+
+    .node-detail {
+      padding: 18px;
+    }
+
+    .node-title {
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 6px;
+      word-break: break-word;
+    }
+
+    .node-path {
+      font-size: 11px;
+      color: var(--mut);
+      margin-bottom: 20px;
+      word-break: break-all;
+    }
+
+    .node-section {
+      margin-bottom: 20px;
+    }
+
+    .node-section h4 {
+      margin-bottom: 6px;
+    }
+
+    .node-section p {
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--mut);
+    }
+
+    .node-notes {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .node-notes li {
+      font-size: 11px;
+      color: var(--mut);
+      margin-bottom: 5px;
+      padding-left: 10px;
+      position: relative;
+    }
+
+    .node-notes li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 5px;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--acc);
+    }
+
+    .node-notes li code {
+      background: var(--bg);
+      padding: 1px 4px;
+      border-radius: 2px;
+      font-size: 10px;
+    }
+
+    .node-exports {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .node-exports .badge {
+      font-size: 10px;
+      padding: 3px 8px;
+    }
+
+    .detail-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line2);
+    }
+
+    /* Loading State */
+    .loading-state {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      gap: 16px;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .report-sidebar {
+        display: none;
+      }
+
+      .node-panel {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="report-page">
+    <!-- Header -->
+    <header class="app-header report-header">
+      <div class="wrap">
+        <div class="flex gap-lg" style="align-items: center;">
+          <a href="dashboard.html" class="brand">
+            <span class="logo">STRATUM<span class="dot">.</span></span>
+          </a>
+          <div class="repo-info">
+            <span class="repo-title" id="repoTitle">Loading...</span>
+            <span class="repo-subtitle" id="repoSubtitle"></span>
+          </div>
+        </div>
+        <div>
+          <a href="dashboard.html" class="btn btn-ghost btn-sm">Back to Dashboard</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Layout -->
+    <div class="report-layout">
+      <!-- Left Sidebar -->
+      <aside class="report-sidebar" id="summaryPanel">
+        <div class="loading-state">
+          <div class="spinner"></div>
+          <span class="text-mut">Loading analysis...</span>
+        </div>
+      </aside>
+
+      <!-- Flow Container -->
+      <div class="flow-wrapper">
+        <div id="flowContainer">
+          <div class="loading-state">
+            <div class="spinner"></div>
+            <span class="text-mut">Building architecture map...</span>
+          </div>
+        </div>
+
+        <!-- Node Detail Panel -->
+        <div class="node-panel" id="nodePanel"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- React & React Flow v11 (better UMD support) -->
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script src="https://unpkg.com/dagre@0.8.5/dist/dagre.min.js"></script>
+  <script src="https://unpkg.com/reactflow@11/dist/umd/index.js"></script>
+
+  <script>
+    const API_BASE = 'http://localhost:3001/api';
+
+    // React Flow v11 exports under window.ReactFlow
+    const RF = window.ReactFlow;
+    console.log('React Flow loaded:', !!RF, 'Keys:', RF ? Object.keys(RF).slice(0, 10) : 'N/A');
+    if (!RF) {
+      console.error('React Flow not loaded!');
+      document.getElementById('flowContainer').innerHTML =
+        '<div class="loading-state"><p class="text-mut">Failed to load React Flow library. Check browser console.</p></div>';
+    }
+    // ReactFlow v11 UMD - the main component might be default or ReactFlow
+    const ReactFlowComponent = RF?.default || RF?.ReactFlow || RF;
+    const { Controls, MiniMap, Background, useNodesState, useEdgesState, Handle, Position, MarkerType } = RF || {};
+    console.log('Components:', { ReactFlowComponent: !!ReactFlowComponent, Controls: !!Controls, useNodesState: !!useNodesState });
+
+    // Cluster colors
+    const CLUSTER_COLORS = {
+      entry: '#4ea1ff',
+      routes: '#7bd389',
+      services: '#c792ea',
+      data: '#ffb86b',
+      components: '#4ea1ff',
+      pages: '#4ea1ff',
+      hooks: '#c792ea',
+      config: '#666',
+      external: '#ff6b9d',
+      other: '#8a8a8a'
+    };
+
+    // Custom Node Component
+    function CustomNode({ data, selected }) {
+      const borderColor = CLUSTER_COLORS[data.cluster] || CLUSTER_COLORS.other;
+      const nodeClasses = ['custom-node'];
+      if (selected) nodeClasses.push('selected');
+      if (data.critical) nodeClasses.push('critical');
+      if (data.dead) nodeClasses.push('dead');
+
+      return React.createElement('div', {
+        className: nodeClasses.join(' '),
+        style: { borderColor: data.critical ? '#D4AF37' : borderColor },
+        onClick: () => data.onSelect && data.onSelect(data)
+      }, [
+        React.createElement(Handle, { key: 'target', type: 'target', position: Position.Left, style: { background: '#555' } }),
+        React.createElement('div', { key: 'label', className: 'node-label' }, data.label),
+        React.createElement('div', { key: 'cluster', className: 'node-cluster', style: { color: borderColor } },
+          data.dead ? 'DEAD CODE' : (data.cluster || '').toUpperCase()
+        ),
+        data.functions && data.functions.length > 0 && React.createElement('div', { key: 'meta', className: 'node-meta' },
+          `${data.functions.length} fn · ${data.exports?.length || 0} exports`
+        ),
+        (data.critical || data.dead) && React.createElement('div', { key: 'badges', className: 'node-badges' }, [
+          data.critical && React.createElement('span', { key: 'crit', className: 'node-badge critical' }, 'Critical'),
+          data.dead && React.createElement('span', { key: 'dead', className: 'node-badge dead' }, 'Dead')
+        ]),
+        React.createElement(Handle, { key: 'source', type: 'source', position: Position.Right, style: { background: '#555' } })
+      ]);
+    }
+
+    const nodeTypes = { custom: CustomNode };
+
+    // Fallback hook implementations using React.useState
+    const useNodesStateFallback = (initialNodes) => {
+      const [nodes, setNodes] = React.useState(initialNodes);
+      const onNodesChange = React.useCallback((changes) => {
+        setNodes((nds) => {
+          return nds.map((node) => {
+            const change = changes.find((c) => c.id === node.id);
+            if (change?.type === 'position' && change.position) {
+              return { ...node, position: change.position };
+            }
+            return node;
+          });
+        });
+      }, []);
+      return [nodes, setNodes, onNodesChange];
+    };
+
+    const useEdgesStateFallback = (initialEdges) => {
+      const [edges, setEdges] = React.useState(initialEdges);
+      const onEdgesChange = React.useCallback(() => {}, []);
+      return [edges, setEdges, onEdgesChange];
+    };
+
+    // Use library hooks if available, otherwise fallback
+    const useNodesStateHook = useNodesState || useNodesStateFallback;
+    const useEdgesStateHook = useEdgesState || useEdgesStateFallback;
+
+    // Main Flow App
+    function FlowApp({ analysis, onNodeSelect }) {
+      const [nodes, setNodes, onNodesChange] = useNodesStateHook([]);
+      const [edges, setEdges, onEdgesChange] = useEdgesStateHook([]);
+
+      React.useEffect(() => {
+        if (!analysis || !analysis.nodes) return;
+
+        // Use dagre for layout
+        const g = new dagre.graphlib.Graph();
+        g.setGraph({ rankdir: 'LR', nodesep: 80, ranksep: 150 });
+        g.setDefaultEdgeLabel(() => ({}));
+
+        const nodeWidth = 200;
+        const nodeHeight = 80;
+
+        analysis.nodes.forEach(node => {
+          g.setNode(node.id, { width: nodeWidth, height: nodeHeight });
+        });
+
+        analysis.edges.forEach(edge => {
+          g.setEdge(edge.from, edge.to);
+        });
+
+        dagre.layout(g);
+
+        // Convert to React Flow format
+        const flowNodes = analysis.nodes.map(node => {
+          const pos = g.node(node.id);
+          return {
+            id: node.id,
+            type: 'custom',
+            position: { x: pos.x - nodeWidth / 2, y: pos.y - nodeHeight / 2 },
+            data: { ...node, onSelect: onNodeSelect },
+            draggable: true
+          };
+        });
+
+        const flowEdges = analysis.edges.map((edge, i) => ({
+          id: `e${i}`,
+          source: edge.from,
+          target: edge.to,
+          type: 'smoothstep',
+          animated: edge.kind === 'critical',
+          style: {
+            stroke: edge.kind === 'critical' ? '#D4AF37' : edge.kind === 'api' ? '#ff6b9d' : '#444',
+            strokeWidth: edge.kind === 'critical' ? 2 : 1
+          },
+          markerEnd: {
+            type: MarkerType.ArrowClosed,
+            color: edge.kind === 'critical' ? '#D4AF37' : '#666'
+          },
+          label: edge.label || '',
+          labelStyle: { fill: '#888', fontSize: 10 },
+          labelBgStyle: { fill: '#1a1a1a' }
+        }));
+
+        setNodes(flowNodes);
+        setEdges(flowEdges);
+      }, [analysis, onNodeSelect]);
+
+      return React.createElement(ReactFlowComponent, {
+        nodes: nodes,
+        edges: edges,
+        onNodesChange: onNodesChange,
+        onEdgesChange: onEdgesChange,
+        nodeTypes: nodeTypes,
+        fitView: true,
+        fitViewOptions: { padding: 0.2 },
+        minZoom: 0.1,
+        maxZoom: 2,
+        defaultEdgeOptions: { type: 'smoothstep' }
+      }, [
+        React.createElement(Background, { key: 'bg', color: '#222', gap: 20, size: 1 }),
+        React.createElement(Controls, { key: 'ctrl', showInteractive: false }),
+        React.createElement(MiniMap, {
+          key: 'map',
+          nodeColor: (n) => CLUSTER_COLORS[n.data?.cluster] || '#666',
+          maskColor: 'rgba(0,0,0,0.8)'
+        })
+      ]);
+    }
+
+    // Main App Logic
+    class ReportApp {
+      constructor() {
+        this.analysis = null;
+        this.selectedNode = null;
+      }
+
+      async init() {
+        const params = new URLSearchParams(window.location.search);
+        const repoId = params.get('id');
+
+        if (!repoId) {
+          window.location.href = 'dashboard.html';
+          return;
+        }
+
+        try {
+          const res = await fetch(`${API_BASE}/repos/${repoId}/enriched`);
+          if (!res.ok) throw new Error('Failed to load');
+          this.analysis = await res.json();
+          this.render();
+        } catch (err) {
+          console.error(err);
+          document.getElementById('flowContainer').innerHTML =
+            '<div class="loading-state"><p class="text-mut">Failed to load analysis</p></div>';
+        }
+      }
+
+      render() {
+        this.renderHeader();
+        this.renderSidebar();
+        this.renderFlow();
+      }
+
+      renderHeader() {
+        if (this.analysis.fingerprint) {
+          document.getElementById('repoTitle').textContent =
+            `${this.analysis.fingerprint.owner}/${this.analysis.fingerprint.repo}`;
+        }
+        if (this.analysis.executiveSummary) {
+          document.getElementById('repoSubtitle').textContent =
+            this.analysis.executiveSummary.headline || '';
+        }
+      }
+
+      renderSidebar() {
+        const { summary, executiveSummary, securityFindings, deadCode } = this.analysis;
+        const healthScore = executiveSummary?.healthScore || '--';
+        const healthClass = healthScore >= 80 ? 'good' : healthScore >= 60 ? 'warning' : 'bad';
+
+        let html = `
+          <div class="sidebar-section">
+            <div class="flex-between mb-md">
+              <span class="kick">Health Score</span>
+              <div class="health-score ${healthClass}">${healthScore}</div>
+            </div>
+            ${executiveSummary?.architecture ? `<p class="text-mut" style="font-size:13px;">${executiveSummary.architecture}</p>` : ''}
+          </div>
+
+          <div class="sidebar-section">
+            <h4 class="kick mb-md">Statistics</h4>
+            <div class="sidebar-stats">
+              <div class="sidebar-stat">
+                <span class="stat-value">${summary?.fileCount || 0}</span>
+                <span class="stat-label">Files</span>
+              </div>
+              <div class="sidebar-stat">
+                <span class="stat-value">${summary?.nodeCount || 0}</span>
+                <span class="stat-label">Nodes</span>
+              </div>
+              <div class="sidebar-stat">
+                <span class="stat-value">${summary?.edgeCount || 0}</span>
+                <span class="stat-label">Edges</span>
+              </div>
+              <div class="sidebar-stat">
+                <span class="stat-value">${summary?.deadCodeCount || 0}</span>
+                <span class="stat-label">Dead Code</span>
+              </div>
+            </div>
+          </div>
+        `;
+
+        if (securityFindings?.length) {
+          const critical = securityFindings.filter(f => f.severity === 'critical').length;
+          const high = securityFindings.filter(f => f.severity === 'high').length;
+          html += `
+            <div class="sidebar-section">
+              <h4 class="kick mb-md">Security</h4>
+              <div class="flex gap-sm mb-md" style="flex-wrap:wrap;">
+                ${critical > 0 ? `<span class="badge badge-critical">${critical} Critical</span>` : ''}
+                ${high > 0 ? `<span class="badge badge-high">${high} High</span>` : ''}
+              </div>
+              <ul class="sidebar-list concerns">
+                ${securityFindings.slice(0, 3).map(f =>
+                  `<li><strong>${f.title}</strong><br><code>${f.file}:${f.line}</code></li>`
+                ).join('')}
+              </ul>
+            </div>
+          `;
+        }
+
+        if (deadCode?.length) {
+          html += `
+            <div class="sidebar-section">
+              <h4 class="kick mb-md">Dead Code</h4>
+              <ul class="sidebar-list concerns">
+                ${deadCode.slice(0, 5).map(d => `<li><code>${d.name}</code> in ${d.file}</li>`).join('')}
+              </ul>
+            </div>
+          `;
+        }
+
+        if (executiveSummary?.concerns?.length) {
+          html += `
+            <div class="sidebar-section">
+              <h4 class="kick mb-md">Concerns</h4>
+              <ul class="sidebar-list concerns">
+                ${executiveSummary.concerns.map(c => `<li>${c}</li>`).join('')}
+              </ul>
+            </div>
+          `;
+        }
+
+        document.getElementById('summaryPanel').innerHTML = html;
+      }
+
+      renderFlow() {
+        const container = document.getElementById('flowContainer');
+        const root = ReactDOM.createRoot(container);
+        root.render(
+          React.createElement(FlowApp, {
+            analysis: this.analysis,
+            onNodeSelect: (node) => this.showNodeDetails(node)
+          })
+        );
+      }
+
+      showNodeDetails(node) {
+        this.selectedNode = node;
+        const panel = document.getElementById('nodePanel');
+        const findings = this.analysis.securityFindings?.filter(f => f.file === node.path) || [];
+
+        let html = `
+          <div class="node-panel-header">
+            <span class="kick">Node Details</span>
+            <button class="node-panel-close" onclick="app.hideNodePanel()">×</button>
+          </div>
+          <div class="node-detail">
+            <h3 class="node-title">${node.label}</h3>
+            <p class="node-path mono">${node.path}</p>
+
+            ${node.role ? `
+              <div class="node-section">
+                <h4 class="kick">Role</h4>
+                <p>${node.role}</p>
+              </div>
+            ` : ''}
+
+            ${node.plain ? `
+              <div class="node-section">
+                <h4 class="kick">Plain English</h4>
+                <p>${node.plain}</p>
+              </div>
+            ` : ''}
+
+            ${node.functions?.length ? `
+              <div class="node-section">
+                <h4 class="kick">Functions</h4>
+                <ul class="node-notes">
+                  ${node.functions.map(f => `<li><code>${f.name}()</code> line ${f.line}</li>`).join('')}
+                </ul>
+              </div>
+            ` : ''}
+
+            ${node.exports?.length ? `
+              <div class="node-section">
+                <h4 class="kick">Exports</h4>
+                <div class="node-exports">
+                  ${node.exports.map(e => `<span class="badge">${e.name}</span>`).join('')}
+                </div>
+              </div>
+            ` : ''}
+
+            ${node.imports?.length ? `
+              <div class="node-section">
+                <h4 class="kick">Imports</h4>
+                <ul class="node-notes">
+                  ${node.imports.slice(0, 5).map(i => `<li><code>${i.source}</code></li>`).join('')}
+                </ul>
+              </div>
+            ` : ''}
+
+            ${node.notes?.length ? `
+              <div class="node-section">
+                <h4 class="kick">Notes</h4>
+                <ul class="node-notes">
+                  ${node.notes.map(n => `<li>${n}</li>`).join('')}
+                </ul>
+              </div>
+            ` : ''}
+
+            ${findings.length ? `
+              <div class="node-section">
+                <h4 class="kick">Security Issues</h4>
+                <ul class="node-notes" style="color: var(--acc);">
+                  ${findings.map(f => `<li><strong>${f.title}</strong><br>Line ${f.line}</li>`).join('')}
+                </ul>
+              </div>
+            ` : ''}
+
+            <div class="detail-meta">
+              ${node.critical ? '<span class="badge badge-critical">Critical Path</span>' : ''}
+              ${node.dead ? '<span class="badge badge-medium">Dead Code</span>' : ''}
+              <span class="badge">${node.cluster}</span>
+            </div>
+          </div>
+        `;
+
+        panel.innerHTML = html;
+        panel.classList.add('active');
+      }
+
+      hideNodePanel() {
+        document.getElementById('nodePanel').classList.remove('active');
+      }
+    }
+
+    const app = new ReportApp();
+    document.addEventListener('DOMContentLoaded', () => app.init());
+  </script>
+</body>
+</html>

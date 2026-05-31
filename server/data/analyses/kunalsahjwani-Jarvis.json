@@ -1,0 +1,2308 @@
+{
+  "fingerprint": {
+    "repoId": "kunalsahjwani-Jarvis",
+    "owner": "kunalsahjwani",
+    "repo": "Jarvis",
+    "analyzedAt": "2026-05-31T04:16:57.931Z",
+    "analysisVersion": "1.0"
+  },
+  "summary": {
+    "owner": "kunalsahjwani",
+    "repo": "Jarvis",
+    "fileCount": 18,
+    "totalFiles": 32,
+    "estimatedTokens": 95493,
+    "languages": [
+      "Python",
+      ".md",
+      "JavaScript"
+    ],
+    "framework": "Python",
+    "nodeCount": 16,
+    "edgeCount": 16,
+    "clusterCount": 4,
+    "deadCodeCount": 5,
+    "criticalPathLength": 4,
+    "securityFindingsCount": 0
+  },
+  "clusters": [
+    {
+      "id": "entry",
+      "label": "Entry",
+      "files": [
+        "src/main.py"
+      ]
+    },
+    {
+      "id": "services",
+      "label": "Services",
+      "files": [
+        "src/agents/code_agent.py",
+        "src/agents/email_agent.py",
+        "src/agents/email_sender.py",
+        "src/agents/leonardo_agent.py",
+        "src/agents/memory_retrieval_agent.py",
+        "src/agents/router_agent.py",
+        "src/agents/story_writer_agent.py",
+        "src/utils/logger.py"
+      ]
+    },
+    {
+      "id": "routes",
+      "label": "Routes",
+      "files": [
+        "src/api/__init__.py",
+        "src/api/routes.py"
+      ]
+    },
+    {
+      "id": "other",
+      "label": "Other",
+      "files": [
+        "src/mcp/gmail_mcp_client.py",
+        "src/memory/memory_system.py",
+        "src/memory/vector_memory_manager.py",
+        "Qwen_fine_tuned/qwen_streamlit_coder.py",
+        "frontend/script.js"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "src-main-py",
+      "path": "src/main.py",
+      "label": "main.py",
+      "cluster": "entry",
+      "critical": true,
+      "dead": false,
+      "exports": [],
+      "imports": [
+        {
+          "source": "fastapi",
+          "specifiers": [
+            {
+              "local": "FastAPI",
+              "imported": "FastAPI",
+              "type": "named"
+            },
+            {
+              "local": "HTTPException",
+              "imported": "HTTPException",
+              "type": "named"
+            }
+          ],
+          "line": 7
+        },
+        {
+          "source": "fastapi.middleware.cors",
+          "specifiers": [
+            {
+              "local": "CORSMiddleware",
+              "imported": "CORSMiddleware",
+              "type": "named"
+            }
+          ],
+          "line": 8
+        },
+        {
+          "source": "fastapi.staticfiles",
+          "specifiers": [
+            {
+              "local": "StaticFiles",
+              "imported": "StaticFiles",
+              "type": "named"
+            }
+          ],
+          "line": 9
+        },
+        {
+          "source": "fastapi.responses",
+          "specifiers": [
+            {
+              "local": "JSONResponse",
+              "imported": "JSONResponse",
+              "type": "named"
+            },
+            {
+              "local": "FileResponse",
+              "imported": "FileResponse",
+              "type": "named"
+            }
+          ],
+          "line": 10
+        },
+        {
+          "source": "uvicorn",
+          "specifiers": [
+            {
+              "local": "uvicorn",
+              "imported": "module",
+              "type": "import"
+            }
+          ],
+          "line": 11
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            {
+              "local": "os",
+              "imported": "module",
+              "type": "import"
+            }
+          ],
+          "line": 12
+        },
+        {
+          "source": "asyncio",
+          "specifiers": [
+            {
+              "local": "asyncio",
+              "imported": "module",
+              "type": "import"
+            }
+          ],
+          "line": 13
+        },
+        {
+          "source": "contextlib",
+          "specifiers": [
+            {
+              "local": "asynccontextmanager",
+              "imported": "asynccontextmanager",
+              "type": "named"
+            }
+          ],
+          "line": 14
+        },
+        {
+          "source": "dotenv",
+          "specifiers": [
+            {
+              "local": "load_dotenv",
+              "imported": "load_dotenv",
+              "type": "named"
+            }
+          ],
+          "line": 15
+        },
+        {
+          "source": "src.api.routes",
+          "specifiers": [
+            {
+              "local": "router",
+              "imported": "router",
+              "type": "named"
+            }
+          ],
+          "line": 18
+        },
+        {
+          "source": "src.memory.memory_system",
+          "specifiers": [
+            {
+              "local": "initialize_memory_system",
+              "imported": "initialize_memory_system",
+              "type": "named"
+            },
+            {
+              "local": "get_memory_system",
+              "imported": "get_memory_system",
+              "type": "named"
+            }
+          ],
+          "line": 19
+        },
+        {
+          "source": "src.utils.logger",
+          "specifiers": [
+            {
+              "local": "get_logger",
+              "imported": "get_logger",
+              "type": "named"
+            }
+          ],
+          "line": 22
+        }
+      ],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 0,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-agents-code_agent-py",
+      "path": "src/agents/code_agent.py",
+      "label": "code_agent.py",
+      "cluster": "services",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "CodeAgent",
+          "type": "class",
+          "line": 21
+        }
+      ],
+      "imports": [
+        {
+          "source": "os",
+          "specifiers": [
+            {
+              "local": "os",
+              "imported": "module",
+              "type": "import"
+            }
+          ],
+          "line": 9
+        },
+        {
+          "source": "re",
+          "specifiers": [
+            {
+              "local": "re",
+              "imported": "module",
+              "type": "import"
+            }
+          ],
+          "line": 10
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            {
+              "local": "Dict",
+              "imported": "Dict",
+              "type": "named"
+            },
+            {
+              "local": "Any",
+              "imported": "Any",
+              "type": "named"
+            },
+            {
+              "local": "List",
+              "imported": "List",
+              "type": "named"
+            },
+            {
+              "local": "Optional",
+              "imported": "Optional",
+              "type": "named"
+            }
+          ],
+          "line": 11
+        },
+        {
+          "source": "langchain_google_genai",
+          "specifiers": [
+            {
+              "local": "ChatGoogleGenerativeAI",
+              "imported": "ChatGoogleGenerativeAI",
+              "type": "named"
+            }
+          ],
+          "line": 12
+        },
+        {
+          "source": "langchain.schema",
+          "specifiers": [
+            {
+              "local": "SystemMessage",
+              "imported": "SystemMessage",
+              "type": "named"
+            },
+            {
+              "local": "HumanMessage",
+              "imported": "HumanMessage",
+              "type": "named"
+            }
+          ],
+          "line": 13
+        },
+        {
+          "source": "dotenv",
+          "specifiers": [
+            {
+              "local": "load_dotenv",
+              "imported": "load_dotenv",
+              "type": "named"
+            }
+          ],
+          "line": 17
+        }
+      ],
+      "functions": [],
+      "classes": [
+        {
+          "name": "CodeAgent",
+          "line": 21,
+          "exported": true
+        }
+      ],
+      "apiCalls": [],
+      "importDepth": 1,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-agents-email_agent-py",
+      "path": "src/agents/email_agent.py",
+      "label": "email_agent.py",
+      "cluster": "services",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "EmailAgent",
+          "type": "class",
+          "line": 18
+        }
+      ],
+      "imports": [
+        {
+          "source": "os",
+          "specifiers": [
+            {
+              "local": "os",
+              "imported": "module",
+              "type": "import"
+            }
+          ],
+          "line": 8
+        },
+        {
+          "source": "re",
+          "specifiers": [
+            {
+              "local": "re",
+              "imported": "module",
+              "type": "import"
+            }
+          ],
+          "line": 9
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            {
+              "local": "Dict",
+              "imported": "Dict",
+              "type": "named"
+            },
+            {
+              "local": "Any",
+              "imported": "Any",
+              "type": "named"
+            }
+          ],
+          "line": 10
+        },
+        {
+          "source": "langchain_google_genai",
+          "specifiers": [
+            {
+              "local": "ChatGoogleGenerativeAI",
+              "imported": "ChatGoogleGenerativeAI",
+              "type": "named"
+            }
+          ],
+          "line": 11
+        },
+        {
+          "source": "langchain.schema",
+          "specifiers": [
+            {
+              "local": "SystemMessage",
+              "imported": "SystemMessage",
+              "type": "named"
+            },
+            {
+              "local": "HumanMessage",
+              "imported": "HumanMessage",
+              "type": "named"
+            }
+          ],
+          "line": 12
+        },
+        {
+          "source": "dotenv",
+          "specifiers": [
+            {
+              "local": "load_dotenv",
+              "imported": "load_dotenv",
+              "type": "named"
+            }
+          ],
+          "line": 13
+        },
+        {
+          "source": "src.agents.email_sender",
+          "specifiers": [
+            {
+              "local": "EmailSender",
+              "imported": "EmailSender",
+              "type": "named"
+            }
+          ],
+          "line": 14
+        }
+      ],
+      "functions": [],
+      "classes": [
+        {
+          "name": "EmailAgent",
+          "line": 18,
+          "exported": true
+        }
+      ],
+      "apiCalls": [],
+      "importDepth": 1,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-agents-email_sender-py",
+      "path": "src/agents/email_sender.py",
+      "label": "email_sender.py",
+      "cluster": "services",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "EmailSender",
+          "type": "class",
+          "line": 16
+        }
+      ],
+      "imports": [
+        {
+          "source": "os",
+          "specifiers": [
+            {
+              "local": "os",
+              "imported": "module",
+              "type": "import"
+            }
+          ],
+          "line": 8
+        },
+        {
+          "source": "shutil",
+          "specifiers": [
+            {
+              "local": "shutil",
+              "imported": "module",
+              "type": "import"
+            }
+          ],
+          "line": 9
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            {
+              "local": "Dict",
+              "imported": "Dict",
+              "type": "named"
+            },
+            {
+              "local": "Any",
+              "imported": "Any",
+              "type": "named"
+            },
+            {
+              "local": "Optional",
+              "imported": "Optional",
+              "type": "named"
+            }
+          ],
+          "line": 10
+        },
+        {
+          "source": "src.mcp.gmail_mcp_client",
+          "specifiers": [
+            {
+              "local": "GmailMCPClient",
+              "imported": "GmailMCPClient",
+              "type": "named"
+            }
+          ],
+          "line": 11
+        },
+        {
+          "source": "dotenv",
+          "specifiers": [
+            {
+              "local": "load_dotenv",
+              "imported": "load_dotenv",
+              "type": "named"
+            }
+          ],
+          "line": 12
+        }
+      ],
+      "functions": [],
+      "classes": [
+        {
+          "name": "EmailSender",
+          "line": 16,
+          "exported": true
+        }
+      ],
+      "apiCalls": [],
+      "importDepth": 2,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-agents-leonardo_agent-py",
+      "path": "src/agents/leonardo_agent.py",
+      "label": "leonardo_agent.py",
+      "cluster": "services",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "LeonardoAgent",
+          "type": "class",
+          "line": 18
+        }
+      ],
+      "imports": [
+        {
+          "source": "os",
+          "specifiers": [
+            {
+              "local": "os",
+              "imported": "module",
+              "type": "import"
+            }
+          ],
+          "line": 7
+        },
+        {
+          "source": "base64",
+          "specifiers": [
+            {
+              "local": "base64",
+              "imported": "module",
+              "type": "import"
+            }
+          ],
+          "line": 8
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            {
+              "local": "Dict",
+              "imported": "Dict",
+              "type": "named"
+            },
+            {
+              "local": "Any",
+              "imported": "Any",
+              "type": "named"
+            }
+          ],
+          "line": 9
+        },
+        {
+          "source": "google",
+          "specifiers": [
+            {
+              "local": "genai",
+              "imported": "genai",
+              "type": "named"
+            }
+          ],
+          "line": 10
+        },
+        {
+          "source": "google.genai",
+          "specifiers": [
+            {
+              "local": "types",
+              "imported": "types",
+              "type": "named"
+            }
+          ],
+          "line": 11
+        },
+        {
+          "source": "langchain_google_genai",
+          "specifiers": [
+            {
+              "local": "ChatGoogleGenerativeAI",
+              "imported": "ChatGoogleGenerativeAI",
+              "type": "named"
+            }
+          ],
+          "line": 12
+        },
+        {
+          "source": "langchain.schema",
+          "specifiers": [
+            {
+              "local": "SystemMessage",
+              "imported": "SystemMessage",
+              "type": "named"
+            },
+            {
+              "local": "HumanMessage",
+              "imported": "HumanMessage",
+              "type": "named"
+            }
+          ],
+          "line": 13
+        },
+        {
+          "source": "dotenv",
+          "specifiers": [
+            {
+              "local": "load_dotenv",
+              "imported": "load_dotenv",
+              "type": "named"
+            }
+          ],
+          "line": 14
+        }
+      ],
+      "functions": [],
+      "classes": [
+        {
+          "name": "LeonardoAgent",
+          "line": 18,
+          "exported": true
+        }
+      ],
+      "apiCalls": [],
+      "importDepth": 1,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-agents-memory_retrieval_agent-py",
+      "path": "src/agents/memory_retrieval_agent.py",
+      "label": "memory_retrieval_agent.py",
+      "cluster": "services",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "MemoryRetrievalAgent",
+          "type": "class",
+          "line": 18
+        }
+      ],
+      "imports": [
+        {
+          "source": "os",
+          "specifiers": [
+            {
+              "local": "os",
+              "imported": "module",
+              "type": "import"
+            }
+          ],
+          "line": 8
+        },
+        {
+          "source": "datetime",
+          "specifiers": [
+            {
+              "local": "datetime",
+              "imported": "datetime",
+              "type": "named"
+            }
+          ],
+          "line": 9
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            {
+              "local": "Dict",
+              "imported": "Dict",
+              "type": "named"
+            },
+            {
+              "local": "Any",
+              "imported": "Any",
+              "type": "named"
+            },
+            {
+              "local": "List",
+              "imported": "List",
+              "type": "named"
+            }
+          ],
+          "line": 10
+        },
+        {
+          "source": "langchain_google_genai",
+          "specifiers": [
+            {
+              "local": "ChatGoogleGenerativeAI",
+              "imported": "ChatGoogleGenerativeAI",
+              "type": "named"
+            }
+          ],
+          "line": 11
+        },
+        {
+          "source": "langchain.schema",
+          "specifiers": [
+            {
+              "local": "SystemMessage",
+              "imported": "SystemMessage",
+              "type": "named"
+            },
+            {
+              "local": "HumanMessage",
+              "imported": "HumanMessage",
+              "type": "named"
+            }
+          ],
+          "line": 12
+        },
+        {
+          "source": "dotenv",
+          "specifiers": [
+            {
+              "local": "load_dotenv",
+              "imported": "load_dotenv",
+              "type": "named"
+            }
+          ],
+          "line": 13
+        },
+        {
+          "source": "src.memory.vector_memory_manager",
+          "specifiers": [
+            {
+              "local": "VectorMemoryManager",
+              "imported": "VectorMemoryManager",
+              "type": "named"
+            }
+          ],
+          "line": 14
+        }
+      ],
+      "functions": [],
+      "classes": [
+        {
+          "name": "MemoryRetrievalAgent",
+          "line": 18,
+          "exported": true
+        }
+      ],
+      "apiCalls": [],
+      "importDepth": 1,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-agents-router_agent-py",
+      "path": "src/agents/router_agent.py",
+      "label": "router_agent.py",
+      "cluster": "services",
+      "critical": false,
+      "dead": true,
+      "exports": [
+        {
+          "name": "AppType",
+          "type": "class",
+          "line": 22
+        },
+        {
+          "name": "RouterAgent",
+          "type": "class",
+          "line": 30
+        }
+      ],
+      "imports": [
+        {
+          "source": "os",
+          "specifiers": [
+            {
+              "local": "os",
+              "imported": "module",
+              "type": "import"
+            }
+          ],
+          "line": 7
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            {
+              "local": "Dict",
+              "imported": "Dict",
+              "type": "named"
+            },
+            {
+              "local": "Any",
+              "imported": "Any",
+              "type": "named"
+            },
+            {
+              "local": "Optional",
+              "imported": "Optional",
+              "type": "named"
+            },
+            {
+              "local": "List",
+              "imported": "List",
+              "type": "named"
+            }
+          ],
+          "line": 8
+        },
+        {
+          "source": "enum",
+          "specifiers": [
+            {
+              "local": "Enum",
+              "imported": "Enum",
+              "type": "named"
+            }
+          ],
+          "line": 9
+        },
+        {
+          "source": "langchain_google_genai",
+          "specifiers": [
+            {
+              "local": "ChatGoogleGenerativeAI",
+              "imported": "ChatGoogleGenerativeAI",
+              "type": "named"
+            }
+          ],
+          "line": 10
+        },
+        {
+          "source": "langchain.schema",
+          "specifiers": [
+            {
+              "local": "HumanMessage",
+              "imported": "HumanMessage",
+              "type": "named"
+            },
+            {
+              "local": "SystemMessage",
+              "imported": "SystemMessage",
+              "type": "named"
+            }
+          ],
+          "line": 11
+        },
+        {
+          "source": "dotenv",
+          "specifiers": [
+            {
+              "local": "load_dotenv",
+              "imported": "load_dotenv",
+              "type": "named"
+            }
+          ],
+          "line": 12
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            {
+              "local": "json",
+              "imported": "module",
+              "type": "import"
+            }
+          ],
+          "line": 13
+        },
+        {
+          "source": "re",
+          "specifiers": [
+            {
+              "local": "re",
+              "imported": "module",
+              "type": "import"
+            }
+          ],
+          "line": 14
+        },
+        {
+          "source": "src.utils.logger",
+          "specifiers": [
+            {
+              "local": "get_logger",
+              "imported": "get_logger",
+              "type": "named"
+            }
+          ],
+          "line": 17
+        }
+      ],
+      "functions": [],
+      "classes": [
+        {
+          "name": "AppType",
+          "line": 22,
+          "exported": true
+        },
+        {
+          "name": "RouterAgent",
+          "line": 30,
+          "exported": true
+        }
+      ],
+      "apiCalls": [],
+      "importDepth": 1,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-agents-story_writer_agent-py",
+      "path": "src/agents/story_writer_agent.py",
+      "label": "story_writer_agent.py",
+      "cluster": "services",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "StoryWriterAgent",
+          "type": "class",
+          "line": 17
+        }
+      ],
+      "imports": [
+        {
+          "source": "os",
+          "specifiers": [
+            {
+              "local": "os",
+              "imported": "module",
+              "type": "import"
+            }
+          ],
+          "line": 7
+        },
+        {
+          "source": "datetime",
+          "specifiers": [
+            {
+              "local": "datetime",
+              "imported": "datetime",
+              "type": "named"
+            }
+          ],
+          "line": 8
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            {
+              "local": "Dict",
+              "imported": "Dict",
+              "type": "named"
+            },
+            {
+              "local": "Any",
+              "imported": "Any",
+              "type": "named"
+            },
+            {
+              "local": "List",
+              "imported": "List",
+              "type": "named"
+            }
+          ],
+          "line": 9
+        },
+        {
+          "source": "langchain_google_genai",
+          "specifiers": [
+            {
+              "local": "ChatGoogleGenerativeAI",
+              "imported": "ChatGoogleGenerativeAI",
+              "type": "named"
+            }
+          ],
+          "line": 10
+        },
+        {
+          "source": "langchain.schema",
+          "specifiers": [
+            {
+              "local": "SystemMessage",
+              "imported": "SystemMessage",
+              "type": "named"
+            },
+            {
+              "local": "HumanMessage",
+              "imported": "HumanMessage",
+              "type": "named"
+            }
+          ],
+          "line": 11
+        },
+        {
+          "source": "dotenv",
+          "specifiers": [
+            {
+              "local": "load_dotenv",
+              "imported": "load_dotenv",
+              "type": "named"
+            }
+          ],
+          "line": 12
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            {
+              "local": "json",
+              "imported": "module",
+              "type": "import"
+            }
+          ],
+          "line": 13
+        }
+      ],
+      "functions": [],
+      "classes": [
+        {
+          "name": "StoryWriterAgent",
+          "line": 17,
+          "exported": true
+        }
+      ],
+      "apiCalls": [],
+      "importDepth": 1,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-api-__init__-py",
+      "path": "src/api/__init__.py",
+      "label": "__init__.py",
+      "cluster": "routes",
+      "critical": false,
+      "dead": false,
+      "exports": [],
+      "imports": [],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 0,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-api-routes-py",
+      "path": "src/api/routes.py",
+      "label": "routes.py",
+      "cluster": "routes",
+      "critical": true,
+      "dead": true,
+      "exports": [
+        {
+          "name": "ChatMessage",
+          "type": "class",
+          "line": 38
+        },
+        {
+          "name": "ChatResponse",
+          "type": "class",
+          "line": 43
+        },
+        {
+          "name": "AppAction",
+          "type": "class",
+          "line": 51
+        }
+      ],
+      "imports": [
+        {
+          "source": "fastapi",
+          "specifiers": [
+            {
+              "local": "APIRouter",
+              "imported": "APIRouter",
+              "type": "named"
+            },
+            {
+              "local": "HTTPException",
+              "imported": "HTTPException",
+              "type": "named"
+            },
+            {
+              "local": "status",
+              "imported": "status",
+              "type": "named"
+            }
+          ],
+          "line": 7
+        },
+        {
+          "source": "fastapi.responses",
+          "specifiers": [
+            {
+              "local": "JSONResponse",
+              "imported": "JSONResponse",
+              "type": "named"
+            }
+          ],
+          "line": 8
+        },
+        {
+          "source": "pydantic",
+          "specifiers": [
+            {
+              "local": "BaseModel",
+              "imported": "BaseModel",
+              "type": "named"
+            }
+          ],
+          "line": 9
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            {
+              "local": "Optional",
+              "imported": "Optional",
+              "type": "named"
+            },
+            {
+              "local": "Dict",
+              "imported": "Dict",
+              "type": "named"
+            },
+            {
+              "local": "Any",
+              "imported": "Any",
+              "type": "named"
+            },
+            {
+              "local": "List",
+              "imported": "List",
+              "type": "named"
+            }
+          ],
+          "line": 10
+        },
+        {
+          "source": "uuid",
+          "specifiers": [
+            {
+              "local": "uuid",
+              "imported": "module",
+              "type": "import"
+            }
+          ],
+          "line": 11
+        },
+        {
+          "source": "re",
+          "specifiers": [
+            {
+              "local": "re",
+              "imported": "module",
+              "type": "import"
+            }
+          ],
+          "line": 12
+        },
+        {
+          "source": "src.agents.router_agent",
+          "specifiers": [
+            {
+              "local": "RouterAgent",
+              "imported": "RouterAgent",
+              "type": "named"
+            }
+          ],
+          "line": 15
+        },
+        {
+          "source": "src.agents.leonardo_agent",
+          "specifiers": [
+            {
+              "local": "LeonardoAgent",
+              "imported": "LeonardoAgent",
+              "type": "named"
+            }
+          ],
+          "line": 16
+        },
+        {
+          "source": "src.agents.code_agent",
+          "specifiers": [
+            {
+              "local": "CodeAgent",
+              "imported": "CodeAgent",
+              "type": "named"
+            }
+          ],
+          "line": 17
+        },
+        {
+          "source": "src.agents.email_agent",
+          "specifiers": [
+            {
+              "local": "EmailAgent",
+              "imported": "EmailAgent",
+              "type": "named"
+            }
+          ],
+          "line": 18
+        },
+        {
+          "source": "src.agents.email_sender",
+          "specifiers": [
+            {
+              "local": "EmailSender",
+              "imported": "EmailSender",
+              "type": "named"
+            }
+          ],
+          "line": 19
+        },
+        {
+          "source": "src.memory.memory_system",
+          "specifiers": [
+            {
+              "local": "get_memory_system",
+              "imported": "get_memory_system",
+              "type": "named"
+            }
+          ],
+          "line": 22
+        }
+      ],
+      "functions": [
+        {
+          "name": "_extract_app_name_from_text",
+          "line": 58,
+          "exported": false
+        },
+        {
+          "name": "_extract_app_category_from_text",
+          "line": 87,
+          "exported": false
+        },
+        {
+          "name": "_ensure_session_structure",
+          "line": 109,
+          "exported": false
+        },
+        {
+          "name": "_analyze_workflow_progress",
+          "line": 758,
+          "exported": false
+        },
+        {
+          "name": "_get_next_step",
+          "line": 780,
+          "exported": false
+        }
+      ],
+      "classes": [
+        {
+          "name": "ChatMessage",
+          "line": 38,
+          "exported": true
+        },
+        {
+          "name": "ChatResponse",
+          "line": 43,
+          "exported": true
+        },
+        {
+          "name": "AppAction",
+          "line": 51,
+          "exported": true
+        }
+      ],
+      "apiCalls": [],
+      "importDepth": 1,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-mcp-gmail_mcp_client-py",
+      "path": "src/mcp/gmail_mcp_client.py",
+      "label": "gmail_mcp_client.py",
+      "cluster": "other",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "GmailMCPClient",
+          "type": "class",
+          "line": 24
+        }
+      ],
+      "imports": [
+        {
+          "source": "os",
+          "specifiers": [
+            {
+              "local": "os",
+              "imported": "module",
+              "type": "import"
+            }
+          ],
+          "line": 8
+        },
+        {
+          "source": "asyncio",
+          "specifiers": [
+            {
+              "local": "asyncio",
+              "imported": "module",
+              "type": "import"
+            }
+          ],
+          "line": 9
+        },
+        {
+          "source": "shutil",
+          "specifiers": [
+            {
+              "local": "shutil",
+              "imported": "module",
+              "type": "import"
+            }
+          ],
+          "line": 10
+        },
+        {
+          "source": "concurrent.futures",
+          "specifiers": [
+            {
+              "local": "futures",
+              "imported": "module",
+              "type": "import"
+            }
+          ],
+          "line": 11
+        },
+        {
+          "source": "threading",
+          "specifiers": [
+            {
+              "local": "threading",
+              "imported": "module",
+              "type": "import"
+            }
+          ],
+          "line": 12
+        },
+        {
+          "source": "sys",
+          "specifiers": [
+            {
+              "local": "sys",
+              "imported": "module",
+              "type": "import"
+            }
+          ],
+          "line": 13
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            {
+              "local": "json",
+              "imported": "module",
+              "type": "import"
+            }
+          ],
+          "line": 14
+        },
+        {
+          "source": "requests",
+          "specifiers": [
+            {
+              "local": "requests",
+              "imported": "module",
+              "type": "import"
+            }
+          ],
+          "line": 16
+        },
+        {
+          "source": "time",
+          "specifiers": [
+            {
+              "local": "time",
+              "imported": "module",
+              "type": "import"
+            }
+          ],
+          "line": 17
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            {
+              "local": "Dict",
+              "imported": "Dict",
+              "type": "named"
+            },
+            {
+              "local": "Any",
+              "imported": "Any",
+              "type": "named"
+            },
+            {
+              "local": "Optional",
+              "imported": "Optional",
+              "type": "named"
+            }
+          ],
+          "line": 18
+        },
+        {
+          "source": "langchain_mcp_adapters.client",
+          "specifiers": [
+            {
+              "local": "MultiServerMCPClient",
+              "imported": "MultiServerMCPClient",
+              "type": "named"
+            }
+          ],
+          "line": 19
+        },
+        {
+          "source": "dotenv",
+          "specifiers": [
+            {
+              "local": "load_dotenv",
+              "imported": "load_dotenv",
+              "type": "named"
+            },
+            {
+              "local": "set_key",
+              "imported": "set_key",
+              "type": "named"
+            },
+            {
+              "local": "find_dotenv",
+              "imported": "find_dotenv",
+              "type": "named"
+            }
+          ],
+          "line": 20
+        }
+      ],
+      "functions": [],
+      "classes": [
+        {
+          "name": "GmailMCPClient",
+          "line": 24,
+          "exported": true
+        }
+      ],
+      "apiCalls": [
+        {
+          "method": "requests.post",
+          "line": 195
+        }
+      ],
+      "importDepth": 1,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-memory-memory_system-py",
+      "path": "src/memory/memory_system.py",
+      "label": "memory_system.py",
+      "cluster": "other",
+      "critical": true,
+      "dead": true,
+      "exports": [
+        {
+          "name": "MemorySystem",
+          "type": "class",
+          "line": 14
+        },
+        {
+          "name": "get_memory_system",
+          "type": "function",
+          "line": 256
+        }
+      ],
+      "imports": [
+        {
+          "source": "os",
+          "specifiers": [
+            {
+              "local": "os",
+              "imported": "module",
+              "type": "import"
+            }
+          ],
+          "line": 7
+        },
+        {
+          "source": "datetime",
+          "specifiers": [
+            {
+              "local": "datetime",
+              "imported": "datetime",
+              "type": "named"
+            }
+          ],
+          "line": 8
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            {
+              "local": "Dict",
+              "imported": "Dict",
+              "type": "named"
+            },
+            {
+              "local": "Any",
+              "imported": "Any",
+              "type": "named"
+            },
+            {
+              "local": "Optional",
+              "imported": "Optional",
+              "type": "named"
+            },
+            {
+              "local": "List",
+              "imported": "List",
+              "type": "named"
+            }
+          ],
+          "line": 9
+        },
+        {
+          "source": "src.agents.story_writer_agent",
+          "specifiers": [
+            {
+              "local": "StoryWriterAgent",
+              "imported": "StoryWriterAgent",
+              "type": "named"
+            }
+          ],
+          "line": 10
+        },
+        {
+          "source": "src.memory.vector_memory_manager",
+          "specifiers": [
+            {
+              "local": "VectorMemoryManager",
+              "imported": "VectorMemoryManager",
+              "type": "named"
+            }
+          ],
+          "line": 11
+        },
+        {
+          "source": "src.agents.memory_retrieval_agent",
+          "specifiers": [
+            {
+              "local": "MemoryRetrievalAgent",
+              "imported": "MemoryRetrievalAgent",
+              "type": "named"
+            }
+          ],
+          "line": 12
+        }
+      ],
+      "functions": [
+        {
+          "name": "get_memory_system",
+          "line": 256,
+          "exported": true
+        }
+      ],
+      "classes": [
+        {
+          "name": "MemorySystem",
+          "line": 14,
+          "exported": true
+        }
+      ],
+      "apiCalls": [],
+      "importDepth": 2,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-memory-vector_memory_manager-py",
+      "path": "src/memory/vector_memory_manager.py",
+      "label": "vector_memory_manager.py",
+      "cluster": "other",
+      "critical": true,
+      "dead": false,
+      "exports": [
+        {
+          "name": "VectorMemoryManager",
+          "type": "class",
+          "line": 21
+        }
+      ],
+      "imports": [
+        {
+          "source": "os",
+          "specifiers": [
+            {
+              "local": "os",
+              "imported": "module",
+              "type": "import"
+            }
+          ],
+          "line": 7
+        },
+        {
+          "source": "json",
+          "specifiers": [
+            {
+              "local": "json",
+              "imported": "module",
+              "type": "import"
+            }
+          ],
+          "line": 8
+        },
+        {
+          "source": "pickle",
+          "specifiers": [
+            {
+              "local": "pickle",
+              "imported": "module",
+              "type": "import"
+            }
+          ],
+          "line": 9
+        },
+        {
+          "source": "datetime",
+          "specifiers": [
+            {
+              "local": "datetime",
+              "imported": "datetime",
+              "type": "named"
+            }
+          ],
+          "line": 10
+        },
+        {
+          "source": "typing",
+          "specifiers": [
+            {
+              "local": "Dict",
+              "imported": "Dict",
+              "type": "named"
+            },
+            {
+              "local": "Any",
+              "imported": "Any",
+              "type": "named"
+            },
+            {
+              "local": "List",
+              "imported": "List",
+              "type": "named"
+            },
+            {
+              "local": "Optional",
+              "imported": "Optional",
+              "type": "named"
+            },
+            {
+              "local": "Tuple",
+              "imported": "Tuple",
+              "type": "named"
+            }
+          ],
+          "line": 11
+        },
+        {
+          "source": "numpy",
+          "specifiers": [
+            {
+              "local": "np",
+              "imported": "module",
+              "type": "import"
+            }
+          ],
+          "line": 12
+        },
+        {
+          "source": "faiss",
+          "specifiers": [
+            {
+              "local": "faiss",
+              "imported": "module",
+              "type": "import"
+            }
+          ],
+          "line": 13
+        },
+        {
+          "source": "pathlib",
+          "specifiers": [
+            {
+              "local": "Path",
+              "imported": "Path",
+              "type": "named"
+            }
+          ],
+          "line": 14
+        },
+        {
+          "source": "google.generativeai",
+          "specifiers": [
+            {
+              "local": "embed_content",
+              "imported": "embed_content",
+              "type": "named"
+            }
+          ],
+          "line": 15
+        },
+        {
+          "source": "google.generativeai",
+          "specifiers": [
+            {
+              "local": "genai",
+              "imported": "module",
+              "type": "import"
+            }
+          ],
+          "line": 16
+        },
+        {
+          "source": "dotenv",
+          "specifiers": [
+            {
+              "local": "load_dotenv",
+              "imported": "load_dotenv",
+              "type": "named"
+            }
+          ],
+          "line": 17
+        }
+      ],
+      "functions": [],
+      "classes": [
+        {
+          "name": "VectorMemoryManager",
+          "line": 21,
+          "exported": true
+        }
+      ],
+      "apiCalls": [],
+      "importDepth": 2,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-utils-logger-py",
+      "path": "src/utils/logger.py",
+      "label": "logger.py",
+      "cluster": "services",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "get_logger",
+          "type": "function",
+          "line": 28
+        }
+      ],
+      "imports": [
+        {
+          "source": "logging",
+          "specifiers": [
+            {
+              "local": "logging",
+              "imported": "module",
+              "type": "import"
+            }
+          ],
+          "line": 7
+        },
+        {
+          "source": "os",
+          "specifiers": [
+            {
+              "local": "os",
+              "imported": "module",
+              "type": "import"
+            }
+          ],
+          "line": 8
+        },
+        {
+          "source": "datetime",
+          "specifiers": [
+            {
+              "local": "datetime",
+              "imported": "datetime",
+              "type": "named"
+            }
+          ],
+          "line": 9
+        }
+      ],
+      "functions": [
+        {
+          "name": "get_logger",
+          "line": 28,
+          "exported": true
+        }
+      ],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 2,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "Qwen_fine_tuned-qwen_streamlit_coder-py",
+      "path": "Qwen_fine_tuned/qwen_streamlit_coder.py",
+      "label": "qwen_streamlit_coder.py",
+      "cluster": "other",
+      "critical": false,
+      "dead": false,
+      "exports": [],
+      "imports": [],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 0,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "frontend-script-js",
+      "path": "frontend/script.js",
+      "label": "script.js",
+      "cluster": "other",
+      "critical": false,
+      "dead": false,
+      "exports": [],
+      "imports": [],
+      "functions": [
+        {
+          "name": "switchTab",
+          "line": 10,
+          "exported": false
+        },
+        {
+          "name": "sendMessage",
+          "line": 43,
+          "exported": false
+        },
+        {
+          "name": "addMessage",
+          "line": 83,
+          "exported": false
+        },
+        {
+          "name": "handleKeyPress",
+          "line": 93,
+          "exported": false
+        },
+        {
+          "name": "generateAppDirect",
+          "line": 100,
+          "exported": false
+        },
+        {
+          "name": "generateFileDownloadButtons",
+          "line": 159,
+          "exported": false
+        },
+        {
+          "name": "downloadIndividualFile",
+          "line": 182,
+          "exported": false
+        },
+        {
+          "name": "formatFileSize",
+          "line": 203,
+          "exported": false
+        },
+        {
+          "name": "generateImageDirect",
+          "line": 211,
+          "exported": false
+        },
+        {
+          "name": "generateEmailDirect",
+          "line": 256,
+          "exported": false
+        },
+        {
+          "name": "sendGeneratedEmail",
+          "line": 336,
+          "exported": false
+        },
+        {
+          "name": "isValidEmail",
+          "line": 412,
+          "exported": false
+        },
+        {
+          "name": "submitIdeation",
+          "line": 418,
+          "exported": false
+        },
+        {
+          "name": "downloadProjectFiles",
+          "line": 470,
+          "exported": false
+        },
+        {
+          "name": "loadJSZip",
+          "line": 506,
+          "exported": false
+        }
+      ],
+      "classes": [],
+      "apiCalls": [
+        {
+          "method": "fetch",
+          "line": 56
+        },
+        {
+          "method": "fetch",
+          "line": 113
+        },
+        {
+          "method": "fetch",
+          "line": 222
+        },
+        {
+          "method": "fetch",
+          "line": 270
+        },
+        {
+          "method": "fetch",
+          "line": 360
+        },
+        {
+          "method": "fetch",
+          "line": 435
+        }
+      ],
+      "importDepth": 0,
+      "role": null,
+      "plain": null,
+      "notes": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "src-main-py",
+      "to": "src-api-routes-py",
+      "kind": "critical",
+      "label": "",
+      "critical": true
+    },
+    {
+      "from": "src-main-py",
+      "to": "src-memory-memory_system-py",
+      "kind": "critical",
+      "label": "",
+      "critical": true
+    },
+    {
+      "from": "src-main-py",
+      "to": "src-utils-logger-py",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-agents-email_agent-py",
+      "to": "src-agents-email_sender-py",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-agents-email_sender-py",
+      "to": "src-mcp-gmail_mcp_client-py",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-agents-memory_retrieval_agent-py",
+      "to": "src-memory-vector_memory_manager-py",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-agents-router_agent-py",
+      "to": "src-utils-logger-py",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-api-routes-py",
+      "to": "src-agents-router_agent-py",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-api-routes-py",
+      "to": "src-agents-leonardo_agent-py",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-api-routes-py",
+      "to": "src-agents-code_agent-py",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-api-routes-py",
+      "to": "src-agents-email_agent-py",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-api-routes-py",
+      "to": "src-agents-email_sender-py",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-api-routes-py",
+      "to": "src-memory-memory_system-py",
+      "kind": "critical",
+      "label": "",
+      "critical": true
+    },
+    {
+      "from": "src-memory-memory_system-py",
+      "to": "src-agents-story_writer_agent-py",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-memory-memory_system-py",
+      "to": "src-memory-vector_memory_manager-py",
+      "kind": "critical",
+      "label": "",
+      "critical": true
+    },
+    {
+      "from": "src-memory-memory_system-py",
+      "to": "src-agents-memory_retrieval_agent-py",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    }
+  ],
+  "imports": {
+    "src/main.py": [
+      "src/api/routes.py",
+      "src/memory/memory_system.py",
+      "src/utils/logger.py"
+    ],
+    "src/agents/code_agent.py": [],
+    "src/agents/email_agent.py": [
+      "src/agents/email_sender.py"
+    ],
+    "src/agents/email_sender.py": [
+      "src/mcp/gmail_mcp_client.py"
+    ],
+    "src/agents/leonardo_agent.py": [],
+    "src/agents/memory_retrieval_agent.py": [
+      "src/memory/vector_memory_manager.py"
+    ],
+    "src/agents/router_agent.py": [
+      "src/utils/logger.py"
+    ],
+    "src/agents/story_writer_agent.py": [],
+    "src/api/__init__.py": [],
+    "src/api/routes.py": [
+      "src/agents/router_agent.py",
+      "src/agents/leonardo_agent.py",
+      "src/agents/code_agent.py",
+      "src/agents/email_agent.py",
+      "src/agents/email_sender.py",
+      "src/memory/memory_system.py"
+    ],
+    "src/mcp/gmail_mcp_client.py": [],
+    "src/memory/memory_system.py": [
+      "src/agents/story_writer_agent.py",
+      "src/memory/vector_memory_manager.py",
+      "src/agents/memory_retrieval_agent.py"
+    ],
+    "src/memory/vector_memory_manager.py": [],
+    "src/utils/logger.py": [],
+    "Qwen_fine_tuned/qwen_streamlit_coder.py": [],
+    "frontend/script.js": []
+  },
+  "exports": {
+    "src/main.py": [],
+    "src/agents/code_agent.py": [
+      "CodeAgent"
+    ],
+    "src/agents/email_agent.py": [
+      "EmailAgent"
+    ],
+    "src/agents/email_sender.py": [
+      "EmailSender"
+    ],
+    "src/agents/leonardo_agent.py": [
+      "LeonardoAgent"
+    ],
+    "src/agents/memory_retrieval_agent.py": [
+      "MemoryRetrievalAgent"
+    ],
+    "src/agents/router_agent.py": [
+      "AppType",
+      "RouterAgent"
+    ],
+    "src/agents/story_writer_agent.py": [
+      "StoryWriterAgent"
+    ],
+    "src/api/__init__.py": [],
+    "src/api/routes.py": [
+      "ChatMessage",
+      "ChatResponse",
+      "AppAction"
+    ],
+    "src/mcp/gmail_mcp_client.py": [
+      "GmailMCPClient"
+    ],
+    "src/memory/memory_system.py": [
+      "MemorySystem",
+      "get_memory_system"
+    ],
+    "src/memory/vector_memory_manager.py": [
+      "VectorMemoryManager"
+    ],
+    "src/utils/logger.py": [
+      "get_logger"
+    ],
+    "Qwen_fine_tuned/qwen_streamlit_coder.py": [],
+    "frontend/script.js": []
+  },
+  "callers": {
+    "src/agents/code_agent.py:CodeAgent": [
+      "src/api/routes.py:17"
+    ],
+    "src/agents/email_agent.py:EmailAgent": [
+      "src/api/routes.py:18"
+    ],
+    "src/agents/email_sender.py:EmailSender": [
+      "src/agents/email_agent.py:14",
+      "src/api/routes.py:19"
+    ],
+    "src/agents/leonardo_agent.py:LeonardoAgent": [
+      "src/api/routes.py:16"
+    ],
+    "src/agents/memory_retrieval_agent.py:MemoryRetrievalAgent": [
+      "src/memory/memory_system.py:12"
+    ],
+    "src/agents/router_agent.py:AppType": [],
+    "src/agents/router_agent.py:RouterAgent": [
+      "src/api/routes.py:15"
+    ],
+    "src/agents/story_writer_agent.py:StoryWriterAgent": [
+      "src/memory/memory_system.py:10"
+    ],
+    "src/api/routes.py:ChatMessage": [],
+    "src/api/routes.py:ChatResponse": [],
+    "src/api/routes.py:AppAction": [],
+    "src/mcp/gmail_mcp_client.py:GmailMCPClient": [
+      "src/agents/email_sender.py:11"
+    ],
+    "src/memory/memory_system.py:MemorySystem": [],
+    "src/memory/memory_system.py:get_memory_system": [
+      "src/main.py:19",
+      "src/api/routes.py:22"
+    ],
+    "src/memory/vector_memory_manager.py:VectorMemoryManager": [
+      "src/agents/memory_retrieval_agent.py:14",
+      "src/memory/memory_system.py:11"
+    ],
+    "src/utils/logger.py:get_logger": [
+      "src/main.py:22",
+      "src/agents/router_agent.py:17"
+    ]
+  },
+  "criticalPath": [
+    "src/main.py",
+    "src/api/routes.py",
+    "src/memory/memory_system.py",
+    "src/memory/vector_memory_manager.py"
+  ],
+  "deadCode": [
+    {
+      "file": "src/agents/router_agent.py",
+      "name": "AppType",
+      "type": "class",
+      "line": 22
+    },
+    {
+      "file": "src/api/routes.py",
+      "name": "ChatMessage",
+      "type": "class",
+      "line": 38
+    },
+    {
+      "file": "src/api/routes.py",
+      "name": "ChatResponse",
+      "type": "class",
+      "line": 43
+    },
+    {
+      "file": "src/api/routes.py",
+      "name": "AppAction",
+      "type": "class",
+      "line": 51
+    },
+    {
+      "file": "src/memory/memory_system.py",
+      "name": "MemorySystem",
+      "type": "class",
+      "line": 14
+    }
+  ],
+  "securityFindings": []
+}

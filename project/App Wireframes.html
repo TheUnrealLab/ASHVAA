@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STRATUM — App Wireframes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="design-canvas.jsx"></script>
+<script type="text/babel" src="wf-screens.jsx"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body, #root { width: 100%; height: 100%; overflow: hidden; }
+  body { background: #0c0c0e; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel">
+const { DesignCanvas, DCSection, DCArtboard, DCPostIt } = window;
+
+function App() {
+  return (
+    <DesignCanvas>
+
+      <DCSection id="flow" title="App Flow" subtitle="Dashboard  →  Submit Repo  →  Report">
+        <DCArtboard id="dashboard" label="Dashboard — Projects" width={1440} height={820}>
+          <WFDashboard />
+        </DCArtboard>
+        <DCArtboard id="submit" label="Submit Repo" width={800} height={620}>
+          <WFSubmitRepo />
+        </DCArtboard>
+      </DCSection>
+
+      <DCSection id="report" title="Report View — 3 Variations"
+        subtitle="Each shows a different active tab · 4 tabs total: Architecture Map · Code Graph · Vulnerabilities · API">
+        <DCArtboard id="varA" label="A · Left Navigation  (Arch Map active)" width={1440} height={900}>
+          <WFReportA />
+        </DCArtboard>
+        <DCArtboard id="varB" label="B · Top Tabs  (Code Graph active)" width={1440} height={900}>
+          <WFReportB />
+        </DCArtboard>
+        <DCArtboard id="varC" label="C · Dense Dashboard  (Vulnerabilities active)" width={1440} height={900}>
+          <WFReportC />
+        </DCArtboard>
+      </DCSection>
+
+    </DesignCanvas>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+
+<template id="__bundler_thumbnail" data-bg-color="#0c0c0e">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <!-- Nav bar -->
+    <rect x="0" y="0" width="1200" height="52" fill="#141416"/>
+    <!-- Logo hex -->
+    <polygon points="40,26 50,10 66,10 76,26 66,42 50,42" fill="none" stroke="#D4AF37" stroke-width="2.5"/>
+    <text x="92" y="33" font-family="sans-serif" font-size="16" font-weight="700" fill="#D4AF37" letter-spacing="3">STRATUM</text>
+    <!-- Nav links -->
+    <rect x="200" y="20" width="80" height="12" rx="2" fill="#3f3f46"/>
+    <rect x="295" y="20" width="60" height="12" rx="2" fill="#3f3f46"/>
+    <rect x="370" y="20" width="40" height="12" rx="2" fill="#3f3f46"/>
+    <!-- CTA button -->
+    <rect x="1100" y="14" width="84" height="24" fill="#D4AF37" rx="1"/>
+
+    <!-- Left sidebar (Variation A preview) -->
+    <rect x="0" y="52" width="220" height="748" fill="#141416"/>
+    <rect x="0" y="52" width="220" height="748" fill="none" stroke="#1c1c1f" stroke-width="1"/>
+    <!-- Sidebar nav items -->
+    <rect x="0" y="140" width="220" height="36" fill="#1c1c1f"/>
+    <rect x="0" y="140" width="3" height="36" fill="#D4AF37"/>
+    <rect x="20" y="152" width="100" height="12" rx="2" fill="#d4d4d8"/>
+    <rect x="20" y="190" width="90" height="10" rx="2" fill="#3f3f46"/>
+    <rect x="20" y="214" width="80" height="10" rx="2" fill="#3f3f46"/>
+    <rect x="20" y="238" width="100" height="10" rx="2" fill="#3f3f46"/>
+
+    <!-- Main content area: cluster graph -->
+    <rect x="220" y="52" width="980" height="748" fill="#0c0c0e"/>
+    <!-- Filter chips -->
+    <rect x="240" y="70" width="70" height="22" rx="2" fill="#1c1c1f" stroke="#D4AF37" stroke-width="1"/>
+    <rect x="318" y="70" width="55" height="22" rx="2" fill="#1c1c1f" stroke="#1c1c1f" stroke-width="1"/>
+    <rect x="381" y="70" width="65" height="22" rx="2" fill="#1c1c1f" stroke="#1c1c1f" stroke-width="1"/>
+
+    <!-- Cluster boxes -->
+    <rect x="240" y="110" width="160" height="220" rx="3" fill="#7DD3FC08" stroke="#7DD3FC22" stroke-width="1"/>
+    <rect x="420" y="110" width="160" height="220" rx="3" fill="#7DD38908" stroke="#7DD38922" stroke-width="1"/>
+    <rect x="600" y="110" width="160" height="220" rx="3" fill="#D4AF3708" stroke="#D4AF3722" stroke-width="1"/>
+    <rect x="780" y="110" width="160" height="220" rx="3" fill="#F59E0B08" stroke="#F59E0B22" stroke-width="1"/>
+    <rect x="960" y="110" width="160" height="220" rx="3" fill="#E5645C08" stroke="#E5645C22" stroke-width="1"/>
+
+    <!-- Nodes -->
+    <rect x="255" y="128" width="130" height="36" rx="2" fill="#141416" stroke="#7DD3FC40" stroke-width="1.2"/>
+    <rect x="255" y="176" width="130" height="36" rx="2" fill="#141416" stroke="#7DD3FC40" stroke-width="1.2"/>
+    <rect x="255" y="224" width="130" height="36" rx="2" fill="#7DD3FC14" stroke="#7DD3FC" stroke-width="1.8"/>
+
+    <rect x="435" y="144" width="130" height="36" rx="2" fill="#7DD38914" stroke="#7DD389" stroke-width="1.8"/>
+    <rect x="435" y="200" width="130" height="36" rx="2" fill="#141416" stroke="#7DD38940" stroke-width="1.2"/>
+
+    <rect x="615" y="128" width="130" height="36" rx="2" fill="#D4AF3714" stroke="#D4AF37" stroke-width="1.8"/>
+    <rect x="615" y="176" width="130" height="36" rx="2" fill="#D4AF3714" stroke="#D4AF37" stroke-width="1.8"/>
+    <rect x="615" y="224" width="130" height="36" rx="2" fill="#141416" stroke="#D4AF3740" stroke-width="1.2"/>
+
+    <rect x="795" y="136" width="130" height="36" rx="2" fill="#141416" stroke="#F59E0B40" stroke-width="1.2"/>
+    <rect x="795" y="184" width="130" height="36" rx="2" fill="#141416" stroke="#F59E0B40" stroke-width="1.2"/>
+    <rect x="795" y="232" width="130" height="36" rx="2" fill="#141416" stroke="#F59E0B40" stroke-width="1.2"/>
+
+    <rect x="975" y="136" width="130" height="36" rx="2" fill="#141416" stroke="#E5645C40" stroke-width="1.2"/>
+    <rect x="975" y="184" width="130" height="36" rx="2" fill="#E5645C14" stroke="#E5645C" stroke-width="1.8"/>
+    <rect x="975" y="232" width="130" height="36" rx="2" fill="#141416" stroke="#E5645C40" stroke-width="1.2"/>
+
+    <!-- Critical path edges -->
+    <path d="M385 242 C403 242, 417 162, 435 162" fill="none" stroke="#D4AF37" stroke-width="2" opacity="0.8"/>
+    <path d="M565 162 C583 162, 597 146, 615 146" fill="none" stroke="#D4AF37" stroke-width="2" opacity="0.8"/>
+    <path d="M745 194 C763 194, 779 202, 795 202" fill="none" stroke="#F59E0B" stroke-width="1.5" opacity="0.7"/>
+    <path d="M745 194 C795 194, 959 202, 975 202" fill="none" stroke="#E5645C" stroke-width="1.5" opacity="0.7"/>
+
+    <!-- Right panel -->
+    <rect x="1200" y="52" width="0" height="748" fill="#141416"/>
+
+    <!-- Bottom legend -->
+    <rect x="240" y="720" width="280" height="32" fill="#141416" stroke="#1c1c1f" stroke-width="1"/>
+    <rect x="256" y="734" width="18" height="2" fill="#D4AF37"/>
+    <rect x="320" y="734" width="18" height="2" fill="#E5645C"/>
+    <rect x="384" y="734" width="18" height="2" fill="#F59E0B"/>
+  </svg>
+</template>
+</body>
+</html>
