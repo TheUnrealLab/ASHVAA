@@ -1,0 +1,900 @@
+{
+  "fingerprint": {
+    "repoId": "TheUnrealLab-ASHVAA",
+    "owner": "TheUnrealLab",
+    "repo": "ASHVAA",
+    "analyzedAt": "2026-05-31T04:39:39.917Z",
+    "analysisVersion": "1.0"
+  },
+  "summary": {
+    "owner": "TheUnrealLab",
+    "repo": "ASHVAA",
+    "fileCount": 19,
+    "totalFiles": 3323,
+    "estimatedTokens": 106150,
+    "languages": [
+      "JavaScript",
+      "JavaScript",
+      ".md"
+    ],
+    "framework": "Express",
+    "nodeCount": 13,
+    "edgeCount": 0,
+    "clusterCount": 3,
+    "deadCodeCount": 0,
+    "criticalPathLength": 1,
+    "securityFindingsCount": 7
+  },
+  "clusters": [
+    {
+      "id": "routes",
+      "label": "Routes",
+      "files": [
+        "server/routes/repos.js"
+      ]
+    },
+    {
+      "id": "services",
+      "label": "Services",
+      "files": [
+        "server/services/codeAnalyzer.js",
+        "server/services/enricher.js",
+        "server/services/github.js",
+        "server/services/jobQueue.js",
+        "server/services/securityScanner.js"
+      ]
+    },
+    {
+      "id": "other",
+      "label": "Other",
+      "files": [
+        "project/app.js",
+        "project/design-canvas.jsx",
+        "project/editorial-tweaks.jsx",
+        "project/editorial.js",
+        "project/tweaks-panel.jsx",
+        "project/wf-screens.jsx",
+        "server/index.js"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "server-routes-repos-js",
+      "path": "server/routes/repos.js",
+      "label": "repos.js",
+      "cluster": "routes",
+      "critical": true,
+      "dead": false,
+      "exports": [],
+      "imports": [],
+      "functions": [
+        {
+          "name": "loadRepos",
+          "line": 15,
+          "exported": false
+        },
+        {
+          "name": "saveRepos",
+          "line": 25,
+          "exported": false
+        },
+        {
+          "name": "processRepo",
+          "line": 184,
+          "exported": false
+        },
+        {
+          "name": "updateRepoStatus",
+          "line": 238,
+          "exported": false
+        },
+        {
+          "name": "updateRepoWithAnalysis",
+          "line": 250,
+          "exported": false
+        }
+      ],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 0,
+      "role": "Express route handler that manages repository submissions, analysis workflow orchestration, and provides CRUD operations for repository data stored in JSON files.",
+      "plain": "This is like the main reception desk for the app - it handles when someone submits a GitHub repo to analyze, tracks the progress of that analysis, and lets you view all the repos that have been processed.",
+      "notes": [
+        "line:15, loadRepos() reads repository data from a JSON file on disk",
+        "line:25, saveRepos() persists repository updates back to the JSON file",
+        "line:42, POST endpoint validates GitHub URLs and prevents duplicate submissions",
+        "line:184, processRepo() orchestrates the full analysis pipeline including GitHub fetching, code analysis, security scanning, and AI enrichment"
+      ]
+    },
+    {
+      "id": "server-services-codeAnalyzer-js",
+      "path": "server/services/codeAnalyzer.js",
+      "label": "codeAnalyzer.js",
+      "cluster": "services",
+      "critical": false,
+      "dead": false,
+      "exports": [],
+      "imports": [],
+      "functions": [
+        {
+          "name": "parsePythonFile",
+          "line": 7,
+          "exported": false
+        },
+        {
+          "name": "parseFile",
+          "line": 110,
+          "exported": false
+        },
+        {
+          "name": "resolveImport",
+          "line": 265,
+          "exported": false
+        },
+        {
+          "name": "identifyCluster",
+          "line": 328,
+          "exported": false
+        },
+        {
+          "name": "calculateImportDepth",
+          "line": 382,
+          "exported": false
+        },
+        {
+          "name": "findCriticalPath",
+          "line": 391,
+          "exported": false
+        },
+        {
+          "name": "findDeadCode",
+          "line": 449,
+          "exported": false
+        },
+        {
+          "name": "analyze",
+          "line": 489,
+          "exported": false
+        },
+        {
+          "name": "saveAnalysis",
+          "line": 645,
+          "exported": false
+        },
+        {
+          "name": "loadAnalysis",
+          "line": 658,
+          "exported": false
+        }
+      ],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 0,
+      "role": "Code parsing service that extracts imports, exports, functions, and dependencies from JavaScript/Python files to build a dependency graph and identify critical code paths.",
+      "plain": "This is like a code detective that reads through programming files and figures out how they're connected - which files import from others, which functions are most important, and which code might be unused.",
+      "notes": [
+        "line:7, parsePythonFile() uses regex patterns to extract imports and functions from Python files",
+        "line:110, parseFile() uses Babel parser to analyze JavaScript/TypeScript files for imports and exports",
+        "line:265, resolveImport() converts import statements into actual file paths",
+        "line:328, identifyCluster() categorizes files by type (entry points, routes, services, etc.)"
+      ]
+    },
+    {
+      "id": "server-services-enricher-js",
+      "path": "server/services/enricher.js",
+      "label": "enricher.js",
+      "cluster": "services",
+      "critical": false,
+      "dead": false,
+      "exports": [],
+      "imports": [],
+      "functions": [
+        {
+          "name": "buildNodeContext",
+          "line": 11,
+          "exported": false
+        },
+        {
+          "name": "enrichNodes",
+          "line": 36,
+          "exported": false
+        },
+        {
+          "name": "enrichSecurityFindings",
+          "line": 141,
+          "exported": false
+        },
+        {
+          "name": "generateSummary",
+          "line": 213,
+          "exported": false
+        },
+        {
+          "name": "enrich",
+          "line": 265,
+          "exported": false
+        },
+        {
+          "name": "saveEnrichedAnalysis",
+          "line": 293,
+          "exported": false
+        },
+        {
+          "name": "loadEnrichedAnalysis",
+          "line": 306,
+          "exported": false
+        }
+      ],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 0,
+      "role": "AI enrichment service that uses Claude/Anthropic to generate human-readable descriptions and explanations for code files, functions, and security findings.",
+      "plain": "This takes the technical code analysis and asks an AI to explain it in plain English - like having a senior developer write documentation that explains what each piece of code actually does.",
+      "notes": [
+        "line:11, buildNodeContext() extracts relevant code snippets around functions and exports for AI analysis",
+        "line:36, enrichNodes() processes files in batches through Claude API to generate descriptions",
+        "line:141, enrichSecurityFindings() gets AI explanations for security vulnerabilities found in the code",
+        "line:213, generateSummary() creates an executive summary of the entire codebase analysis"
+      ]
+    },
+    {
+      "id": "server-services-github-js",
+      "path": "server/services/github.js",
+      "label": "github.js",
+      "cluster": "services",
+      "critical": false,
+      "dead": false,
+      "exports": [],
+      "imports": [],
+      "functions": [
+        {
+          "name": "parseRepoUrl",
+          "line": 118,
+          "exported": false
+        },
+        {
+          "name": "scoreFile",
+          "line": 138,
+          "exported": false
+        },
+        {
+          "name": "fetchTree",
+          "line": 174,
+          "exported": false
+        },
+        {
+          "name": "fetchFile",
+          "line": 194,
+          "exported": false
+        },
+        {
+          "name": "fetchRepo",
+          "line": 214,
+          "exported": false
+        },
+        {
+          "name": "detectLanguages",
+          "line": 277,
+          "exported": false
+        },
+        {
+          "name": "detectFramework",
+          "line": 300,
+          "exported": false
+        }
+      ],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 0,
+      "role": "GitHub API integration service that fetches repository metadata, file trees, and source code content with intelligent file prioritization and filtering.",
+      "plain": "This is the bridge to GitHub that downloads the code from repositories - it's smart about only grabbing the important files (not test files or dependencies) to keep analysis focused and fast.",
+      "notes": [
+        "line:118, parseRepoUrl() extracts owner and repository name from various GitHub URL formats",
+        "line:138, scoreFile() assigns importance scores to files to prioritize which ones to analyze",
+        "line:174, fetchTree() gets the complete file listing from a GitHub repository",
+        "line:214, fetchRepo() is the main function that intelligently downloads repository content with file limits"
+      ]
+    },
+    {
+      "id": "server-services-jobQueue-js",
+      "path": "server/services/jobQueue.js",
+      "label": "jobQueue.js",
+      "cluster": "services",
+      "critical": false,
+      "dead": false,
+      "exports": [],
+      "imports": [],
+      "functions": [
+        {
+          "name": "persistJobs",
+          "line": 19,
+          "exported": false
+        },
+        {
+          "name": "createJob",
+          "line": 34,
+          "exported": false
+        },
+        {
+          "name": "getJob",
+          "line": 55,
+          "exported": false
+        },
+        {
+          "name": "updateJob",
+          "line": 60,
+          "exported": false
+        },
+        {
+          "name": "setFetching",
+          "line": 74,
+          "exported": false
+        },
+        {
+          "name": "setAnalyzing",
+          "line": 83,
+          "exported": false
+        },
+        {
+          "name": "setEnriching",
+          "line": 92,
+          "exported": false
+        },
+        {
+          "name": "setComplete",
+          "line": 101,
+          "exported": false
+        },
+        {
+          "name": "setFailed",
+          "line": 111,
+          "exported": false
+        },
+        {
+          "name": "getAllJobs",
+          "line": 120,
+          "exported": false
+        },
+        {
+          "name": "processJob",
+          "line": 125,
+          "exported": false
+        }
+      ],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 0,
+      "role": "Job queue management service that tracks asynchronous repository analysis tasks with status updates and persistence to disk.",
+      "plain": "This keeps track of all the analysis jobs - when someone submits a repo, it creates a job that moves through stages (fetching, analyzing, enriching) and you can check the progress.",
+      "notes": [
+        "line:19, persistJobs() saves all job data to a JSON file for persistence across server restarts",
+        "line:34, createJob() initializes a new analysis job with queued status and unique ID",
+        "line:74, setFetching() updates job status to indicate GitHub fetching is in progress",
+        "line:83, setAnalyzing() marks job as analyzing code structure with 30% progress"
+      ]
+    },
+    {
+      "id": "server-services-securityScanner-js",
+      "path": "server/services/securityScanner.js",
+      "label": "securityScanner.js",
+      "cluster": "services",
+      "critical": false,
+      "dead": false,
+      "exports": [],
+      "imports": [],
+      "functions": [
+        {
+          "name": "scanFile",
+          "line": 248,
+          "exported": false
+        },
+        {
+          "name": "scan",
+          "line": 288,
+          "exported": false
+        },
+        {
+          "name": "getSummary",
+          "line": 306,
+          "exported": false
+        }
+      ],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 0,
+      "role": "Static security analysis service that scans JavaScript/TypeScript code for common security vulnerabilities using AST parsing and pattern matching.",
+      "plain": "This is like a security guard that reads through code looking for dangerous patterns - things like code that could execute malicious commands or handle user input unsafely.",
+      "notes": [
+        "line:248, scanFile() analyzes individual files for security issues using predefined rules",
+        "line:288, scan() processes all JavaScript/TypeScript files and aggregates security findings",
+        "line:306, getSummary() categorizes findings by severity level (critical, high, medium, low)",
+        "line:7, SECURITY_RULES defines patterns to detect issues like eval() usage and command injection"
+      ]
+    },
+    {
+      "id": "project-app-js",
+      "path": "project/app.js",
+      "label": "app.js",
+      "cluster": "other",
+      "critical": false,
+      "dead": false,
+      "exports": [],
+      "imports": [],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [
+        {
+          "method": "fetch",
+          "line": 11
+        },
+        {
+          "method": "fetch",
+          "line": 18
+        },
+        {
+          "method": "fetch",
+          "line": 25
+        },
+        {
+          "method": "fetch",
+          "line": 39
+        },
+        {
+          "method": "fetch",
+          "line": 46
+        },
+        {
+          "method": "fetch",
+          "line": 53
+        }
+      ],
+      "importDepth": 0,
+      "role": "Frontend application entry point that provides API client functions and UI rendering for the repository analysis dashboard.",
+      "plain": "This is the web page that users see - it has buttons to submit GitHub repos for analysis and displays the results in a nice interface once the analysis is done.",
+      "notes": [
+        "line:8, api.getRepos() fetches the list of all analyzed repositories from the backend",
+        "line:25, api.submitRepo() sends a new repository URL to the backend for analysis",
+        "line:35, api.getJob() polls for job status updates during analysis",
+        "line:41, api.getEnrichedAnalysis() retrieves the final AI-enhanced analysis results"
+      ]
+    },
+    {
+      "id": "project-design-canvas-jsx",
+      "path": "project/design-canvas.jsx",
+      "label": "design-canvas.jsx",
+      "cluster": "other",
+      "critical": false,
+      "dead": false,
+      "exports": [],
+      "imports": [],
+      "functions": [
+        {
+          "name": "dcFlatten",
+          "line": 121,
+          "exported": false
+        },
+        {
+          "name": "DesignCanvas",
+          "line": 143,
+          "exported": false
+        },
+        {
+          "name": "DCViewport",
+          "line": 262,
+          "exported": false
+        },
+        {
+          "name": "DCSection",
+          "line": 501,
+          "exported": false
+        },
+        {
+          "name": "DCArtboard",
+          "line": 558,
+          "exported": false
+        },
+        {
+          "name": "dcExport",
+          "line": 566,
+          "exported": false
+        },
+        {
+          "name": "DCArtboardFrame",
+          "line": 679,
+          "exported": false
+        },
+        {
+          "name": "DCEditable",
+          "line": 810,
+          "exported": false
+        },
+        {
+          "name": "DCFocusOverlay",
+          "line": 826,
+          "exported": false
+        },
+        {
+          "name": "DCPostIt",
+          "line": 958,
+          "exported": false
+        }
+      ],
+      "classes": [],
+      "apiCalls": [
+        {
+          "method": "fetch",
+          "line": 156
+        },
+        {
+          "method": "fetch",
+          "line": 568
+        },
+        {
+          "method": "fetch",
+          "line": 580
+        }
+      ],
+      "importDepth": 0,
+      "role": "React component library providing a Figma-like design canvas with draggable artboards, sections, and inline editing capabilities.",
+      "plain": "This creates a design tool interface similar to Figma - you can create design mockups with moveable frames, add sticky notes, and organize everything into sections.",
+      "notes": [
+        "line:121, dcFlatten() recursively unwraps React fragments to find DCSection and DCArtboard children",
+        "line:143, DesignCanvas is the main wrapper component that handles the pan/zoom viewport",
+        "line:39, CSS injection creates styles for editable elements and drag interactions",
+        "line:15, Usage comments show how to create sections with draggable artboards for design layouts"
+      ]
+    },
+    {
+      "id": "project-editorial-tweaks-jsx",
+      "path": "project/editorial-tweaks.jsx",
+      "label": "editorial-tweaks.jsx",
+      "cluster": "other",
+      "critical": false,
+      "dead": false,
+      "exports": [],
+      "imports": [],
+      "functions": [
+        {
+          "name": "StratumTweaks",
+          "line": 2,
+          "exported": false
+        }
+      ],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 0,
+      "role": "React component providing a settings panel for customizing visual design parameters like colors, animations, and layout density.",
+      "plain": "This is like a control panel that lets you customize how the website looks - change the accent color, adjust animation speeds, or make the layout more or less spacious.",
+      "notes": [
+        "line:2, StratumTweaks() manages design customization settings with real-time preview",
+        "line:3, useTweaks() hook manages settings for accent color, ticker speed, density, and vine display",
+        "line:20, React.useEffect() dynamically updates CSS custom properties when accent color changes",
+        "line:26, React.useEffect() adjusts ticker animation duration based on speed setting"
+      ]
+    },
+    {
+      "id": "project-editorial-js",
+      "path": "project/editorial.js",
+      "label": "editorial.js",
+      "cluster": "other",
+      "critical": false,
+      "dead": false,
+      "exports": [],
+      "imports": [],
+      "functions": [
+        {
+          "name": "run",
+          "line": 113,
+          "exported": false
+        },
+        {
+          "name": "tick",
+          "line": 138,
+          "exported": false
+        },
+        {
+          "name": "windPath",
+          "line": 185,
+          "exported": false
+        },
+        {
+          "name": "build",
+          "line": 217,
+          "exported": false
+        },
+        {
+          "name": "update",
+          "line": 255,
+          "exported": false
+        }
+      ],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 0,
+      "role": "Vanilla JavaScript module that drives interactive UI elements including scroll reveals, ticker animations, counters, and visual effects.",
+      "plain": "This adds all the fancy interactive effects to the website - things that fade in when you scroll, moving ticker text, animated counters, and other visual polish that makes the site feel alive.",
+      "notes": [
+        "line:11, IntersectionObserver setup handles scroll-triggered reveal animations for elements with 'rv' class",
+        "line:32, ticker setup creates a scrolling feed of security alerts with repository information",
+        "line:113, run() function starts terminal-like text animations with timed delays",
+        "line:138, tick() function appears to handle countdown timer functionality"
+      ]
+    },
+    {
+      "id": "project-tweaks-panel-jsx",
+      "path": "project/tweaks-panel.jsx",
+      "label": "tweaks-panel.jsx",
+      "cluster": "other",
+      "critical": false,
+      "dead": false,
+      "exports": [],
+      "imports": [],
+      "functions": [
+        {
+          "name": "useTweaks",
+          "line": 162,
+          "exported": false
+        },
+        {
+          "name": "TweaksPanel",
+          "line": 186,
+          "exported": false
+        },
+        {
+          "name": "TweakSection",
+          "line": 278,
+          "exported": false
+        },
+        {
+          "name": "TweakRow",
+          "line": 287,
+          "exported": false
+        },
+        {
+          "name": "TweakSlider",
+          "line": 301,
+          "exported": false
+        },
+        {
+          "name": "TweakToggle",
+          "line": 310,
+          "exported": false
+        },
+        {
+          "name": "TweakRadio",
+          "line": 321,
+          "exported": false
+        },
+        {
+          "name": "TweakSelect",
+          "line": 393,
+          "exported": false
+        },
+        {
+          "name": "TweakText",
+          "line": 407,
+          "exported": false
+        },
+        {
+          "name": "TweakNumber",
+          "line": 416,
+          "exported": false
+        },
+        {
+          "name": "__twkIsLight",
+          "line": 453,
+          "exported": false
+        },
+        {
+          "name": "TweakColor",
+          "line": 476,
+          "exported": false
+        },
+        {
+          "name": "TweakButton",
+          "line": 519,
+          "exported": false
+        }
+      ],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 0,
+      "role": "Provides a React component system for creating live-editable UI controls that persist changes through a host protocol for prototyping and design tweaking.",
+      "plain": "This creates a control panel with sliders, toggles, and color pickers that designers can use to adjust things like fonts, colors, and layout in real-time while viewing a prototype, with changes automatically saved.",
+      "notes": [
+        "line:162, useTweaks function manages state and persistence of tweak values",
+        "line:170, setTweak callback handles both single value updates and batch updates",
+        "line:173, postMessage sends changes to parent window for persistence",
+        "line:60, CSS styles define fixed positioning panel in bottom-right corner"
+      ]
+    },
+    {
+      "id": "project-wf-screens-jsx",
+      "path": "project/wf-screens.jsx",
+      "label": "wf-screens.jsx",
+      "cluster": "other",
+      "critical": false,
+      "dead": false,
+      "exports": [],
+      "imports": [],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 0,
+      "role": "Defines UI wireframe components and design system constants for building mockup screens of the STRATUM application interface.",
+      "plain": "This file contains the visual building blocks and color scheme for creating mockup screens that show what the STRATUM app will look like, including navigation bars, buttons, and status indicators.",
+      "notes": [
+        "line:3, WF object defines complete color palette and design tokens",
+        "line:18, Nav component creates consistent navigation header with STRATUM branding",
+        "line:32, Sev component displays security severity levels with color coding",
+        "line:37, Chip component creates clickable filter/tag elements"
+      ]
+    },
+    {
+      "id": "server-index-js",
+      "path": "server/index.js",
+      "label": "index.js",
+      "cluster": "other",
+      "critical": false,
+      "dead": false,
+      "exports": [],
+      "imports": [],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 0,
+      "role": "Main Express server entry point that configures middleware, routes, and serves both API endpoints and static frontend files.",
+      "plain": "This is the main server file that starts up the web application, handles incoming requests, serves the website files, and connects all the different parts of the system together.",
+      "notes": [
+        "line:1, loads environment variables from .env file",
+        "line:17, serves static files from project directory for frontend",
+        "line:20, mounts repository API routes under /api/repos",
+        "line:23, provides job status checking endpoint",
+        "line:34, starts server on port 3001 with startup logging"
+      ]
+    }
+  ],
+  "edges": [],
+  "imports": {
+    "server/routes/repos.js": [],
+    "server/services/codeAnalyzer.js": [],
+    "server/services/enricher.js": [],
+    "server/services/github.js": [],
+    "server/services/jobQueue.js": [],
+    "server/services/securityScanner.js": [],
+    "project/app.js": [],
+    "project/design-canvas.jsx": [],
+    "project/editorial-tweaks.jsx": [],
+    "project/editorial.js": [],
+    "project/tweaks-panel.jsx": [],
+    "project/wf-screens.jsx": [],
+    "server/index.js": []
+  },
+  "exports": {
+    "server/routes/repos.js": [],
+    "server/services/codeAnalyzer.js": [],
+    "server/services/enricher.js": [],
+    "server/services/github.js": [],
+    "server/services/jobQueue.js": [],
+    "server/services/securityScanner.js": [],
+    "project/app.js": [],
+    "project/design-canvas.jsx": [],
+    "project/editorial-tweaks.jsx": [],
+    "project/editorial.js": [],
+    "project/tweaks-panel.jsx": [],
+    "project/wf-screens.jsx": [],
+    "server/index.js": []
+  },
+  "callers": {},
+  "criticalPath": [
+    "server/routes/repos.js"
+  ],
+  "deadCode": [],
+  "securityFindings": [
+    {
+      "ruleId": "sql-injection",
+      "severity": "critical",
+      "title": "Potential SQL injection",
+      "description": "String concatenation in SQL queries can lead to SQL injection",
+      "file": "project/app.js",
+      "line": 399,
+      "code": "if (!confirm(`Delete ${repo.owner}/${repo.repo}? You can re-add it later.`)) {",
+      "explanation": "This appears to be a false positive. The code shows a client-side JavaScript confirm dialog with string interpolation, not SQL query construction. However, if repo.owner and repo.repo come from untrusted sources, this could lead to XSS attacks through malicious content in the confirmation message.",
+      "fix": "Sanitize the repo.owner and repo.repo values before displaying them in the confirm dialog using HTML encoding or a sanitization library like DOMPurify.",
+      "priority": "consider"
+    },
+    {
+      "ruleId": "unvalidated-input",
+      "severity": "medium",
+      "title": "Unvalidated user input",
+      "description": "User input should be validated before use",
+      "file": "server/routes/repos.js",
+      "line": 118,
+      "code": "const repo = repos.find(r => r.id === req.params.id);",
+      "inputType": "params",
+      "explanation": "Using req.params.id directly without validation can lead to injection attacks or unexpected application behavior. Malicious users could send specially crafted IDs that bypass security controls or cause errors.",
+      "fix": "Validate req.params.id using a schema validator (like Joi or express-validator) to ensure it matches expected format (e.g., alphanumeric, specific length). Example: if (!/^[a-zA-Z0-9-_]+$/.test(req.params.id)) { return res.status(400).json({error: 'Invalid ID format'}); }",
+      "priority": "should-fix"
+    },
+    {
+      "ruleId": "unvalidated-input",
+      "severity": "medium",
+      "title": "Unvalidated user input",
+      "description": "User input should be validated before use",
+      "file": "server/routes/repos.js",
+      "line": 139,
+      "code": "const analysis = codeAnalyzer.loadAnalysis(req.params.id);",
+      "inputType": "params",
+      "explanation": "Unvalidated req.params.id could allow path traversal attacks or injection if the codeAnalyzer.loadAnalysis method uses this parameter to construct file paths or database queries.",
+      "fix": "Implement input validation for req.params.id before passing to codeAnalyzer.loadAnalysis. Sanitize the input and ensure it follows expected patterns. Consider using a whitelist approach for allowed ID values.",
+      "priority": "should-fix"
+    },
+    {
+      "ruleId": "unvalidated-input",
+      "severity": "medium",
+      "title": "Unvalidated user input",
+      "description": "User input should be validated before use",
+      "file": "server/routes/repos.js",
+      "line": 150,
+      "code": "const enriched = enricher.loadEnrichedAnalysis(req.params.id);",
+      "inputType": "params",
+      "explanation": "Similar to previous issues, unvalidated req.params.id could lead to security vulnerabilities if the enricher.loadEnrichedAnalysis method is susceptible to injection attacks or path traversal.",
+      "fix": "Apply the same input validation as recommended for other req.params.id usages. Create a reusable validation middleware to ensure consistency across all endpoints.",
+      "priority": "should-fix"
+    },
+    {
+      "ruleId": "no-rate-limit",
+      "severity": "medium",
+      "title": "API endpoint without rate limiting",
+      "description": "API endpoints should have rate limiting to prevent abuse",
+      "file": "server/index.js",
+      "line": 23,
+      "code": "GET /api/jobs/:id",
+      "endpoint": "/api/jobs/:id",
+      "explanation": "Without rate limiting, this API endpoint is vulnerable to abuse through excessive requests, potentially leading to denial of service attacks or resource exhaustion.",
+      "fix": "Implement rate limiting using middleware like express-rate-limit. Example: const rateLimit = require('express-rate-limit'); const limiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 100 }); app.use('/api/jobs', limiter);",
+      "priority": "should-fix"
+    },
+    {
+      "ruleId": "no-rate-limit",
+      "severity": "medium",
+      "title": "API endpoint without rate limiting",
+      "description": "API endpoints should have rate limiting to prevent abuse",
+      "file": "server/index.js",
+      "line": 32,
+      "code": "GET /api/health",
+      "endpoint": "/api/health",
+      "explanation": "While health endpoints are typically less sensitive, lack of rate limiting can still allow attackers to consume server resources through excessive polling or use it for reconnaissance.",
+      "fix": "Apply rate limiting to the health endpoint, but with more generous limits than other API endpoints. Consider a separate, less restrictive rate limit configuration for health checks.",
+      "priority": "consider"
+    },
+    {
+      "ruleId": "unvalidated-input",
+      "severity": "medium",
+      "title": "Unvalidated user input",
+      "description": "User input should be validated before use",
+      "file": "server/index.js",
+      "line": 24,
+      "code": "const job = jobQueue.getJob(req.params.id);",
+      "inputType": "params",
+      "explanation": "Unvalidated req.params.id passed to jobQueue.getJob could allow attackers to access unauthorized job information or exploit vulnerabilities in the job queue implementation.",
+      "fix": "Validate req.params.id format and ensure proper authorization checks are in place before retrieving job information. Implement input sanitization and consider using UUIDs for job IDs to make them harder to guess.",
+      "priority": "should-fix"
+    }
+  ],
+  "executiveSummary": {
+    "headline": "Express.js web application with repository management functionality and route-based architecture",
+    "architecture": "This is a standard Express.js web application organized into routes and services layers. The application appears to be centered around repository operations with the critical path running through the repos route handler.",
+    "strengths": [
+      "Clean separation of concerns with distinct Routes and Services clusters",
+      "No dead code detected indicating good code maintenance"
+    ],
+    "concerns": [
+      "7 security findings identified across the codebase requiring attention",
+      "Single critical path dependency on repos.js creates potential bottleneck"
+    ],
+    "healthScore": 72
+  },
+  "enrichedAt": "2026-05-31T04:41:00.559Z"
+}
