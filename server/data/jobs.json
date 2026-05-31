@@ -64,5 +64,70 @@
       "healthScore": 72
     },
     "error": null
+  },
+  "f1c84190-f218-488c-b984-e655d673f67b": {
+    "id": "f1c84190-f218-488c-b984-e655d673f67b",
+    "repoUrl": "https://github.com/ShubhamJaitapkar99/maria.git",
+    "status": "complete",
+    "progress": 100,
+    "message": "Analysis complete",
+    "createdAt": "2026-05-31T04:54:14.828Z",
+    "updatedAt": "2026-05-31T04:54:57.488Z",
+    "result": {
+      "repoId": "ShubhamJaitapkar99-maria",
+      "summary": {
+        "owner": "ShubhamJaitapkar99",
+        "repo": "maria",
+        "fileCount": 10,
+        "totalFiles": 23,
+        "estimatedTokens": 8808,
+        "languages": [
+          "Python",
+          ".md"
+        ],
+        "framework": "Python",
+        "nodeCount": 9,
+        "edgeCount": 12,
+        "clusterCount": 4,
+        "deadCodeCount": 35,
+        "criticalPathLength": 2,
+        "securityFindingsCount": 0
+      },
+      "healthScore": 65
+    },
+    "error": null
+  },
+  "499cb652-80ca-471b-8f52-efbb765681a3": {
+    "id": "499cb652-80ca-471b-8f52-efbb765681a3",
+    "repoUrl": "https://github.com/iways29/vanguardProxyVoteLanding.git",
+    "status": "complete",
+    "progress": 100,
+    "message": "Analysis complete",
+    "createdAt": "2026-05-31T04:56:20.755Z",
+    "updatedAt": "2026-05-31T04:56:57.004Z",
+    "result": {
+      "repoId": "iways29-vanguardProxyVoteLanding",
+      "summary": {
+        "owner": "iways29",
+        "repo": "vanguardProxyVoteLanding",
+        "fileCount": 10,
+        "totalFiles": 17,
+        "estimatedTokens": 10673,
+        "languages": [
+          "JavaScript",
+          ".md",
+          "JSON"
+        ],
+        "framework": "React",
+        "nodeCount": 8,
+        "edgeCount": 7,
+        "clusterCount": 5,
+        "deadCodeCount": 0,
+        "criticalPathLength": 4,
+        "securityFindingsCount": 1
+      },
+      "healthScore": 75
+    },
+    "error": null
   }
 }

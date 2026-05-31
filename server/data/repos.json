@@ -50,5 +50,56 @@
       "highCount": 0
     },
     "updatedAt": "2026-05-31T04:20:35.893Z"
+  },
+  {
+    "id": "ShubhamJaitapkar99-maria",
+    "owner": "ShubhamJaitapkar99",
+    "repo": "maria",
+    "repoUrl": "https://github.com/ShubhamJaitapkar99/maria.git",
+    "jobId": "f1c84190-f218-488c-b984-e655d673f67b",
+    "status": "complete",
+    "createdAt": "2026-05-31T04:54:14.835Z",
+    "healthScore": 65,
+    "summary": {
+      "headline": "A small Python application with configuration management and service components",
+      "framework": "Python",
+      "languages": [
+        "Python",
+        ".md"
+      ],
+      "fileCount": 10,
+      "nodeCount": 9,
+      "deadCodeCount": 35,
+      "securityFindingsCount": 0,
+      "criticalCount": 0,
+      "highCount": 0
+    },
+    "updatedAt": "2026-05-31T04:54:57.489Z"
+  },
+  {
+    "id": "iways29-vanguardProxyVoteLanding",
+    "owner": "iways29",
+    "repo": "vanguardProxyVoteLanding",
+    "repoUrl": "https://github.com/iways29/vanguardProxyVoteLanding.git",
+    "jobId": "499cb652-80ca-471b-8f52-efbb765681a3",
+    "status": "complete",
+    "createdAt": "2026-05-31T04:56:20.762Z",
+    "healthScore": 75,
+    "summary": {
+      "headline": "React-based web application with Firebase authentication integration",
+      "framework": "React",
+      "languages": [
+        "JavaScript",
+        ".md",
+        "JSON"
+      ],
+      "fileCount": 10,
+      "nodeCount": 8,
+      "deadCodeCount": 0,
+      "securityFindingsCount": 1,
+      "criticalCount": 0,
+      "highCount": 1
+    },
+    "updatedAt": "2026-05-31T04:56:57.005Z"
   }
 ]

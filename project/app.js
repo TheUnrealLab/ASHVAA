@@ -194,10 +194,12 @@ const dashboard = {
 
   renderAddCard() {
     return `
-      <button class="project-card add-card" onclick="dashboard.openModal()">
-        <div class="add-icon">+</div>
-        <span>Add Repository</span>
-      </button>
+      <div class="project-card-wrapper">
+        <button class="project-card add-card" onclick="dashboard.openModal()">
+          <div class="add-icon">+</div>
+          <span>Add Repository</span>
+        </button>
+      </div>
     `;
   },
 

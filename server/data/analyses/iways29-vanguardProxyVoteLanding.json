@@ -1,0 +1,733 @@
+{
+  "fingerprint": {
+    "repoId": "iways29-vanguardProxyVoteLanding",
+    "owner": "iways29",
+    "repo": "vanguardProxyVoteLanding",
+    "analyzedAt": "2026-05-31T04:56:22.484Z",
+    "analysisVersion": "1.0"
+  },
+  "summary": {
+    "owner": "iways29",
+    "repo": "vanguardProxyVoteLanding",
+    "fileCount": 10,
+    "totalFiles": 17,
+    "estimatedTokens": 10673,
+    "languages": [
+      "JavaScript",
+      ".md",
+      "JSON"
+    ],
+    "framework": "React",
+    "nodeCount": 8,
+    "edgeCount": 7,
+    "clusterCount": 5,
+    "deadCodeCount": 0,
+    "criticalPathLength": 4,
+    "securityFindingsCount": 1
+  },
+  "clusters": [
+    {
+      "id": "entry",
+      "label": "Entry",
+      "files": [
+        "src/index.js",
+        "src/App.js"
+      ]
+    },
+    {
+      "id": "components",
+      "label": "Components",
+      "files": [
+        "src/components/AuthForm.js",
+        "src/components/LoginButton.js"
+      ]
+    },
+    {
+      "id": "other",
+      "label": "Other",
+      "files": [
+        "src/firebase.js"
+      ]
+    },
+    {
+      "id": "hooks",
+      "label": "Hooks",
+      "files": [
+        "src/hooks/useAuth.js"
+      ]
+    },
+    {
+      "id": "config",
+      "label": "Config",
+      "files": [
+        "postcss.config.js",
+        "tailwind.config.js"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "src-index-js",
+      "path": "src/index.js",
+      "label": "index.js",
+      "cluster": "entry",
+      "critical": true,
+      "dead": false,
+      "exports": [],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "React",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            }
+          ],
+          "line": 1
+        },
+        {
+          "source": "react-dom/client",
+          "specifiers": [
+            {
+              "local": "ReactDOM",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            }
+          ],
+          "line": 2
+        },
+        {
+          "source": "./App",
+          "specifiers": [
+            {
+              "local": "App",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            }
+          ],
+          "line": 3
+        }
+      ],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 0,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-App-js",
+      "path": "src/App.js",
+      "label": "App.js",
+      "cluster": "entry",
+      "critical": true,
+      "dead": false,
+      "exports": [
+        {
+          "name": "default",
+          "type": "default",
+          "line": 476
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "React",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            },
+            {
+              "local": "useState",
+              "imported": "useState",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 1
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            {
+              "local": "Check",
+              "imported": "Check",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "X",
+              "imported": "X",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Users",
+              "imported": "Users",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Building2",
+              "imported": "Building2",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Globe",
+              "imported": "Globe",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Eye",
+              "imported": "Eye",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Edit2",
+              "imported": "Edit2",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 2
+        },
+        {
+          "source": "./hooks/useAuth",
+          "specifiers": [
+            {
+              "local": "useAuth",
+              "imported": "useAuth",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        },
+        {
+          "source": "./components/AuthForm",
+          "specifiers": [
+            {
+              "local": "AuthForm",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            }
+          ],
+          "line": 4
+        },
+        {
+          "source": "./components/LoginButton",
+          "specifiers": [
+            {
+              "local": "LoginButton",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            }
+          ],
+          "line": 5
+        },
+        {
+          "source": "./index.css",
+          "specifiers": [],
+          "line": 6
+        }
+      ],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 1,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-components-AuthForm-js",
+      "path": "src/components/AuthForm.js",
+      "label": "AuthForm.js",
+      "cluster": "components",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "default",
+          "type": "default",
+          "line": 256
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "React",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            },
+            {
+              "local": "useState",
+              "imported": "useState",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 2
+        },
+        {
+          "source": "../hooks/useAuth",
+          "specifiers": [
+            {
+              "local": "useAuth",
+              "imported": "useAuth",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            {
+              "local": "Eye",
+              "imported": "Eye",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "EyeOff",
+              "imported": "EyeOff",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Mail",
+              "imported": "Mail",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Lock",
+              "imported": "Lock",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "User",
+              "imported": "User",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "AlertCircle",
+              "imported": "AlertCircle",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 4
+        }
+      ],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 1,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-components-LoginButton-js",
+      "path": "src/components/LoginButton.js",
+      "label": "LoginButton.js",
+      "cluster": "components",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "default",
+          "type": "default",
+          "line": 129
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "React",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            },
+            {
+              "local": "useState",
+              "imported": "useState",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useRef",
+              "imported": "useRef",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useEffect",
+              "imported": "useEffect",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 2
+        },
+        {
+          "source": "../hooks/useAuth",
+          "specifiers": [
+            {
+              "local": "useAuth",
+              "imported": "useAuth",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        },
+        {
+          "source": "lucide-react",
+          "specifiers": [
+            {
+              "local": "LogOut",
+              "imported": "LogOut",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "User",
+              "imported": "User",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "ChevronDown",
+              "imported": "ChevronDown",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 4
+        }
+      ],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 1,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-firebase-js",
+      "path": "src/firebase.js",
+      "label": "firebase.js",
+      "cluster": "other",
+      "critical": true,
+      "dead": false,
+      "exports": [
+        {
+          "name": "auth",
+          "type": "variable",
+          "line": 18
+        },
+        {
+          "name": "googleProvider",
+          "type": "variable",
+          "line": 19
+        },
+        {
+          "name": "default",
+          "type": "default",
+          "line": 21
+        }
+      ],
+      "imports": [
+        {
+          "source": "firebase/app",
+          "specifiers": [
+            {
+              "local": "initializeApp",
+              "imported": "initializeApp",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 2
+        },
+        {
+          "source": "firebase/auth",
+          "specifiers": [
+            {
+              "local": "getAuth",
+              "imported": "getAuth",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "GoogleAuthProvider",
+              "imported": "GoogleAuthProvider",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        }
+      ],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 1,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "src-hooks-useAuth-js",
+      "path": "src/hooks/useAuth.js",
+      "label": "useAuth.js",
+      "cluster": "hooks",
+      "critical": true,
+      "dead": false,
+      "exports": [
+        {
+          "name": "useAuth",
+          "type": "variable",
+          "line": 13
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "useState",
+              "imported": "useState",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useEffect",
+              "imported": "useEffect",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 2
+        },
+        {
+          "source": "firebase/auth",
+          "specifiers": [
+            {
+              "local": "onAuthStateChanged",
+              "imported": "onAuthStateChanged",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "signInWithPopup",
+              "imported": "signInWithPopup",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "signOut",
+              "imported": "signOut",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "signInWithEmailAndPassword",
+              "imported": "signInWithEmailAndPassword",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "createUserWithEmailAndPassword",
+              "imported": "createUserWithEmailAndPassword",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "updateProfile",
+              "imported": "updateProfile",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        },
+        {
+          "source": "../firebase",
+          "specifiers": [
+            {
+              "local": "auth",
+              "imported": "auth",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "googleProvider",
+              "imported": "googleProvider",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 11
+        }
+      ],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 3,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "postcss-config-js",
+      "path": "postcss.config.js",
+      "label": "postcss.config.js",
+      "cluster": "config",
+      "critical": false,
+      "dead": false,
+      "exports": [],
+      "imports": [],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 0,
+      "role": null,
+      "plain": null,
+      "notes": []
+    },
+    {
+      "id": "tailwind-config-js",
+      "path": "tailwind.config.js",
+      "label": "tailwind.config.js",
+      "cluster": "config",
+      "critical": false,
+      "dead": false,
+      "exports": [],
+      "imports": [],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 0,
+      "role": null,
+      "plain": null,
+      "notes": []
+    }
+  ],
+  "edges": [
+    {
+      "from": "src-index-js",
+      "to": "src-App-js",
+      "kind": "critical",
+      "label": "",
+      "critical": true
+    },
+    {
+      "from": "src-App-js",
+      "to": "src-hooks-useAuth-js",
+      "kind": "critical",
+      "label": "",
+      "critical": true
+    },
+    {
+      "from": "src-App-js",
+      "to": "src-components-AuthForm-js",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-App-js",
+      "to": "src-components-LoginButton-js",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-AuthForm-js",
+      "to": "src-hooks-useAuth-js",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-LoginButton-js",
+      "to": "src-hooks-useAuth-js",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-hooks-useAuth-js",
+      "to": "src-firebase-js",
+      "kind": "critical",
+      "label": "",
+      "critical": true
+    }
+  ],
+  "imports": {
+    "src/index.js": [
+      "src/App.js"
+    ],
+    "src/App.js": [
+      "src/hooks/useAuth.js",
+      "src/components/AuthForm.js",
+      "src/components/LoginButton.js"
+    ],
+    "src/components/AuthForm.js": [
+      "src/hooks/useAuth.js"
+    ],
+    "src/components/LoginButton.js": [
+      "src/hooks/useAuth.js"
+    ],
+    "src/firebase.js": [],
+    "src/hooks/useAuth.js": [
+      "src/firebase.js"
+    ],
+    "postcss.config.js": [],
+    "tailwind.config.js": []
+  },
+  "exports": {
+    "src/index.js": [],
+    "src/App.js": [
+      "default"
+    ],
+    "src/components/AuthForm.js": [
+      "default"
+    ],
+    "src/components/LoginButton.js": [
+      "default"
+    ],
+    "src/firebase.js": [
+      "auth",
+      "googleProvider",
+      "default"
+    ],
+    "src/hooks/useAuth.js": [
+      "useAuth"
+    ],
+    "postcss.config.js": [],
+    "tailwind.config.js": []
+  },
+  "callers": {
+    "src/App.js:default": [
+      "src/index.js:3"
+    ],
+    "src/components/AuthForm.js:default": [
+      "src/App.js:4"
+    ],
+    "src/components/LoginButton.js:default": [
+      "src/App.js:5"
+    ],
+    "src/firebase.js:auth": [
+      "src/hooks/useAuth.js:11"
+    ],
+    "src/firebase.js:googleProvider": [
+      "src/hooks/useAuth.js:11"
+    ],
+    "src/firebase.js:default": [],
+    "src/hooks/useAuth.js:useAuth": [
+      "src/App.js:3",
+      "src/components/AuthForm.js:3",
+      "src/components/LoginButton.js:3"
+    ]
+  },
+  "criticalPath": [
+    "src/index.js",
+    "src/App.js",
+    "src/hooks/useAuth.js",
+    "src/firebase.js"
+  ],
+  "deadCode": [],
+  "securityFindings": [
+    {
+      "ruleId": "hardcoded-secret",
+      "severity": "high",
+      "title": "Hardcoded secret detected",
+      "description": "Secrets should be stored in environment variables, not in code",
+      "file": "src/firebase.js",
+      "line": 6,
+      "code": "apiKey: \"AIzaSyBnz7IIJrb3jxE_PHUA5cLOgbagZrm1qBA\",",
+      "secretType": "API key"
+    }
+  ]
+}
