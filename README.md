@@ -1,22 +1,89 @@
-# CODING AGENTS: READ THIS FIRST
+# ASHVAA
 
-This is a **handoff bundle** from Claude Design (claude.ai/design).
+**AI-powered codebase analysis and visualization tool.**
 
-A user mocked up designs in HTML/CSS/JS using an AI design tool, then exported this bundle so a coding agent can implement the designs for real.
+Analyze GitHub repositories to understand code architecture, detect security issues, identify dead code, and visualize dependency graphs.
 
-## What you should do — IMPORTANT
+## Features
 
-**Find the primary design file under `new-startupmain/project/` and read it top to bottom.** Then **follow its imports**: open every file it pulls in (shared components, CSS, scripts) so you understand how the pieces fit together before you start implementing.
+- **Dependency Graph Visualization** — Interactive map of how files connect and depend on each other
+- **Security Scanning** — Detects common vulnerabilities (SQL injection, XSS, etc.)
+- **Dead Code Detection** — Finds exports that are never imported
+- **AI-Powered Insights** — Claude enriches analysis with plain-English explanations
+- **Health Scoring** — Overall codebase health score based on multiple factors
 
-**If anything is ambiguous, ask the user to confirm before you start implementing.** It's much cheaper to clarify scope up front than to build the wrong thing.
+## Tech Stack
 
-## About the design files
+- **Frontend**: Vanilla JS, HTML, CSS (served statically)
+- **Backend**: Node.js + Express
+- **AI**: Claude API for code enrichment
+- **Parsing**: Babel for JS/TS, custom parser for Python
 
-The design medium is **HTML/CSS/JS** — these are prototypes, not production code. Your job is to **recreate them pixel-perfectly** in whatever technology makes sense for the target codebase (React, Vue, native, whatever fits). Match the visual output; don't copy the prototype's internal structure unless it happens to fit.
+## Quick Start
 
-**Don't render these files in a browser or take screenshots unless the user asks you to.** Everything you need — dimensions, colors, layout rules — is spelled out in the source. Read the HTML and CSS directly; a screenshot won't tell you anything they don't.
+```bash
+# Install dependencies
+cd server
+npm install
 
-## Bundle contents
+# Set up environment
+cp .env.example .env
+# Add your ANTHROPIC_API_KEY and GITHUB_TOKEN to .env
 
-- `new-startupmain/README.md` — this file
-- `new-startupmain/project/` — the `New StartupMAIN` project files (HTML prototypes, assets, components)
+# Start the server
+node index.js
+
+# Open in browser
+open http://localhost:3001/dashboard.html
+```
+
+## Project Structure
+
+```
+├── project/              # Frontend files
+│   ├── dashboard.html    # Main dashboard
+│   ├── report.html       # Analysis report view
+│   ├── app.js            # Frontend logic
+│   └── shared-styles.css # Shared CSS
+│
+├── server/               # Backend
+│   ├── index.js          # Express server
+│   ├── routes/
+│   │   └── repos.js      # API endpoints
+│   └── services/
+│       ├── github.js     # GitHub API integration
+│       ├── codeAnalyzer.js   # AST parsing & analysis
+│       ├── securityScanner.js # Vulnerability detection
+│       ├── enricher.js   # Claude AI enrichment
+│       └── jobQueue.js   # Background job processing
+```
+
+## API Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/repos` | List all analyzed repos |
+| POST | `/api/repos` | Submit repo for analysis |
+| GET | `/api/repos/:id` | Get repo details |
+| POST | `/api/repos/:id/rescan` | Force re-analysis |
+| DELETE | `/api/repos/:id` | Soft delete repo |
+| GET | `/api/repos/:id/enriched` | Get enriched analysis |
+| GET | `/api/jobs/:id` | Get job status |
+
+## How It Works
+
+1. **Fetch** — Downloads repo files from GitHub (prioritizes shared code like components, lib, hooks)
+2. **Analyze** — Parses AST to extract imports, exports, functions, classes
+3. **Scan** — Runs security rules against the code
+4. **Enrich** — Claude AI adds explanations, identifies patterns, calculates health score
+5. **Visualize** — Renders interactive dependency graph with dagre layout
+
+## Known Limitations
+
+- Token limits mean large repos get partial analysis (~100k tokens max)
+- Path alias resolution supports `@/`, `~/`, `#/` patterns (common in Next.js/Vite)
+- Python support is basic (no virtual env resolution)
+
+## License
+
+MIT

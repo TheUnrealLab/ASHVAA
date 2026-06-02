@@ -308,16 +308,52 @@ function resolveImport(importSource, fromFile, files) {
   }
 
   // JavaScript/TypeScript import resolution
+  const extensions = ['', '.ts', '.tsx', '.js', '.jsx', '/index.ts', '/index.tsx', '/index.js', '/index.jsx'];
+
   if (importSource.startsWith('.')) {
     // Relative import
     const dir = path.dirname(fromFile);
     let resolved = path.join(dir, importSource).replace(/\\/g, '/');
 
-    // Try different extensions
-    const extensions = ['', '.ts', '.tsx', '.js', '.jsx', '/index.ts', '/index.tsx', '/index.js', '/index.jsx'];
     for (const ext of extensions) {
       const candidate = resolved + ext;
       if (files[candidate]) return candidate;
+    }
+  }
+
+  // Handle path aliases (common patterns: @/, ~/, #/)
+  // @/ typically maps to src/ in Next.js/Vite projects
+  if (importSource.startsWith('@/') || importSource.startsWith('~/') || importSource.startsWith('#/')) {
+    const aliasPath = importSource.slice(2); // Remove @/ or ~/ or #/
+
+    // Try common alias mappings
+    const aliasMappings = [
+      `src/${aliasPath}`,           // @/foo → src/foo
+      `app/${aliasPath}`,           // @/foo → app/foo
+      aliasPath,                    // @/foo → foo (root level)
+    ];
+
+    for (const mapping of aliasMappings) {
+      for (const ext of extensions) {
+        const candidate = mapping + ext;
+        if (files[candidate]) return candidate;
+      }
+    }
+  }
+
+  // Handle bare imports that might be local (e.g., components/Button in some setups)
+  // Only if it looks like a local path (contains /)
+  if (importSource.includes('/') && !importSource.startsWith('@') && !importSource.includes('node_modules')) {
+    const possiblePaths = [
+      `src/${importSource}`,
+      importSource,
+    ];
+
+    for (const basePath of possiblePaths) {
+      for (const ext of extensions) {
+        const candidate = basePath + ext;
+        if (files[candidate]) return candidate;
+      }
     }
   }
 

@@ -161,6 +161,38 @@ router.get('/:id/enriched', (req, res) => {
   res.json(enriched);
 });
 
+// POST /api/repos/:id/rescan - Force re-analyze a repo
+router.post('/:id/rescan', (req, res) => {
+  const repos = loadRepos();
+  const repo = repos.find(r => r.id === req.params.id);
+
+  if (!repo) {
+    return res.status(404).json({ error: 'Repo not found' });
+  }
+
+  // Create new job for re-analysis
+  const job = jobQueue.createJob(repo.repoUrl);
+
+  // Update repo state
+  repo.jobId = job.id;
+  repo.status = 'queued';
+  repo.error = null;
+  repo.rescannedAt = new Date().toISOString();
+  saveRepos(repos);
+
+  // Start async processing
+  processRepo(job.id, repo.repoUrl, repo.id);
+
+  console.log(`[${repo.id}] Rescan requested`);
+
+  res.json({
+    jobId: job.id,
+    repoId: repo.id,
+    status: 'queued',
+    message: 'Rescan started'
+  });
+});
+
 // DELETE /api/repos/:id - Soft delete a repo (marks as deleted, keeps data)
 router.delete('/:id', (req, res) => {
   const repos = loadRepos();
@@ -258,11 +290,14 @@ function updateRepoWithAnalysis(repoId, enriched) {
       framework: enriched.summary.framework,
       languages: enriched.summary.languages,
       fileCount: enriched.summary.fileCount,
+      totalFiles: enriched.summary.totalFiles,
       nodeCount: enriched.summary.nodeCount,
       deadCodeCount: enriched.summary.deadCodeCount,
       securityFindingsCount: enriched.securityFindings?.length || 0,
       criticalCount: enriched.securityFindings?.filter(f => f.severity === 'critical').length || 0,
-      highCount: enriched.securityFindings?.filter(f => f.severity === 'high').length || 0
+      highCount: enriched.securityFindings?.filter(f => f.severity === 'high').length || 0,
+      estimatedTokens: enriched.summary.estimatedTokens,
+      tokenLimitHit: enriched.summary.fileCount < enriched.summary.totalFiles
     };
     repo.updatedAt = new Date().toISOString();
     saveRepos(repos);

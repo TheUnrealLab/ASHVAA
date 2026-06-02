@@ -5,10 +5,10 @@ const octokit = new Octokit({
   auth: process.env.GITHUB_TOKEN || undefined
 });
 
-// File importance scoring
+// File importance scoring - higher score = fetched first
 const FILE_SCORES = {
-  // High priority - always fetch
-  high: [
+  // Critical - entry points & config (score: 100)
+  critical: [
     /^package\.json$/,
     /^README\.md$/i,
     /^CLAUDE\.md$/i,
@@ -18,7 +18,7 @@ const FILE_SCORES = {
     /^src\/index\.(ts|js|tsx|jsx)$/,
     /^src\/main\.(ts|js|tsx|jsx)$/,
     /^src\/app\.(ts|js|tsx|jsx)$/,
-    // Python high priority
+    // Python critical
     /^requirements\.txt$/,
     /^pyproject\.toml$/,
     /^setup\.py$/,
@@ -30,43 +30,56 @@ const FILE_SCORES = {
     /^wsgi\.py$/,
     /^asgi\.py$/
   ],
-  // Medium priority - important structure
+  // High priority - shared code that pages/routes IMPORT FROM (score: 80)
+  // These must be analyzed to understand the dependency graph!
+  high: [
+    /\/components?\//i,           // UI components (shared)
+    /\/lib\//i,                   // Library/utility code (shared)
+    /\/store\//i,                 // State management (shared)
+    /\/stores?\//i,               // State stores (shared)
+    /\/hooks?\//i,                // React hooks (shared)
+    /\/utils?\//i,                // Utility functions (shared)
+    /\/helpers?\//i,              // Helper functions (shared)
+    /\/services?\//i,             // Service layer (shared)
+    /\/context\//i,               // React context (shared)
+    /\/providers?\//i,            // React providers (shared)
+    /\/core\//i,                  // Core business logic
+    /\/common\//i,                // Common/shared code
+    /\/shared\//i,                // Shared code
+    // Python shared
+    /\/schemas?\//i,              // Pydantic schemas (shared)
+    /\/models?\//i,               // Data models (shared)
+  ],
+  // Medium priority - pages, routes, API endpoints (score: 50)
   medium: [
     /^src\//i,                    // Any file in src/
     /^lib\//i,                    // Any file in lib/
     /^packages?\//i,              // Monorepo packages
-    /routes?\//i,
-    /api\//i,
-    /pages\/api\//i,
-    /services?\//i,
-    /core\//i,
-    /commands?\//i,               // CLI commands
-    /handlers?\//i,               // Request handlers
-    // Python medium priority
-    /agents?\//i,                 // AI agents
-    /views?\//i,                  // Django/Flask views
-    /routers?\//i,                // FastAPI routers
-    /endpoints?\//i,
-    /controllers?\//i
+    /\/routes?\//i,
+    /\/api\//i,
+    /\/pages\//i,
+    /\/app\//i,                   // Next.js app directory
+    /\/commands?\//i,             // CLI commands
+    /\/handlers?\//i,             // Request handlers
+    // Python medium
+    /\/agents?\//i,               // AI agents
+    /\/views?\//i,                // Django/Flask views
+    /\/routers?\//i,              // FastAPI routers
+    /\/endpoints?\//i,
+    /\/controllers?\//i
   ],
-  // Lower priority - supporting files
+  // Lower priority - supporting files (score: 25)
   low: [
-    /models?\//i,
-    /db\//i,
-    /prisma\//i,
+    /\/db\//i,
+    /\/prisma\//i,
     /schema\./i,
-    /config\//i,
-    /utils?\//i,
-    /helpers?\//i,
-    /components?\//i,
-    /hooks?\//i,
-    /types?\//i,
-    /interfaces?\//i,
+    /\/config\//i,
+    /\/types?\//i,
+    /\/interfaces?\//i,
     // Python low priority
-    /schemas?\//i,                // Pydantic schemas
-    /migrations?\//i,
-    /tasks?\//i,                  // Celery tasks
-    /middleware\//i
+    /\/migrations?\//i,
+    /\/tasks?\//i,                // Celery tasks
+    /\/middleware\//i
   ]
 };
 
@@ -150,13 +163,20 @@ function scoreFile(path) {
     if (!/\.(json|md)$/i.test(path)) return -1;
   }
 
-  // Score by priority
-  for (const pattern of FILE_SCORES.high) {
+  // Score by priority (higher = fetched first)
+  // Critical: entry points & config
+  for (const pattern of FILE_SCORES.critical) {
     if (pattern.test(path)) return 100;
   }
+  // High: shared code (components, lib, hooks, store, utils)
+  for (const pattern of FILE_SCORES.high) {
+    if (pattern.test(path)) return 80;
+  }
+  // Medium: pages, routes, API endpoints
   for (const pattern of FILE_SCORES.medium) {
     if (pattern.test(path)) return 50;
   }
+  // Low: supporting files (types, config, migrations)
   for (const pattern of FILE_SCORES.low) {
     if (pattern.test(path)) return 25;
   }

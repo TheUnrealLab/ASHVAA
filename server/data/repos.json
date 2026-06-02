@@ -101,5 +101,36 @@
       "highCount": 1
     },
     "updatedAt": "2026-05-31T04:56:57.005Z"
+  },
+  {
+    "id": "naitikpanchal7-vastu-home",
+    "owner": "naitikpanchal7",
+    "repo": "vastu-home",
+    "repoUrl": "https://github.com/naitikpanchal7/vastu-home.git",
+    "jobId": "34e40745-90c8-4a48-a656-71e867bbcc7f",
+    "status": "complete",
+    "createdAt": "2026-05-31T05:58:41.141Z",
+    "healthScore": 25,
+    "summary": {
+      "headline": "A Next.js TypeScript application for building and managing reports with utility functions",
+      "framework": "Next.js",
+      "languages": [
+        "TypeScript",
+        "TypeScript",
+        ".md"
+      ],
+      "fileCount": 56,
+      "totalFiles": 146,
+      "nodeCount": 52,
+      "deadCodeCount": 51,
+      "securityFindingsCount": 1,
+      "criticalCount": 1,
+      "highCount": 0,
+      "estimatedTokens": 106632,
+      "tokenLimitHit": true
+    },
+    "updatedAt": "2026-06-02T04:27:13.042Z",
+    "error": null,
+    "rescannedAt": "2026-06-02T04:23:12.541Z"
   }
 ]

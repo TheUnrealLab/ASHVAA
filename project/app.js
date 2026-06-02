@@ -53,6 +53,13 @@ const api = {
     const res = await fetch(`${API_BASE}/repos/${id}`, { method: 'DELETE' });
     if (!res.ok) throw new Error('Failed to delete repo');
     return res.json();
+  },
+
+  // Rescan a repo (force re-analysis)
+  async rescanRepo(id) {
+    const res = await fetch(`${API_BASE}/repos/${id}/rescan`, { method: 'POST' });
+    if (!res.ok) throw new Error('Failed to start rescan');
+    return res.json();
   }
 };
 
@@ -72,6 +79,7 @@ const dashboard = {
       this.repos = await api.getRepos();
       this.render();
       this.updateStats();
+      this.checkPartialScans();
 
       // Start polling for any in-progress jobs
       this.repos.forEach(repo => {
@@ -151,6 +159,8 @@ const dashboard = {
     }
 
     const summary = repo.summary || {};
+    const partialScan = summary.tokenLimitHit || (summary.totalFiles && summary.fileCount < summary.totalFiles);
+
     return `
       <div class="project-card-wrapper" data-id="${repo.id}">
         <a href="report.html?id=${repo.id}" class="project-card">
@@ -164,7 +174,7 @@ const dashboard = {
             </div>
             <div class="card-stats">
               <div class="stat-mini">
-                <span class="stat-value">${summary.fileCount || 0}</span>
+                <span class="stat-value">${summary.fileCount || 0}${summary.totalFiles ? '/' + summary.totalFiles : ''}</span>
                 <span class="stat-label">Files</span>
               </div>
               <div class="stat-mini">
@@ -177,12 +187,19 @@ const dashboard = {
               </div>
             </div>
             <div class="card-badges">
+              ${partialScan ? `<span class="badge badge-info" title="Token limit reached - not all files were analyzed">Partial</span>` : ''}
               ${summary.criticalCount > 0 ? `<span class="badge badge-critical">${summary.criticalCount} Critical</span>` : ''}
               ${summary.highCount > 0 ? `<span class="badge badge-high">${summary.highCount} High</span>` : ''}
               ${summary.deadCodeCount > 0 ? `<span class="badge badge-medium">${summary.deadCodeCount} Dead</span>` : ''}
             </div>
           </div>
         </a>
+        <button class="card-rescan-btn" onclick="event.stopPropagation(); dashboard.rescanRepo('${repo.id}')" title="Rescan repo">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M23 4v6h-6M1 20v-6h6"/>
+            <path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/>
+          </svg>
+        </button>
         <button class="card-delete-btn" onclick="event.stopPropagation(); dashboard.deleteRepo('${repo.id}')" title="Delete repo">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <path d="M3 6h18M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2m3 0v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6h14z"/>
@@ -393,6 +410,23 @@ const dashboard = {
     }
   },
 
+  async rescanRepo(repoId) {
+    const repo = this.repos.find(r => r.id === repoId);
+    if (!repo) return;
+
+    try {
+      const result = await api.rescanRepo(repoId);
+      repo.jobId = result.jobId;
+      repo.status = 'queued';
+      repo.error = null;
+      this.render();
+      this.startPolling(repoId, result.jobId);
+      this.showToast('Rescan started for ' + repo.owner + '/' + repo.repo);
+    } catch (error) {
+      this.showError('Failed to rescan: ' + error.message);
+    }
+  },
+
   async deleteRepo(repoId) {
     const repo = this.repos.find(r => r.id === repoId);
     if (!repo) return;
@@ -429,9 +463,85 @@ const dashboard = {
   },
 
   showError(message) {
-    // Could implement a toast notification
     console.error(message);
-    alert(message);
+    this.showToast(message, 'error');
+  },
+
+  showToast(message, type = 'info') {
+    // Remove existing toast
+    const existing = document.querySelector('.toast');
+    if (existing) existing.remove();
+
+    const toast = document.createElement('div');
+    toast.className = `toast toast-${type}`;
+    toast.innerHTML = `
+      <span>${message}</span>
+      <button class="toast-close">&times;</button>
+    `;
+
+    document.body.appendChild(toast);
+
+    // Auto-hide after 4 seconds
+    setTimeout(() => toast.classList.add('show'), 10);
+    setTimeout(() => {
+      toast.classList.remove('show');
+      setTimeout(() => toast.remove(), 300);
+    }, 4000);
+
+    // Close button
+    toast.querySelector('.toast-close').addEventListener('click', () => {
+      toast.classList.remove('show');
+      setTimeout(() => toast.remove(), 300);
+    });
+  },
+
+  checkPartialScans() {
+    const partialRepos = this.repos.filter(r =>
+      r.status === 'complete' && r.summary?.tokenLimitHit
+    );
+
+    if (partialRepos.length > 0) {
+      this.showPartialScanBanner(partialRepos.length);
+    }
+  },
+
+  showPartialScanBanner(count) {
+    // Only show once per session
+    if (this.partialBannerShown) return;
+    this.partialBannerShown = true;
+
+    const existing = document.querySelector('.partial-scan-banner');
+    if (existing) return;
+
+    const banner = document.createElement('div');
+    banner.className = 'partial-scan-banner';
+    banner.innerHTML = `
+      <div class="banner-content">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M12 16v-4M12 8h.01"/>
+        </svg>
+        <span>
+          <strong>${count} repo${count > 1 ? 's have' : ' has'} partial analysis</strong> —
+          Token limits mean not all files were scanned. This is a work in progress.
+          <a href="#" onclick="dashboard.dismissBanner(event)">Dismiss</a>
+        </span>
+      </div>
+    `;
+
+    const main = document.querySelector('main') || document.body;
+    main.insertBefore(banner, main.firstChild);
+
+    setTimeout(() => banner.classList.add('show'), 10);
+  },
+
+  dismissBanner(e) {
+    e.preventDefault();
+    const banner = document.querySelector('.partial-scan-banner');
+    if (banner) {
+      banner.classList.remove('show');
+      setTimeout(() => banner.remove(), 300);
+    }
   }
 };
 

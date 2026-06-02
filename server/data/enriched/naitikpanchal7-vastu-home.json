@@ -1,0 +1,6263 @@
+{
+  "fingerprint": {
+    "repoId": "naitikpanchal7-vastu-home",
+    "owner": "naitikpanchal7",
+    "repo": "vastu-home",
+    "analyzedAt": "2026-06-02T04:23:19.627Z",
+    "analysisVersion": "1.0"
+  },
+  "summary": {
+    "owner": "naitikpanchal7",
+    "repo": "vastu-home",
+    "fileCount": 56,
+    "totalFiles": 146,
+    "estimatedTokens": 106632,
+    "languages": [
+      "TypeScript",
+      "TypeScript",
+      ".md"
+    ],
+    "framework": "Next.js",
+    "nodeCount": 52,
+    "edgeCount": 89,
+    "clusterCount": 5,
+    "deadCodeCount": 51,
+    "criticalPathLength": 2,
+    "securityFindingsCount": 1
+  },
+  "clusters": [
+    {
+      "id": "components",
+      "label": "Components",
+      "files": [
+        "src/components/PromoTracker.tsx",
+        "src/components/admin/AdminSidebar.tsx",
+        "src/components/canvas/BrahmasthanDot.tsx",
+        "src/components/canvas/NorthArrow.tsx",
+        "src/components/canvas/ShaktiChakra.tsx",
+        "src/components/canvas/VastuCanvas.tsx",
+        "src/components/dashboard/ActivityFeed.tsx",
+        "src/components/dashboard/AnalyticsCard.tsx",
+        "src/components/dashboard/RecentProjects.tsx",
+        "src/components/dashboard/StatsBar.tsx",
+        "src/components/layout/AppShell.tsx",
+        "src/components/layout/Sidebar.tsx",
+        "src/components/layout/Topbar.tsx",
+        "src/components/panels/AnalysisPanel.tsx",
+        "src/components/panels/ChatPanel.tsx",
+        "src/components/panels/NorthPanel.tsx",
+        "src/components/panels/RightPanel.tsx",
+        "src/components/panels/SummaryPanel.tsx",
+        "src/components/reports/ReportBuilder.tsx",
+        "src/components/reports/ReportDocument.tsx",
+        "src/components/ui/Badge.tsx",
+        "src/components/ui/Button.tsx",
+        "src/components/ui/CollapsibleCard.tsx",
+        "src/components/ui/ErrorBoundary.tsx",
+        "src/components/ui/Modal.tsx",
+        "src/components/ui/Toast.tsx"
+      ]
+    },
+    {
+      "id": "hooks",
+      "label": "Hooks",
+      "files": [
+        "src/hooks/useCanvas.ts",
+        "src/hooks/useNorth.ts",
+        "src/hooks/useProjects.ts",
+        "src/hooks/useReports.ts",
+        "src/hooks/useUser.ts"
+      ]
+    },
+    {
+      "id": "services",
+      "label": "Services",
+      "files": [
+        "src/lib/env.ts",
+        "src/lib/rateLimit.ts",
+        "src/lib/supabase/client.ts",
+        "src/lib/supabase/server.ts",
+        "src/lib/types/index.ts",
+        "src/lib/utils/index.ts",
+        "src/lib/validate.ts",
+        "src/lib/vastu/canvasSnapshot.ts",
+        "src/lib/vastu/geometry.ts",
+        "src/lib/vastu/knowledge-base.ts",
+        "src/lib/vastu/zones.ts"
+      ]
+    },
+    {
+      "id": "other",
+      "label": "Other",
+      "files": [
+        "src/store/canvasStore.ts",
+        "src/store/projectStore.ts",
+        "src/store/reportStore.ts",
+        "src/app/admin/activity/page.tsx",
+        "src/app/admin/ai-usage/page.tsx",
+        "src/app/admin/layout.tsx",
+        "src/app/admin/page.tsx",
+        "src/app/admin/settings/page.tsx",
+        "src/app/admin/tiers/page.tsx"
+      ]
+    },
+    {
+      "id": "routes",
+      "label": "Routes",
+      "files": [
+        "src/app/admin/overview/page.tsx"
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "src-components-PromoTracker-tsx",
+      "path": "src/components/PromoTracker.tsx",
+      "label": "PromoTracker.tsx",
+      "cluster": "components",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "PromoTracker",
+          "type": "default",
+          "line": 6
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "useEffect",
+              "imported": "useEffect",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        },
+        {
+          "source": "next/navigation",
+          "specifiers": [
+            {
+              "local": "useSearchParams",
+              "imported": "useSearchParams",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 4
+        }
+      ],
+      "functions": [
+        {
+          "name": "PromoTracker",
+          "line": 6,
+          "exported": false
+        }
+      ],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 0,
+      "role": "Client-side component that monitors URL search parameters for promo codes and stores them in browser localStorage for later processing.",
+      "plain": "This tracks promotional codes from website URLs - when someone visits with a special promo link like '?promo=SAVE20', it remembers that code in the browser so it can be applied later during checkout or signup.",
+      "notes": [
+        "line:11, extracts 'promo' parameter from URL search params",
+        "line:12-14, saves promo code to localStorage in uppercase format",
+        "line:17, returns null since this component only tracks data without rendering UI"
+      ]
+    },
+    {
+      "id": "src-components-admin-AdminSidebar-tsx",
+      "path": "src/components/admin/AdminSidebar.tsx",
+      "label": "AdminSidebar.tsx",
+      "cluster": "components",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "AdminSidebar",
+          "type": "default",
+          "line": 15
+        }
+      ],
+      "imports": [
+        {
+          "source": "next/navigation",
+          "specifiers": [
+            {
+              "local": "usePathname",
+              "imported": "usePathname",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useRouter",
+              "imported": "useRouter",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            {
+              "local": "cn",
+              "imported": "cn",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 4
+        }
+      ],
+      "functions": [
+        {
+          "name": "AdminSidebar",
+          "line": 15,
+          "exported": false
+        }
+      ],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 1,
+      "role": "Navigation sidebar component for admin dashboard that renders menu items with active state highlighting and routing functionality.",
+      "plain": "This is the left-side navigation menu for admin users - it shows different sections like 'Users', 'AI Usage', and 'Settings' with icons, highlights the current page, and lets admins click to navigate between admin features.",
+      "notes": [
+        "line:7-14, defines navigation menu items with labels, icons, and routes",
+        "line:37-43, renders the admin branding with logo and 'Admin' label",
+        "line:46-64, maps through nav items and highlights active page based on current URL",
+        "line:52, handles click navigation using Next.js router"
+      ]
+    },
+    {
+      "id": "src-components-canvas-BrahmasthanDot-tsx",
+      "path": "src/components/canvas/BrahmasthanDot.tsx",
+      "label": "BrahmasthanDot.tsx",
+      "cluster": "components",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "BrahmasthanDot",
+          "type": "default",
+          "line": 11
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "useRef",
+              "imported": "useRef",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "RefObject",
+              "imported": "RefObject",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        },
+        {
+          "source": "@/store/canvasStore",
+          "specifiers": [
+            {
+              "local": "useCanvasStore",
+              "imported": "useCanvasStore",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 4
+        }
+      ],
+      "functions": [
+        {
+          "name": "BrahmasthanDot",
+          "line": 11,
+          "exported": false
+        }
+      ],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 1,
+      "role": "Interactive SVG component that renders a draggable dot representing the Brahmasthan (sacred center) point on a Vastu canvas with pointer event handling.",
+      "plain": "This creates a golden dot on the design canvas that represents the spiritual center of a building in Vastu principles - users can drag it around to position it correctly when the right tool is selected.",
+      "notes": [
+        "line:13, gets brahma coordinates and current tool from canvas store",
+        "line:16-22, converts screen mouse coordinates to SVG coordinate system",
+        "line:35-42, handles pointer down event to start dragging when brahma tool is active",
+        "line:43-49, updates brahma position during drag and calls onMove callback"
+      ]
+    },
+    {
+      "id": "src-components-canvas-NorthArrow-tsx",
+      "path": "src/components/canvas/NorthArrow.tsx",
+      "label": "NorthArrow.tsx",
+      "cluster": "components",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "CompassRose",
+          "type": "default",
+          "line": 7
+        }
+      ],
+      "imports": [],
+      "functions": [
+        {
+          "name": "CompassRose",
+          "line": 7,
+          "exported": false
+        }
+      ],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 1,
+      "role": "SVG compass rose component that displays cardinal directions with north arrow indicator, rotated based on the provided north degree angle.",
+      "plain": "This shows a compass in the top-right corner of the design canvas that indicates which way is north - it rotates based on the building's orientation so users always know the correct directional alignment for Vastu principles.",
+      "notes": [
+        "line:12, rotates the entire compass based on negative north degree value",
+        "line:16, draws the prominent north-pointing arrow triangle in gold",
+        "line:17, draws the south-pointing arrow in muted colors",
+        "line:19-22, labels each cardinal direction (N, S, E, W) around the compass"
+      ]
+    },
+    {
+      "id": "src-components-canvas-ShaktiChakra-tsx",
+      "path": "src/components/canvas/ShaktiChakra.tsx",
+      "label": "ShaktiChakra.tsx",
+      "cluster": "components",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "ShaktiChakra",
+          "type": "default",
+          "line": 14
+        }
+      ],
+      "imports": [],
+      "functions": [
+        {
+          "name": "ShaktiChakra",
+          "line": 14,
+          "exported": false
+        }
+      ],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 1,
+      "role": "SVG image component that renders a rotatable Vastu chakra overlay on the canvas with configurable position, rotation, and opacity.",
+      "plain": "This displays a traditional Vastu energy diagram (like a spiritual compass) over the building design - it shows the energy zones and can be rotated to align with the building's north direction and made more or less transparent.",
+      "notes": [
+        "line:12, sets radius of 250 to match canvas coordinate space",
+        "line:22, returns null when visibility is disabled",
+        "line:26-32, renders PNG image centered at given coordinates with rotation transform",
+        "line:31, rotates chakra by negative north degrees around center point"
+      ]
+    },
+    {
+      "id": "src-components-canvas-VastuCanvas-tsx",
+      "path": "src/components/canvas/VastuCanvas.tsx",
+      "label": "VastuCanvas.tsx",
+      "cluster": "components",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "VastuCanvas",
+          "type": "default",
+          "line": 24
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "React",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            },
+            {
+              "local": "useRef",
+              "imported": "useRef",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useState",
+              "imported": "useState",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useCallback",
+              "imported": "useCallback",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useEffect",
+              "imported": "useEffect",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        },
+        {
+          "source": "@/store/canvasStore",
+          "specifiers": [
+            {
+              "local": "useCanvasStore",
+              "imported": "useCanvasStore",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 4
+        },
+        {
+          "source": "@/hooks/useCanvas",
+          "specifiers": [
+            {
+              "local": "useCanvas",
+              "imported": "useCanvas",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 5
+        },
+        {
+          "source": "./ShaktiChakra",
+          "specifiers": [
+            {
+              "local": "ShaktiChakra",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            }
+          ],
+          "line": 6
+        },
+        {
+          "source": "./BrahmasthanDot",
+          "specifiers": [
+            {
+              "local": "BrahmasthanDot",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            }
+          ],
+          "line": 7
+        },
+        {
+          "source": "./NorthArrow",
+          "specifiers": [
+            {
+              "local": "CompassRose",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            }
+          ],
+          "line": 8
+        },
+        {
+          "source": "@/lib/vastu/geometry",
+          "specifiers": [
+            {
+              "local": "Point",
+              "imported": "Point",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 9
+        },
+        {
+          "source": "@/lib/vastu/zones",
+          "specifiers": [
+            {
+              "local": "VASTU_ZONES",
+              "imported": "VASTU_ZONES",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 10
+        }
+      ],
+      "functions": [
+        {
+          "name": "VastuCanvas",
+          "line": 24,
+          "exported": false
+        }
+      ],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 0,
+      "role": "Main interactive SVG canvas component that handles drawing, pan/zoom, tool selection, coordinate conversion, and integrates various Vastu elements like compass and chakra overlays.",
+      "plain": "This is the main drawing area where users design their building layout - it supports zooming, panning, drawing walls and rooms, and shows Vastu-specific elements like the compass and energy diagrams overlaid on the floor plan.",
+      "notes": [
+        "line:35-45, converts mouse coordinates to canvas coordinates accounting for pan/zoom transforms",
+        "line:47-50, tracks mouse position and dialog states for user interactions",
+        "line:53-54, manages panning state with local UI state and store-persisted coordinates",
+        "line:24, accepts onImageFile callback for handling dropped/selected image files"
+      ]
+    },
+    {
+      "id": "src-components-dashboard-ActivityFeed-tsx",
+      "path": "src/components/dashboard/ActivityFeed.tsx",
+      "label": "ActivityFeed.tsx",
+      "cluster": "components",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "ActivityFeed",
+          "type": "default",
+          "line": 6
+        }
+      ],
+      "imports": [
+        {
+          "source": "@/store/projectStore",
+          "specifiers": [
+            {
+              "local": "useProjectStore",
+              "imported": "useProjectStore",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        },
+        {
+          "source": "@/components/ui/CollapsibleCard",
+          "specifiers": [
+            {
+              "local": "CollapsibleCard",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            }
+          ],
+          "line": 4
+        }
+      ],
+      "functions": [
+        {
+          "name": "ActivityFeed",
+          "line": 6,
+          "exported": false
+        }
+      ],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 0,
+      "role": "Dashboard widget that displays a chronologically sorted list of recent project activities with status-based styling in a collapsible card format.",
+      "plain": "This shows a timeline of recent project changes on the dashboard - it lists things like 'Project XYZ completed' or 'Project ABC created' with timestamps and colored dots to show what type of activity happened.",
+      "notes": [
+        "line:9-19, sorts projects by update date and creates activity items with status-based descriptions",
+        "line:14, formats dates in Indian locale with day, month, hour, and minute",
+        "line:15, assigns colors based on project status (green for done, blue for active, gold for created)",
+        "line:29-32, renders colored status dots next to each activity item"
+      ]
+    },
+    {
+      "id": "src-components-dashboard-AnalyticsCard-tsx",
+      "path": "src/components/dashboard/AnalyticsCard.tsx",
+      "label": "AnalyticsCard.tsx",
+      "cluster": "components",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "AnalyticsCard",
+          "type": "default",
+          "line": 8
+        }
+      ],
+      "imports": [
+        {
+          "source": "@/store/projectStore",
+          "specifiers": [
+            {
+              "local": "useProjectStore",
+              "imported": "useProjectStore",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        },
+        {
+          "source": "@/components/ui/CollapsibleCard",
+          "specifiers": [
+            {
+              "local": "CollapsibleCard",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            }
+          ],
+          "line": 4
+        }
+      ],
+      "functions": [
+        {
+          "name": "AnalyticsCard",
+          "line": 8,
+          "exported": false
+        }
+      ],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 0,
+      "role": "Dashboard analytics widget that displays project statistics including a bar chart of monthly project creation and status breakdown with counts and percentages.",
+      "plain": "This shows visual charts and statistics about projects on the dashboard - it displays a bar graph of how many projects were created each month over the last 6 months, plus counts of drafts, active, and completed projects.",
+      "notes": [
+        "line:11-18, creates monthly project buckets by filtering projects by creation date",
+        "line:20, calculates maximum count for scaling bar chart heights",
+        "line:22-25, counts projects by status (draft, active, done)",
+        "line:40-44, renders bars with heights proportional to project count per month"
+      ]
+    },
+    {
+      "id": "src-components-dashboard-RecentProjects-tsx",
+      "path": "src/components/dashboard/RecentProjects.tsx",
+      "label": "RecentProjects.tsx",
+      "cluster": "components",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "RecentProjects",
+          "type": "default",
+          "line": 12
+        }
+      ],
+      "imports": [
+        {
+          "source": "next/navigation",
+          "specifiers": [
+            {
+              "local": "useRouter",
+              "imported": "useRouter",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        },
+        {
+          "source": "@/store/projectStore",
+          "specifiers": [
+            {
+              "local": "useProjectStore",
+              "imported": "useProjectStore",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 4
+        },
+        {
+          "source": "@/components/ui/CollapsibleCard",
+          "specifiers": [
+            {
+              "local": "CollapsibleCard",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            }
+          ],
+          "line": 5
+        },
+        {
+          "source": "@/components/ui/Badge",
+          "specifiers": [
+            {
+              "local": "Badge",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            }
+          ],
+          "line": 6
+        }
+      ],
+      "functions": [
+        {
+          "name": "RecentProjects",
+          "line": 12,
+          "exported": false
+        }
+      ],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 0,
+      "role": "Dashboard grid component that displays recent projects as clickable cards with navigation to individual project pages and option to create new projects.",
+      "plain": "This shows a grid of recent project cards on the dashboard - each card displays a project name with a house icon, and users can click to open that project or click a link to create a new one if no projects exist yet.",
+      "notes": [
+        "line:13, limits display to first 6 projects from the store",
+        "line:18-24, renders 'View all' link in header that navigates to projects page",
+        "line:27-34, shows empty state with link to create new project when no projects exist",
+        "line:37-39, renders 3-column grid of project cards with hover effects"
+      ]
+    },
+    {
+      "id": "src-components-dashboard-StatsBar-tsx",
+      "path": "src/components/dashboard/StatsBar.tsx",
+      "label": "StatsBar.tsx",
+      "cluster": "components",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "StatsBar",
+          "type": "default",
+          "line": 6
+        }
+      ],
+      "imports": [
+        {
+          "source": "@/store/projectStore",
+          "specifiers": [
+            {
+              "local": "useProjectStore",
+              "imported": "useProjectStore",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        },
+        {
+          "source": "@/hooks/useReports",
+          "specifiers": [
+            {
+              "local": "useReports",
+              "imported": "useReports",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 4
+        }
+      ],
+      "functions": [
+        {
+          "name": "StatsBar",
+          "line": 6,
+          "exported": false
+        }
+      ],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 0,
+      "role": "Dashboard statistics bar component that displays key metrics including total projects, drafts, unique clients, and generated reports in a four-column grid layout.",
+      "plain": "This shows important numbers at the top of the dashboard in four boxes - total number of projects, how many are still drafts, number of different clients being served, and how many reports have been generated.",
+      "notes": [
+        "line:8-10, calculates project counts and unique client count from project data",
+        "line:12-17, defines stat objects with labels, values, and descriptive subtitles",
+        "line:20-29, renders stats in 4-column grid with gradient accent bars",
+        "line:25, displays large serif numbers with gold coloring for emphasis"
+      ]
+    },
+    {
+      "id": "src-components-layout-AppShell-tsx",
+      "path": "src/components/layout/AppShell.tsx",
+      "label": "AppShell.tsx",
+      "cluster": "components",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "AppShell",
+          "type": "default",
+          "line": 7
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "useEffect",
+              "imported": "useEffect",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Suspense",
+              "imported": "Suspense",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        },
+        {
+          "source": "./Sidebar",
+          "specifiers": [
+            {
+              "local": "Sidebar",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            }
+          ],
+          "line": 4
+        },
+        {
+          "source": "@/components/ui/Toast",
+          "specifiers": [
+            {
+              "local": "ToastProvider",
+              "imported": "ToastProvider",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 5
+        }
+      ],
+      "functions": [
+        {
+          "name": "AppShell",
+          "line": 7,
+          "exported": false
+        }
+      ],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 0,
+      "role": "Creates the main layout wrapper for authenticated app pages with sidebar navigation and toast notifications.",
+      "plain": "This is like the frame around your entire app - it sets up the basic layout with a sidebar on the left and main content area on the right, plus handles showing popup messages to users.",
+      "notes": [
+        "line:9, adds 'app-page' CSS class to body when component mounts",
+        "line:10, removes 'public-page' CSS class for authenticated pages",
+        "line:15, wraps content in ToastProvider for notification system",
+        "line:18, creates responsive layout with sidebar and main content area"
+      ]
+    },
+    {
+      "id": "src-components-layout-Sidebar-tsx",
+      "path": "src/components/layout/Sidebar.tsx",
+      "label": "Sidebar.tsx",
+      "cluster": "components",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "Sidebar",
+          "type": "default",
+          "line": 45
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "useState",
+              "imported": "useState",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        },
+        {
+          "source": "next/navigation",
+          "specifiers": [
+            {
+              "local": "usePathname",
+              "imported": "usePathname",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useRouter",
+              "imported": "useRouter",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useSearchParams",
+              "imported": "useSearchParams",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 4
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            {
+              "local": "cn",
+              "imported": "cn",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 5
+        },
+        {
+          "source": "@/hooks/useUser",
+          "specifiers": [
+            {
+              "local": "useUser",
+              "imported": "useUser",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 6
+        }
+      ],
+      "functions": [
+        {
+          "name": "UsageBar",
+          "line": 17,
+          "exported": false
+        },
+        {
+          "name": "Sidebar",
+          "line": 45,
+          "exported": false
+        }
+      ],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 1,
+      "role": "Renders the main navigation sidebar with user account info, usage metrics, and collapsible navigation menu.",
+      "plain": "This is the left sidebar you see in the app - it shows your navigation menu (Dashboard, Projects, etc.), displays how much of your plan limits you've used up, and has your account info at the bottom.",
+      "notes": [
+        "line:9, defines navigation items with icons and routes",
+        "line:17, creates usage bar component showing consumption vs limits",
+        "line:20, changes color to orange/red when near/at limit",
+        "line:45, main sidebar component with collapsible state",
+        "line:50, fetches user profile and subscription data"
+      ]
+    },
+    {
+      "id": "src-components-layout-Topbar-tsx",
+      "path": "src/components/layout/Topbar.tsx",
+      "label": "Topbar.tsx",
+      "cluster": "components",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "Topbar",
+          "type": "default",
+          "line": 11
+        }
+      ],
+      "imports": [
+        {
+          "source": "@/components/ui/Button",
+          "specifiers": [
+            {
+              "local": "Button",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            }
+          ],
+          "line": 3
+        }
+      ],
+      "functions": [
+        {
+          "name": "Topbar",
+          "line": 11,
+          "exported": false
+        }
+      ],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 0,
+      "role": "Displays the top header bar with page title, optional subtitle, and action buttons.",
+      "plain": "This is the header bar at the top of each page that shows the page title (like 'Dashboard' or 'Projects') and any action buttons like 'Save' or 'Export'.",
+      "notes": [
+        "line:11, main topbar component accepting title, subtitle, and actions",
+        "line:13, sets fixed height of 44px with border styling",
+        "line:15, displays main page title with serif font",
+        "line:18, conditionally shows subtitle with smaller text"
+      ]
+    },
+    {
+      "id": "src-components-panels-AnalysisPanel-tsx",
+      "path": "src/components/panels/AnalysisPanel.tsx",
+      "label": "AnalysisPanel.tsx",
+      "cluster": "components",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "AnalysisPanel",
+          "type": "default",
+          "line": 17
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "useMemo",
+              "imported": "useMemo",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        },
+        {
+          "source": "next/navigation",
+          "specifiers": [
+            {
+              "local": "useRouter",
+              "imported": "useRouter",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 4
+        },
+        {
+          "source": "@/store/canvasStore",
+          "specifiers": [
+            {
+              "local": "useCanvasStore",
+              "imported": "useCanvasStore",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 5
+        },
+        {
+          "source": "@/lib/vastu/zones",
+          "specifiers": [
+            {
+              "local": "VASTU_ZONES",
+              "imported": "VASTU_ZONES",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 6
+        },
+        {
+          "source": "@/lib/vastu/geometry",
+          "specifiers": [
+            {
+              "local": "calculateZoneAreas",
+              "imported": "calculateZoneAreas",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "calculateCutAnalysis",
+              "imported": "calculateCutAnalysis",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 7
+        },
+        {
+          "source": "@/components/ui/Button",
+          "specifiers": [
+            {
+              "local": "Button",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            }
+          ],
+          "line": 11
+        }
+      ],
+      "functions": [
+        {
+          "name": "AnalysisPanel",
+          "line": 17,
+          "exported": false
+        }
+      ],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 1,
+      "role": "Calculates and displays Vastu zone analysis results including area percentages and cut analysis for floor plans.",
+      "plain": "This panel shows the detailed analysis of your floor plan - it calculates how much space each Vastu zone takes up (like Northeast, Southwest etc.) and identifies any problematic cuts or extensions.",
+      "notes": [
+        "line:17, main analysis panel component with export functionality",
+        "line:27, calculates zone areas using perimeter points and Vastu geometry",
+        "line:41, creates zone analysis results with percentages and cut detection",
+        "line:47, calculates cut analysis for identified problematic areas"
+      ]
+    },
+    {
+      "id": "src-components-panels-ChatPanel-tsx",
+      "path": "src/components/panels/ChatPanel.tsx",
+      "label": "ChatPanel.tsx",
+      "cluster": "components",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "ChatPanel",
+          "type": "default",
+          "line": 19
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "useState",
+              "imported": "useState",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useRef",
+              "imported": "useRef",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useEffect",
+              "imported": "useEffect",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        },
+        {
+          "source": "@/store/canvasStore",
+          "specifiers": [
+            {
+              "local": "useCanvasStore",
+              "imported": "useCanvasStore",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 4
+        },
+        {
+          "source": "@/lib/vastu/geometry",
+          "specifiers": [
+            {
+              "local": "calculateZoneAreas",
+              "imported": "calculateZoneAreas",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 5
+        },
+        {
+          "source": "@/lib/vastu/zones",
+          "specifiers": [
+            {
+              "local": "VASTU_ZONES",
+              "imported": "VASTU_ZONES",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 6
+        },
+        {
+          "source": "@/hooks/useUser",
+          "specifiers": [
+            {
+              "local": "useUser",
+              "imported": "useUser",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 7
+        },
+        {
+          "source": "@/lib/types",
+          "specifiers": [
+            {
+              "local": "ChatMessage",
+              "imported": "ChatMessage",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 8
+        }
+      ],
+      "functions": [
+        {
+          "name": "ChatPanel",
+          "line": 19,
+          "exported": false
+        }
+      ],
+      "classes": [],
+      "apiCalls": [
+        {
+          "method": "fetch",
+          "line": 62
+        },
+        {
+          "method": "fetch",
+          "line": 121
+        },
+        {
+          "method": "fetch",
+          "line": 150
+        }
+      ],
+      "importDepth": 1,
+      "role": "Implements an AI-powered Vastu consultation chat interface with message history and quick action chips.",
+      "plain": "This is your AI Vastu advisor chat - you can ask questions about your floor plan and get personalized advice. It remembers your conversation and suggests common questions you might want to ask.",
+      "notes": [
+        "line:10, defines quick question chips for common Vastu queries",
+        "line:19, main chat panel component with message state",
+        "line:25, loads chat history from localStorage for local projects",
+        "line:31, displays initial greeting message from AI advisor"
+      ]
+    },
+    {
+      "id": "src-components-panels-NorthPanel-tsx",
+      "path": "src/components/panels/NorthPanel.tsx",
+      "label": "NorthPanel.tsx",
+      "cluster": "components",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "NorthPanel",
+          "type": "default",
+          "line": 8
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "useState",
+              "imported": "useState",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        },
+        {
+          "source": "@/hooks/useNorth",
+          "specifiers": [
+            {
+              "local": "useNorth",
+              "imported": "useNorth",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 4
+        },
+        {
+          "source": "@/components/ui/Toast",
+          "specifiers": [
+            {
+              "local": "useToast",
+              "imported": "useToast",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 5
+        },
+        {
+          "source": "@/components/ui/Button",
+          "specifiers": [
+            {
+              "local": "Button",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            }
+          ],
+          "line": 6
+        }
+      ],
+      "functions": [
+        {
+          "name": "NorthPanel",
+          "line": 8,
+          "exported": false
+        }
+      ],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 1,
+      "role": "Provides controls for setting and adjusting the true north direction with visual compass display.",
+      "plain": "This panel lets you set which direction is true north for your building - it shows a big compass and lets you type in the exact angle, which is crucial for accurate Vastu analysis.",
+      "notes": [
+        "line:8, main north panel component using north direction hook",
+        "line:12, handles manual north direction input and validation",
+        "line:22, displays large degree readout for current north setting",
+        "line:31, provides number input for precise degree adjustment"
+      ]
+    },
+    {
+      "id": "src-components-panels-RightPanel-tsx",
+      "path": "src/components/panels/RightPanel.tsx",
+      "label": "RightPanel.tsx",
+      "cluster": "components",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "RightPanel",
+          "type": "default",
+          "line": 23
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "useState",
+              "imported": "useState",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        },
+        {
+          "source": "./AnalysisPanel",
+          "specifiers": [
+            {
+              "local": "AnalysisPanel",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            }
+          ],
+          "line": 4
+        },
+        {
+          "source": "./NorthPanel",
+          "specifiers": [
+            {
+              "local": "NorthPanel",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            }
+          ],
+          "line": 5
+        },
+        {
+          "source": "./ChatPanel",
+          "specifiers": [
+            {
+              "local": "ChatPanel",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            }
+          ],
+          "line": 6
+        },
+        {
+          "source": "./SummaryPanel",
+          "specifiers": [
+            {
+              "local": "SummaryPanel",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            }
+          ],
+          "line": 7
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            {
+              "local": "cn",
+              "imported": "cn",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 8
+        }
+      ],
+      "functions": [
+        {
+          "name": "RightPanel",
+          "line": 23,
+          "exported": false
+        }
+      ],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 0,
+      "role": "Container component that manages tabbed right sidebar panels including analysis, north, chat, and summary views.",
+      "plain": "This is the right sidebar that can be collapsed or expanded, with different tabs for viewing your Vastu analysis, setting north direction, chatting with AI, or writing summary notes.",
+      "notes": [
+        "line:23, main panel component managing tab state and visibility",
+        "line:26, dynamically adjusts panel width based on selected tab",
+        "line:32, renders collapse/expand toggle button",
+        "line:44, creates tab navigation for different panel views"
+      ]
+    },
+    {
+      "id": "src-components-panels-SummaryPanel-tsx",
+      "path": "src/components/panels/SummaryPanel.tsx",
+      "label": "SummaryPanel.tsx",
+      "cluster": "components",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "SummaryPanel",
+          "type": "default",
+          "line": 5
+        }
+      ],
+      "imports": [
+        {
+          "source": "@/store/canvasStore",
+          "specifiers": [
+            {
+              "local": "useCanvasStore",
+              "imported": "useCanvasStore",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        }
+      ],
+      "functions": [
+        {
+          "name": "SummaryPanel",
+          "line": 5,
+          "exported": false
+        }
+      ],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 1,
+      "role": "Provides text areas for consultants to write custom recommendations and action items for Vastu reports.",
+      "plain": "This is where Vastu consultants can write their personal recommendations and specific action items for the property - like a notes section that goes into the final report.",
+      "notes": [
+        "line:5, accesses consultant summary and actions from canvas store",
+        "line:23, provides textarea for detailed consultant recommendations",
+        "line:44, provides textarea for specific action items",
+        "line:47, formats actions as bulleted list in reports"
+      ]
+    },
+    {
+      "id": "src-components-reports-ReportBuilder-tsx",
+      "path": "src/components/reports/ReportBuilder.tsx",
+      "label": "ReportBuilder.tsx",
+      "cluster": "components",
+      "critical": true,
+      "dead": false,
+      "exports": [
+        {
+          "name": "ReportBuilder",
+          "type": "default",
+          "line": 94
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "useState",
+              "imported": "useState",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useMemo",
+              "imported": "useMemo",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useCallback",
+              "imported": "useCallback",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useEffect",
+              "imported": "useEffect",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useRef",
+              "imported": "useRef",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 5
+        },
+        {
+          "source": "@/lib/supabase/client",
+          "specifiers": [
+            {
+              "local": "createSupabaseClient",
+              "imported": "createClient",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 6
+        },
+        {
+          "source": "@/store/canvasStore",
+          "specifiers": [
+            {
+              "local": "useCanvasStore",
+              "imported": "useCanvasStore",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 7
+        },
+        {
+          "source": "@/store/projectStore",
+          "specifiers": [
+            {
+              "local": "useProjectStore",
+              "imported": "useProjectStore",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 8
+        },
+        {
+          "source": "@/store/reportStore",
+          "specifiers": [
+            {
+              "local": "useReportStore",
+              "imported": "useReportStore",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 9
+        },
+        {
+          "source": "@/hooks/useUser",
+          "specifiers": [
+            {
+              "local": "useUser",
+              "imported": "useUser",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 10
+        },
+        {
+          "source": "@/lib/vastu/zones",
+          "specifiers": [
+            {
+              "local": "VASTU_ZONES",
+              "imported": "VASTU_ZONES",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 11
+        },
+        {
+          "source": "@/lib/vastu/geometry",
+          "specifiers": [
+            {
+              "local": "calculateZoneAreas",
+              "imported": "calculateZoneAreas",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "calculateCutAnalysis",
+              "imported": "calculateCutAnalysis",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 12
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            {
+              "local": "cn",
+              "imported": "cn",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 13
+        },
+        {
+          "source": "@/lib/types",
+          "specifiers": [
+            {
+              "local": "Report",
+              "imported": "Report",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "ReportAttachment",
+              "imported": "ReportAttachment",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "ReportFloorSelection",
+              "imported": "ReportFloorSelection",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "ReportPageType",
+              "imported": "ReportPageType",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "ReportPreset",
+              "imported": "ReportPreset",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "ReportSupplementaryPosition",
+              "imported": "ReportSupplementaryPosition",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Floor",
+              "imported": "Floor",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 14
+        },
+        {
+          "source": "@/lib/types",
+          "specifiers": [
+            {
+              "local": "REPORT_PAGE_META",
+              "imported": "REPORT_PAGE_META",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "REPORT_PRESET_PAGES",
+              "imported": "REPORT_PRESET_PAGES",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 23
+        },
+        {
+          "source": "./ReportDocument",
+          "specifiers": [
+            {
+              "local": "FloorPDFData",
+              "imported": "FloorPDFData",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "ReportDocumentData",
+              "imported": "ReportDocumentData",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 27
+        },
+        {
+          "source": "./ReportDocument",
+          "specifiers": [
+            {
+              "local": "blobUrlToBase64",
+              "imported": "blobUrlToBase64",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "generateAndDownloadPDF",
+              "imported": "generateAndDownloadPDF",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "generatePDFDataUrl",
+              "imported": "generatePDFDataUrl",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 28
+        },
+        {
+          "source": "@/lib/vastu/canvasSnapshot",
+          "specifiers": [
+            {
+              "local": "generateAllSnapshots",
+              "imported": "generateAllSnapshots",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 29
+        },
+        {
+          "source": "@/lib/vastu/canvasSnapshot",
+          "specifiers": [
+            {
+              "local": "FloorSnapshots",
+              "imported": "FloorSnapshots",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 30
+        }
+      ],
+      "functions": [
+        {
+          "name": "buildZoneRows",
+          "line": 36,
+          "exported": false
+        },
+        {
+          "name": "makeDefaultSelection",
+          "line": 58,
+          "exported": false
+        },
+        {
+          "name": "readFileAsDataUrl",
+          "line": 72,
+          "exported": false
+        },
+        {
+          "name": "isSummaryPage",
+          "line": 81,
+          "exported": false
+        },
+        {
+          "name": "ReportBuilder",
+          "line": 94,
+          "exported": false
+        },
+        {
+          "name": "FloorConfigurator",
+          "line": 1009,
+          "exported": false
+        },
+        {
+          "name": "PagePreviewCard",
+          "line": 1132,
+          "exported": false
+        },
+        {
+          "name": "MiniZonePreview",
+          "line": 1166,
+          "exported": false
+        },
+        {
+          "name": "MiniBarPreview",
+          "line": 1187,
+          "exported": false
+        },
+        {
+          "name": "VisualPageGrid",
+          "line": 1235,
+          "exported": false
+        },
+        {
+          "name": "PageThumbnailShell",
+          "line": 1316,
+          "exported": false
+        },
+        {
+          "name": "CoverPageContent",
+          "line": 1359,
+          "exported": false
+        },
+        {
+          "name": "TOCPageContent",
+          "line": 1391,
+          "exported": false
+        },
+        {
+          "name": "FloorPageContent",
+          "line": 1424,
+          "exported": false
+        },
+        {
+          "name": "PlanPageContent",
+          "line": 1441,
+          "exported": false
+        },
+        {
+          "name": "ZoneTableContent",
+          "line": 1468,
+          "exported": false
+        },
+        {
+          "name": "BarGraphContent",
+          "line": 1506,
+          "exported": false
+        },
+        {
+          "name": "CutAnalysisContent",
+          "line": 1542,
+          "exported": false
+        },
+        {
+          "name": "SummaryContent",
+          "line": 1627,
+          "exported": false
+        },
+        {
+          "name": "AttachmentPageContent",
+          "line": 1697,
+          "exported": false
+        }
+      ],
+      "classes": [],
+      "apiCalls": [
+        {
+          "method": "fetch",
+          "line": 352
+        },
+        {
+          "method": "fetch",
+          "line": 592
+        }
+      ],
+      "importDepth": 0,
+      "role": "Full-featured report generation interface with page configuration, preview, and PDF export capabilities.",
+      "plain": "This is the complete report builder where you design and generate professional Vastu reports - you can choose which pages to include, preview them, and export as PDF.",
+      "notes": [
+        "line:36, calculates Vastu zone analysis for floor plans",
+        "line:58, creates default page selection based on floor plan features",
+        "line:32, defines page grouping order for report organization",
+        "line:15, imports PDF generation and snapshot utilities"
+      ]
+    },
+    {
+      "id": "src-components-reports-ReportDocument-tsx",
+      "path": "src/components/reports/ReportDocument.tsx",
+      "label": "ReportDocument.tsx",
+      "cluster": "components",
+      "critical": false,
+      "dead": true,
+      "exports": [
+        {
+          "name": "VastuReportDocument",
+          "type": "function",
+          "line": 1186
+        },
+        {
+          "name": "blobUrlToBase64",
+          "type": "function",
+          "line": 1269
+        },
+        {
+          "name": "generateAndDownloadPDF",
+          "type": "function",
+          "line": 1286
+        },
+        {
+          "name": "generatePDFDataUrl",
+          "type": "function",
+          "line": 1303
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "React",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            },
+            {
+              "local": "createContext",
+              "imported": "createContext",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useContext",
+              "imported": "useContext",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 5
+        },
+        {
+          "source": "@react-pdf/renderer",
+          "specifiers": [
+            {
+              "local": "Document",
+              "imported": "Document",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Page",
+              "imported": "Page",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "View",
+              "imported": "View",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Text",
+              "imported": "Text",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Image",
+              "imported": "Image",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "StyleSheet",
+              "imported": "StyleSheet",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Svg",
+              "imported": "Svg",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Rect",
+              "imported": "Rect",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Line",
+              "imported": "Line",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "G",
+              "imported": "G",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 6
+        },
+        {
+          "source": "@/lib/types",
+          "specifiers": [
+            {
+              "local": "ReportPageType",
+              "imported": "ReportPageType",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "ReportAttachment",
+              "imported": "ReportAttachment",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 18
+        },
+        {
+          "source": "@/lib/types",
+          "specifiers": [
+            {
+              "local": "REPORT_PAGE_META",
+              "imported": "REPORT_PAGE_META",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 19
+        },
+        {
+          "source": "@/lib/vastu/geometry",
+          "specifiers": [
+            {
+              "local": "ZoneAreaResult",
+              "imported": "ZoneAreaResult",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "CutAnalysisResult",
+              "imported": "CutAnalysisResult",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 20
+        },
+        {
+          "source": "@/lib/vastu/zones",
+          "specifiers": [
+            {
+              "local": "VastuZone",
+              "imported": "VastuZone",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 21
+        }
+      ],
+      "functions": [
+        {
+          "name": "buildPageEntries",
+          "line": 137,
+          "exported": false
+        },
+        {
+          "name": "totalPages",
+          "line": 171,
+          "exported": false
+        },
+        {
+          "name": "getSnapshotForPageType",
+          "line": 176,
+          "exported": false
+        },
+        {
+          "name": "PageFooter",
+          "line": 200,
+          "exported": false
+        },
+        {
+          "name": "formatFileSize",
+          "line": 211,
+          "exported": false
+        },
+        {
+          "name": "isImageAttachment",
+          "line": 218,
+          "exported": false
+        },
+        {
+          "name": "isTextAttachment",
+          "line": 222,
+          "exported": false
+        },
+        {
+          "name": "extractTextPreview",
+          "line": 230,
+          "exported": false
+        },
+        {
+          "name": "FloorPageHeader",
+          "line": 243,
+          "exported": false
+        },
+        {
+          "name": "SupplementaryInsertPage",
+          "line": 265,
+          "exported": false
+        },
+        {
+          "name": "CoverPage",
+          "line": 332,
+          "exported": false
+        },
+        {
+          "name": "TableOfContentsPage",
+          "line": 416,
+          "exported": false
+        },
+        {
+          "name": "FloorImagePage",
+          "line": 466,
+          "exported": false
+        },
+        {
+          "name": "ZoneAnalysisPage",
+          "line": 522,
+          "exported": false
+        },
+        {
+          "name": "BarGraph16Page",
+          "line": 594,
+          "exported": false
+        },
+        {
+          "name": "EightZonePage",
+          "line": 708,
+          "exported": false
+        },
+        {
+          "name": "BarGraph8Page",
+          "line": 770,
+          "exported": false
+        },
+        {
+          "name": "CutAnalysisPage",
+          "line": 876,
+          "exported": false
+        },
+        {
+          "name": "PanchabhutaPage",
+          "line": 1005,
+          "exported": false
+        },
+        {
+          "name": "AISummaryPage",
+          "line": 1074,
+          "exported": false
+        },
+        {
+          "name": "ConsultantSummaryPage",
+          "line": 1122,
+          "exported": false
+        },
+        {
+          "name": "VastuReportDocument",
+          "line": 1186,
+          "exported": true
+        },
+        {
+          "name": "blobUrlToBase64",
+          "line": 1269,
+          "exported": true
+        },
+        {
+          "name": "generateAndDownloadPDF",
+          "line": 1286,
+          "exported": true
+        },
+        {
+          "name": "generatePDFDataUrl",
+          "line": 1303,
+          "exported": true
+        }
+      ],
+      "classes": [],
+      "apiCalls": [
+        {
+          "method": "fetch",
+          "line": 1272
+        }
+      ],
+      "importDepth": 1,
+      "role": "React-PDF document component that generates formatted PDF reports with charts, floor plans, and analysis data.",
+      "plain": "This creates the actual PDF report document with proper formatting, charts, and floor plan images - it's like a template that converts your Vastu analysis into a professional-looking report.",
+      "notes": [
+        "line:137, builds page entries for report structure",
+        "line:171, calculates total page count for pagination",
+        "line:25, defines color palette for print-friendly reports",
+        "line:42, creates styling for various report elements"
+      ]
+    },
+    {
+      "id": "src-components-ui-Badge-tsx",
+      "path": "src/components/ui/Badge.tsx",
+      "label": "Badge.tsx",
+      "cluster": "components",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "Badge",
+          "type": "default",
+          "line": 21
+        }
+      ],
+      "imports": [
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            {
+              "local": "cn",
+              "imported": "cn",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 1
+        },
+        {
+          "source": "@/lib/types",
+          "specifiers": [
+            {
+              "local": "ProjectStatus",
+              "imported": "ProjectStatus",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 2
+        }
+      ],
+      "functions": [
+        {
+          "name": "Badge",
+          "line": 21,
+          "exported": false
+        }
+      ],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 1,
+      "role": "Renders a colored status badge component with predefined styling for project states (draft, active, done).",
+      "plain": "Creates small colored tags that show the status of a project - like 'Draft', 'In Analysis', or 'Complete' - with different colors for each status.",
+      "notes": [
+        "line:10, defines color schemes for draft (yellow), active (blue), and done (green) statuses",
+        "line:15, maps status values to user-friendly labels",
+        "line:21, renders a small rounded badge with status-specific styling and text",
+        "line:25, applies base styling for small uppercase text with padding and rounded corners"
+      ]
+    },
+    {
+      "id": "src-components-ui-Button-tsx",
+      "path": "src/components/ui/Button.tsx",
+      "label": "Button.tsx",
+      "cluster": "components",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "default",
+          "type": "default",
+          "line": 36
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "ButtonHTMLAttributes",
+              "imported": "ButtonHTMLAttributes",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "forwardRef",
+              "imported": "forwardRef",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            {
+              "local": "cn",
+              "imported": "cn",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 4
+        }
+      ],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 3,
+      "role": "Provides a reusable button component with configurable variants (primary, ghost, danger) and sizes (sm, md).",
+      "plain": "Creates clickable buttons with different styles - a main golden button for important actions, subtle ghost buttons for secondary actions, and red danger buttons for destructive actions.",
+      "notes": [
+        "line:11, uses React forwardRef to allow parent components to access the button element",
+        "line:21, applies small size styling with 11px text and compact padding",
+        "line:22, applies medium size styling with 12px text and larger padding",
+        "line:23, creates primary golden button with hover effects",
+        "line:25, creates ghost button with transparent background and border styling"
+      ]
+    },
+    {
+      "id": "src-components-ui-CollapsibleCard-tsx",
+      "path": "src/components/ui/CollapsibleCard.tsx",
+      "label": "CollapsibleCard.tsx",
+      "cluster": "components",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "CollapsibleCard",
+          "type": "default",
+          "line": 14
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "useState",
+              "imported": "useState",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            {
+              "local": "cn",
+              "imported": "cn",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 4
+        }
+      ],
+      "functions": [
+        {
+          "name": "CollapsibleCard",
+          "line": 14,
+          "exported": false
+        }
+      ],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 3,
+      "role": "Creates an expandable/collapsible card container with a clickable header and optional right-side content.",
+      "plain": "Makes sections that can be opened or closed by clicking on them - like accordion panels that expand to show content when clicked and collapse to save space.",
+      "notes": [
+        "line:21, manages open/closed state using React useState hook",
+        "line:31, makes the entire header clickable to toggle open/closed state",
+        "line:33, conditionally shows bottom border only when card is expanded",
+        "line:40, prevents click events on right-side content from toggling the card",
+        "line:49, only renders card content when open state is true"
+      ]
+    },
+    {
+      "id": "src-components-ui-ErrorBoundary-tsx",
+      "path": "src/components/ui/ErrorBoundary.tsx",
+      "label": "ErrorBoundary.tsx",
+      "cluster": "components",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "ErrorBoundary",
+          "type": "default",
+          "line": 15
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "Component",
+              "imported": "Component",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "ReactNode",
+              "imported": "ReactNode",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        }
+      ],
+      "functions": [],
+      "classes": [
+        {
+          "name": "ErrorBoundary",
+          "line": 15,
+          "exported": false
+        }
+      ],
+      "apiCalls": [],
+      "importDepth": 0,
+      "role": "Implements a React error boundary class component that catches JavaScript errors in child components and displays a fallback UI.",
+      "plain": "Acts like a safety net that catches errors in the app and shows a friendly error message instead of breaking the entire page.",
+      "notes": [
+        "line:18, uses React's getDerivedStateFromError to capture errors and update component state",
+        "line:26, checks if an error occurred and displays children normally if no error",
+        "line:28, shows custom fallback UI if provided, otherwise shows default error message",
+        "line:37, displays a 'Try again' button that resets the error state when clicked"
+      ]
+    },
+    {
+      "id": "src-components-ui-Modal-tsx",
+      "path": "src/components/ui/Modal.tsx",
+      "label": "Modal.tsx",
+      "cluster": "components",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "Modal",
+          "type": "default",
+          "line": 16
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "useEffect",
+              "imported": "useEffect",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useRef",
+              "imported": "useRef",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            {
+              "local": "cn",
+              "imported": "cn",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 4
+        }
+      ],
+      "functions": [
+        {
+          "name": "Modal",
+          "line": 16,
+          "exported": false
+        }
+      ],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 0,
+      "role": "Renders a modal dialog overlay with backdrop blur, escape key handling, and configurable width options.",
+      "plain": "Creates popup windows that appear on top of the main content - like dialog boxes for forms or confirmations that block interaction with the background.",
+      "notes": [
+        "line:19, adds keyboard listener for Escape key to close modal when pressed",
+        "line:24, returns null to hide modal when open prop is false",
+        "line:29, handles backdrop clicks to close modal when clicking outside the dialog",
+        "line:32, applies conditional width styling based on wide prop (490px vs 420px)",
+        "line:40, renders optional footer content with right-aligned button styling"
+      ]
+    },
+    {
+      "id": "src-components-ui-Toast-tsx",
+      "path": "src/components/ui/Toast.tsx",
+      "label": "Toast.tsx",
+      "cluster": "components",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "ToastProvider",
+          "type": "function",
+          "line": 16
+        },
+        {
+          "name": "useToast",
+          "type": "function",
+          "line": 45
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "createContext",
+              "imported": "createContext",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useContext",
+              "imported": "useContext",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useState",
+              "imported": "useState",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useCallback",
+              "imported": "useCallback",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useEffect",
+              "imported": "useEffect",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useRef",
+              "imported": "useRef",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        }
+      ],
+      "functions": [
+        {
+          "name": "ToastProvider",
+          "line": 16,
+          "exported": true
+        },
+        {
+          "name": "useToast",
+          "line": 45,
+          "exported": true
+        }
+      ],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 2,
+      "role": "Implements a toast notification system with a React context provider and hook for displaying temporary messages.",
+      "plain": "Shows small temporary messages that pop up at the bottom of the screen to notify users about actions - like 'Saved successfully' messages that automatically disappear.",
+      "notes": [
+        "line:21, creates showToast function that adds new toast messages to the display queue",
+        "line:24, automatically removes toast messages after 2800 milliseconds (2.8 seconds)",
+        "line:30, renders toast container fixed at bottom center of screen with high z-index",
+        "line:33, maps through active toasts and renders each with fade-up animation",
+        "line:45, provides useToast hook for components to access the showToast function"
+      ]
+    },
+    {
+      "id": "src-hooks-useCanvas-ts",
+      "path": "src/hooks/useCanvas.ts",
+      "label": "useCanvas.ts",
+      "cluster": "hooks",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "useCanvas",
+          "type": "function",
+          "line": 10
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "React",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            },
+            {
+              "local": "useCallback",
+              "imported": "useCallback",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useRef",
+              "imported": "useRef",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        },
+        {
+          "source": "@/store/canvasStore",
+          "specifiers": [
+            {
+              "local": "useCanvasStore",
+              "imported": "useCanvasStore",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 4
+        },
+        {
+          "source": "@/lib/vastu/geometry",
+          "specifiers": [
+            {
+              "local": "Point",
+              "imported": "Point",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 5
+        },
+        {
+          "source": "@/lib/vastu/geometry",
+          "specifiers": [
+            {
+              "local": "calculateZoneAreas",
+              "imported": "calculateZoneAreas",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 6
+        },
+        {
+          "source": "@/lib/vastu/zones",
+          "specifiers": [
+            {
+              "local": "VASTU_ZONES",
+              "imported": "VASTU_ZONES",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 7
+        },
+        {
+          "source": "@/lib/types",
+          "specifiers": [
+            {
+              "local": "ZoneAnalysis",
+              "imported": "ZoneAnalysis",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 8
+        }
+      ],
+      "functions": [
+        {
+          "name": "useCanvas",
+          "line": 10,
+          "exported": true
+        }
+      ],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 1,
+      "role": "Custom hook that manages canvas interactions, coordinate transformations, and Vastu zone calculations for the drawing interface.",
+      "plain": "Handles all the drawing canvas functionality - converting mouse clicks to drawing coordinates, calculating building zones for Vastu analysis, and managing user interactions with the floor plan.",
+      "notes": [
+        "line:17, converts mouse events to accurate SVG coordinates using getScreenCTM for proper zoom/pan handling",
+        "line:30, provides fallback coordinate calculation for environments without getScreenCTM support",
+        "line:34, recalculates Vastu zones whenever perimeter points or other parameters change",
+        "line:41, maps zone calculation results to analysis objects with percentages and recommendations"
+      ]
+    },
+    {
+      "id": "src-hooks-useNorth-ts",
+      "path": "src/hooks/useNorth.ts",
+      "label": "useNorth.ts",
+      "cluster": "hooks",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "useNorth",
+          "type": "function",
+          "line": 6
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "useCallback",
+              "imported": "useCallback",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        },
+        {
+          "source": "@/store/canvasStore",
+          "specifiers": [
+            {
+              "local": "useCanvasStore",
+              "imported": "useCanvasStore",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 4
+        }
+      ],
+      "functions": [
+        {
+          "name": "useNorth",
+          "line": 6,
+          "exported": true
+        }
+      ],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 1,
+      "role": "Custom hook that provides an interface for managing north direction settings in the Vastu analysis system.",
+      "plain": "Manages which direction is north on the floor plan - important for Vastu analysis since recommendations depend on knowing the correct orientation of the building.",
+      "notes": [
+        "line:6, extracts north-related state and functions from the canvas store",
+        "line:9, creates applyManual function to set north direction manually with user input",
+        "line:15, returns all north-related state and functions for components to use",
+        "line:10, uses useCallback to optimize performance by memoizing the manual north setter"
+      ]
+    },
+    {
+      "id": "src-hooks-useProjects-ts",
+      "path": "src/hooks/useProjects.ts",
+      "label": "useProjects.ts",
+      "cluster": "hooks",
+      "critical": false,
+      "dead": true,
+      "exports": [
+        {
+          "name": "useProjects",
+          "type": "function",
+          "line": 35
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "useCallback",
+              "imported": "useCallback",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useEffect",
+              "imported": "useEffect",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useRef",
+              "imported": "useRef",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        },
+        {
+          "source": "@/store/projectStore",
+          "specifiers": [
+            {
+              "local": "useProjectStore",
+              "imported": "useProjectStore",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 4
+        },
+        {
+          "source": "@/store/canvasStore",
+          "specifiers": [
+            {
+              "local": "useCanvasStore",
+              "imported": "useCanvasStore",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 5
+        },
+        {
+          "source": "@/lib/types",
+          "specifiers": [
+            {
+              "local": "Project",
+              "imported": "Project",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "ProjectStatus",
+              "imported": "ProjectStatus",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "PropertyType",
+              "imported": "PropertyType",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Floor",
+              "imported": "Floor",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 6
+        }
+      ],
+      "functions": [
+        {
+          "name": "dbRowToProject",
+          "line": 9,
+          "exported": false
+        },
+        {
+          "name": "useProjects",
+          "line": 35,
+          "exported": true
+        }
+      ],
+      "classes": [],
+      "apiCalls": [
+        {
+          "method": "fetch",
+          "line": 45
+        },
+        {
+          "method": "fetch",
+          "line": 67
+        },
+        {
+          "method": "fetch",
+          "line": 121
+        },
+        {
+          "method": "fetch",
+          "line": 135
+        }
+      ],
+      "importDepth": 0,
+      "role": "Custom hook for loading and managing project data from the database, including conversion from database format to TypeScript types.",
+      "plain": "Handles loading and managing all project information from the database - like project names, client details, floor plans, and status updates.",
+      "notes": [
+        "line:9, converts database snake_case column names to TypeScript camelCase properties",
+        "line:20, maps floors array from database format to application format",
+        "line:35, loads projects from database API on component mount with loading state management",
+        "line:41, transforms raw database response data using dbRowToProject mapper function"
+      ]
+    },
+    {
+      "id": "src-hooks-useReports-ts",
+      "path": "src/hooks/useReports.ts",
+      "label": "useReports.ts",
+      "cluster": "hooks",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "useReports",
+          "type": "function",
+          "line": 5
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "useEffect",
+              "imported": "useEffect",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useRef",
+              "imported": "useRef",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useState",
+              "imported": "useState",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        }
+      ],
+      "functions": [
+        {
+          "name": "useReports",
+          "line": 5,
+          "exported": true
+        }
+      ],
+      "classes": [],
+      "apiCalls": [
+        {
+          "method": "fetch",
+          "line": 14
+        }
+      ],
+      "importDepth": 1,
+      "role": "Custom hook that fetches and manages the count of generated reports from the API with loading state.",
+      "plain": "Counts how many reports have been generated and shows that number in the interface - helps track usage and provides analytics about report generation.",
+      "notes": [
+        "line:5, manages report count state and loading status with useState hooks",
+        "line:11, fetches report data from API endpoint on component mount",
+        "line:15, handles unauthenticated users by returning null for 401 status responses",
+        "line:18, extracts report count from API response and updates local state"
+      ]
+    },
+    {
+      "id": "src-hooks-useUser-ts",
+      "path": "src/hooks/useUser.ts",
+      "label": "useUser.ts",
+      "cluster": "hooks",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "useUser",
+          "type": "function",
+          "line": 55
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "useEffect",
+              "imported": "useEffect",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useState",
+              "imported": "useState",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        },
+        {
+          "source": "@/lib/supabase/client",
+          "specifiers": [
+            {
+              "local": "createClient",
+              "imported": "createClient",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 4
+        },
+        {
+          "source": "@supabase/supabase-js",
+          "specifiers": [
+            {
+              "local": "User",
+              "imported": "User",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 5
+        }
+      ],
+      "functions": [
+        {
+          "name": "useUser",
+          "line": 55,
+          "exported": true
+        },
+        {
+          "name": "load",
+          "line": 64,
+          "exported": false
+        }
+      ],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 3,
+      "role": "Custom React hook that manages user authentication state, profile data, subscription info, and plan features by connecting to Supabase and providing loading states.",
+      "plain": "This is like a smart assistant that keeps track of who's logged in, what their account details are, and what features they're allowed to use. It automatically updates when users sign in or out.",
+      "notes": [
+        "line:55, exports the main useUser hook that returns user state and loading status",
+        "line:64, internal load function fetches user data from Supabase with retry logic for lock errors",
+        "line:42-53, defines default plan features including AI chat limits and storage quotas",
+        "line:70-76, implements retry mechanism with 300ms delay for database lock errors"
+      ]
+    },
+    {
+      "id": "src-lib-env-ts",
+      "path": "src/lib/env.ts",
+      "label": "env.ts",
+      "cluster": "services",
+      "critical": false,
+      "dead": true,
+      "exports": [
+        {
+          "name": "validateEnv",
+          "type": "function",
+          "line": 10
+        }
+      ],
+      "imports": [],
+      "functions": [
+        {
+          "name": "validateEnv",
+          "line": 10,
+          "exported": true
+        }
+      ],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 0,
+      "role": "Environment variable validation utility that checks for required server configuration keys at startup and throws descriptive errors if any are missing.",
+      "plain": "This file acts like a checklist that makes sure all the important configuration settings are in place when the app starts up, preventing confusing errors later.",
+      "notes": [
+        "line:4-8, defines required environment variables including Anthropic API key and Supabase credentials",
+        "line:10, validates all required environment variables are present",
+        "line:12-16, throws helpful error message with missing variables and setup instructions",
+        "line:1-2, comments indicate this runs once at server startup to catch configuration issues early"
+      ]
+    },
+    {
+      "id": "src-lib-rateLimit-ts",
+      "path": "src/lib/rateLimit.ts",
+      "label": "rateLimit.ts",
+      "cluster": "services",
+      "critical": false,
+      "dead": true,
+      "exports": [
+        {
+          "name": "rateLimit",
+          "type": "function",
+          "line": 13
+        },
+        {
+          "name": "rateLimitResponse",
+          "type": "function",
+          "line": 22
+        }
+      ],
+      "imports": [],
+      "functions": [
+        {
+          "name": "rateLimit",
+          "line": 13,
+          "exported": true
+        },
+        {
+          "name": "rateLimitResponse",
+          "line": 22,
+          "exported": true
+        }
+      ],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 0,
+      "role": "In-memory sliding window rate limiter that prevents API abuse by tracking request timestamps per key and blocking requests that exceed configured limits.",
+      "plain": "This is like a bouncer that keeps track of how often someone is making requests and blocks them if they're being too aggressive, protecting the app from being overwhelmed.",
+      "notes": [
+        "line:13, main rateLimit function takes a unique key, limit count, and time window",
+        "line:16-17, filters old timestamps outside the time window and checks if limit is exceeded",
+        "line:18-20, records new request timestamp and updates the tracking store",
+        "line:22-26, helper function returns standardized 429 rate limit response"
+      ]
+    },
+    {
+      "id": "src-lib-supabase-client-ts",
+      "path": "src/lib/supabase/client.ts",
+      "label": "client.ts",
+      "cluster": "services",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "createClient",
+          "type": "function",
+          "line": 7
+        }
+      ],
+      "imports": [
+        {
+          "source": "@supabase/ssr",
+          "specifiers": [
+            {
+              "local": "createBrowserClient",
+              "imported": "createBrowserClient",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 2
+        },
+        {
+          "source": "@/lib/types",
+          "specifiers": [
+            {
+              "local": "Database",
+              "imported": "Database",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        }
+      ],
+      "functions": [
+        {
+          "name": "createClient",
+          "line": 7,
+          "exported": true
+        }
+      ],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 2,
+      "role": "Singleton factory that creates and manages a browser-side Supabase client with authentication event handling and automatic cleanup for sign-out events.",
+      "plain": "This creates a connection to the database that works in web browsers, and makes sure users get properly signed out when their login expires to avoid confusion.",
+      "notes": [
+        "line:7, createClient function implements singleton pattern to reuse the same client instance",
+        "line:10-13, initializes Supabase browser client with environment variables",
+        "line:16-20, sets up auth state listener to handle automatic sign-out on token expiration",
+        "line:5, uses module-level variable to cache the client instance across calls"
+      ]
+    },
+    {
+      "id": "src-lib-supabase-server-ts",
+      "path": "src/lib/supabase/server.ts",
+      "label": "server.ts",
+      "cluster": "services",
+      "critical": false,
+      "dead": true,
+      "exports": [
+        {
+          "name": "createClient",
+          "type": "function",
+          "line": 7
+        },
+        {
+          "name": "createAdminClient",
+          "type": "function",
+          "line": 27
+        }
+      ],
+      "imports": [
+        {
+          "source": "@supabase/ssr",
+          "specifiers": [
+            {
+              "local": "createServerClient",
+              "imported": "createServerClient",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 2
+        },
+        {
+          "source": "@supabase/supabase-js",
+          "specifiers": [
+            {
+              "local": "createSupabaseClient",
+              "imported": "createClient",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        },
+        {
+          "source": "next/headers",
+          "specifiers": [
+            {
+              "local": "cookies",
+              "imported": "cookies",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 4
+        },
+        {
+          "source": "@/lib/types",
+          "specifiers": [
+            {
+              "local": "Database",
+              "imported": "Database",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 5
+        }
+      ],
+      "functions": [
+        {
+          "name": "createClient",
+          "line": 7,
+          "exported": true
+        },
+        {
+          "name": "createAdminClient",
+          "line": 27,
+          "exported": true
+        }
+      ],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 1,
+      "role": "Server-side Supabase client factory that handles cookie-based authentication for SSR and provides admin client with elevated privileges using service role key.",
+      "plain": "This creates database connections that work on the server side, handling user login cookies and providing admin access for special operations that regular users can't do.",
+      "notes": [
+        "line:7, createClient function creates server client with cookie-based session management",
+        "line:13-19, configures cookie handling for server-side authentication with Next.js cookies",
+        "line:27, createAdminClient provides elevated access using service role key",
+        "line:31, admin client disables auto-refresh and session persistence for security"
+      ]
+    },
+    {
+      "id": "src-lib-types-index-ts",
+      "path": "src/lib/types/index.ts",
+      "label": "index.ts",
+      "cluster": "services",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "REPORT_PAGE_META",
+          "type": "variable",
+          "line": 221
+        },
+        {
+          "name": "REPORT_PRESET_PAGES",
+          "type": "variable",
+          "line": 247
+        }
+      ],
+      "imports": [
+        {
+          "source": "@/lib/vastu/geometry",
+          "specifiers": [
+            {
+              "local": "Point",
+              "imported": "Point",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        }
+      ],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 12,
+      "role": "Central type definitions file that exports TypeScript interfaces for projects, floors, canvas state, and other core data structures used throughout the application.",
+      "plain": "This is like a dictionary that defines what information each piece of data should contain - like what details a project has, what a floor plan looks like, etc.",
+      "notes": [
+        "line:11, Project interface defines the main project structure with client info and status",
+        "line:23-24, supports both multi-floor projects (floors array) and legacy single-floor (canvasState)",
+        "line:38, Floor interface represents individual floors with canvas state and metadata",
+        "line:6-8, defines enums for project status, property types, and area units"
+      ]
+    },
+    {
+      "id": "src-lib-utils-index-ts",
+      "path": "src/lib/utils/index.ts",
+      "label": "index.ts",
+      "cluster": "services",
+      "critical": true,
+      "dead": true,
+      "exports": [
+        {
+          "name": "cn",
+          "type": "function",
+          "line": 5
+        },
+        {
+          "name": "formatArea",
+          "type": "function",
+          "line": 10
+        },
+        {
+          "name": "formatPct",
+          "type": "function",
+          "line": 17
+        },
+        {
+          "name": "formatDate",
+          "type": "function",
+          "line": 22
+        },
+        {
+          "name": "formatRelative",
+          "type": "function",
+          "line": 29
+        },
+        {
+          "name": "hexToRgba",
+          "type": "function",
+          "line": 42
+        },
+        {
+          "name": "toSVGRad",
+          "type": "function",
+          "line": 50
+        },
+        {
+          "name": "clamp",
+          "type": "function",
+          "line": 55
+        },
+        {
+          "name": "generateId",
+          "type": "function",
+          "line": 60
+        },
+        {
+          "name": "STATUS_CONFIG",
+          "type": "variable",
+          "line": 65
+        },
+        {
+          "name": "getGreeting",
+          "type": "function",
+          "line": 72
+        },
+        {
+          "name": "SEVERITY_COLORS",
+          "type": "variable",
+          "line": 80
+        }
+      ],
+      "imports": [
+        {
+          "source": "clsx",
+          "specifiers": [
+            {
+              "local": "clsx",
+              "imported": "clsx",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "ClassValue",
+              "imported": "ClassValue",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 2
+        },
+        {
+          "source": "tailwind-merge",
+          "specifiers": [
+            {
+              "local": "twMerge",
+              "imported": "twMerge",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        }
+      ],
+      "functions": [
+        {
+          "name": "cn",
+          "line": 5,
+          "exported": true
+        },
+        {
+          "name": "formatArea",
+          "line": 10,
+          "exported": true
+        },
+        {
+          "name": "formatPct",
+          "line": 17,
+          "exported": true
+        },
+        {
+          "name": "formatDate",
+          "line": 22,
+          "exported": true
+        },
+        {
+          "name": "formatRelative",
+          "line": 29,
+          "exported": true
+        },
+        {
+          "name": "hexToRgba",
+          "line": 42,
+          "exported": true
+        },
+        {
+          "name": "toSVGRad",
+          "line": 50,
+          "exported": true
+        },
+        {
+          "name": "clamp",
+          "line": 55,
+          "exported": true
+        },
+        {
+          "name": "generateId",
+          "line": 60,
+          "exported": true
+        },
+        {
+          "name": "getGreeting",
+          "line": 72,
+          "exported": true
+        }
+      ],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 11,
+      "role": "Utility functions library providing common helpers for styling (cn), formatting (area, dates, percentages), color conversion, geometry calculations, and UI constants.",
+      "plain": "This is a toolbox of handy helper functions that other parts of the app use for common tasks like formatting numbers, converting colors, and styling components.",
+      "notes": [
+        "line:5, cn function merges CSS classes using clsx and tailwind-merge for styling",
+        "line:10, formatArea converts and formats area measurements with unit conversion",
+        "line:22, formatDate provides localized date formatting for Indian locale",
+        "line:29, formatRelative creates human-readable relative time strings like '5m ago'"
+      ]
+    },
+    {
+      "id": "src-lib-validate-ts",
+      "path": "src/lib/validate.ts",
+      "label": "validate.ts",
+      "cluster": "services",
+      "critical": false,
+      "dead": true,
+      "exports": [
+        {
+          "name": "validateString",
+          "type": "function",
+          "line": 5
+        },
+        {
+          "name": "validateEnum",
+          "type": "function",
+          "line": 21
+        },
+        {
+          "name": "validateNumber",
+          "type": "function",
+          "line": 32
+        },
+        {
+          "name": "validationFail",
+          "type": "function",
+          "line": 48
+        }
+      ],
+      "imports": [
+        {
+          "source": "next/server",
+          "specifiers": [
+            {
+              "local": "NextResponse",
+              "imported": "NextResponse",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 1
+        }
+      ],
+      "functions": [
+        {
+          "name": "validateString",
+          "line": 5,
+          "exported": true
+        },
+        {
+          "name": "validateEnum",
+          "line": 21,
+          "exported": true
+        },
+        {
+          "name": "validateNumber",
+          "line": 32,
+          "exported": true
+        },
+        {
+          "name": "validationFail",
+          "line": 48,
+          "exported": true
+        }
+      ],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 0,
+      "role": "Input validation utilities that provide type-safe validation for strings, enums, and numbers with customizable constraints and standardized error response generation.",
+      "plain": "This file contains functions that check if user input is valid - like making sure required fields are filled out, numbers are in the right range, and text isn't too long.",
+      "notes": [
+        "line:5, validateString checks string requirements, length limits, and required field validation",
+        "line:21, validateEnum ensures values match predefined allowed options",
+        "line:32, validateNumber validates numeric inputs with optional min/max constraints",
+        "line:45, validationFail helper converts validation errors into standardized API responses"
+      ]
+    },
+    {
+      "id": "src-lib-vastu-canvasSnapshot-ts",
+      "path": "src/lib/vastu/canvasSnapshot.ts",
+      "label": "canvasSnapshot.ts",
+      "cluster": "services",
+      "critical": false,
+      "dead": true,
+      "exports": [
+        {
+          "name": "SNAP_W",
+          "type": "variable",
+          "line": 9
+        },
+        {
+          "name": "SNAP_H",
+          "type": "variable",
+          "line": 10
+        },
+        {
+          "name": "PANCHABHUTA",
+          "type": "variable",
+          "line": 418
+        },
+        {
+          "name": "snapshotPlanOnly",
+          "type": "function",
+          "line": 441
+        },
+        {
+          "name": "snapshotPlanWithBrahma",
+          "type": "function",
+          "line": 458
+        },
+        {
+          "name": "snapshotPlanWithChakraOnly",
+          "type": "function",
+          "line": 479
+        },
+        {
+          "name": "snapshotPlanWithPerimeter",
+          "type": "function",
+          "line": 503
+        },
+        {
+          "name": "snapshotCutsOnly",
+          "type": "function",
+          "line": 521
+        },
+        {
+          "name": "snapshotPerimeterAndCuts",
+          "type": "function",
+          "line": 539
+        },
+        {
+          "name": "snapshotPlanFull",
+          "type": "function",
+          "line": 558
+        },
+        {
+          "name": "snapshotZoneLines16",
+          "type": "function",
+          "line": 595
+        },
+        {
+          "name": "snapshotZoneLines8",
+          "type": "function",
+          "line": 632
+        },
+        {
+          "name": "snapshotPanchabhuta",
+          "type": "function",
+          "line": 669
+        },
+        {
+          "name": "generateAllSnapshots",
+          "type": "function",
+          "line": 773
+        }
+      ],
+      "imports": [
+        {
+          "source": "@/lib/types",
+          "specifiers": [
+            {
+              "local": "Floor",
+              "imported": "Floor",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 5
+        },
+        {
+          "source": "./zones",
+          "specifiers": [
+            {
+              "local": "VASTU_ZONES",
+              "imported": "VASTU_ZONES",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 6
+        }
+      ],
+      "functions": [
+        {
+          "name": "toRad",
+          "line": 18,
+          "exported": false
+        },
+        {
+          "name": "drawImageContain",
+          "line": 28,
+          "exported": false
+        },
+        {
+          "name": "loadImage",
+          "line": 42,
+          "exported": false
+        },
+        {
+          "name": "clipToPerimeter",
+          "line": 55,
+          "exported": false
+        },
+        {
+          "name": "drawZoneLines16",
+          "line": 69,
+          "exported": false
+        },
+        {
+          "name": "drawZoneLines8",
+          "line": 90,
+          "exported": false
+        },
+        {
+          "name": "drawZoneLabels16",
+          "line": 112,
+          "exported": false
+        },
+        {
+          "name": "drawZoneLabelsOutside16",
+          "line": 138,
+          "exported": false
+        },
+        {
+          "name": "drawZoneLabelsOutside8",
+          "line": 164,
+          "exported": false
+        },
+        {
+          "name": "drawZoneLabels8",
+          "line": 198,
+          "exported": false
+        },
+        {
+          "name": "drawChakraImage",
+          "line": 236,
+          "exported": false
+        },
+        {
+          "name": "drawBrahmasthan",
+          "line": 255,
+          "exported": false
+        },
+        {
+          "name": "drawPerimeter",
+          "line": 280,
+          "exported": false
+        },
+        {
+          "name": "drawCuts",
+          "line": 298,
+          "exported": false
+        },
+        {
+          "name": "drawNorthIndicator",
+          "line": 323,
+          "exported": false
+        },
+        {
+          "name": "makeCanvas",
+          "line": 428,
+          "exported": false
+        },
+        {
+          "name": "snapshotPlanOnly",
+          "line": 441,
+          "exported": true
+        },
+        {
+          "name": "snapshotPlanWithBrahma",
+          "line": 458,
+          "exported": true
+        },
+        {
+          "name": "snapshotPlanWithChakraOnly",
+          "line": 479,
+          "exported": true
+        },
+        {
+          "name": "snapshotPlanWithPerimeter",
+          "line": 503,
+          "exported": true
+        },
+        {
+          "name": "snapshotCutsOnly",
+          "line": 521,
+          "exported": true
+        },
+        {
+          "name": "snapshotPerimeterAndCuts",
+          "line": 539,
+          "exported": true
+        },
+        {
+          "name": "snapshotPlanFull",
+          "line": 558,
+          "exported": true
+        },
+        {
+          "name": "snapshotZoneLines16",
+          "line": 595,
+          "exported": true
+        },
+        {
+          "name": "snapshotZoneLines8",
+          "line": 632,
+          "exported": true
+        },
+        {
+          "name": "snapshotPanchabhuta",
+          "line": 669,
+          "exported": true
+        },
+        {
+          "name": "generateAllSnapshots",
+          "line": 773,
+          "exported": true
+        }
+      ],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 1,
+      "role": "Canvas rendering engine that generates PNG snapshots of floor plans with Vastu overlays, zone analysis, and architectural elements for report generation.",
+      "plain": "This takes floor plan drawings and creates picture files with Vastu analysis overlays - like drawing energy zones and guidelines on top of the building layout for reports.",
+      "notes": [
+        "line:18, toRad function converts Vastu compass directions to canvas rotation angles",
+        "line:28, drawImageContain replicates SVG image scaling to ensure overlay alignment",
+        "line:42, loadImage helper loads floor plan images with cross-origin support",
+        "line:9-10, defines standard canvas dimensions (760x620) matching SVG coordinates"
+      ]
+    },
+    {
+      "id": "src-lib-vastu-geometry-ts",
+      "path": "src/lib/vastu/geometry.ts",
+      "label": "geometry.ts",
+      "cluster": "services",
+      "critical": false,
+      "dead": true,
+      "exports": [
+        {
+          "name": "polygonArea",
+          "type": "function",
+          "line": 15
+        },
+        {
+          "name": "polygonCentroid",
+          "type": "function",
+          "line": 26
+        },
+        {
+          "name": "pointInPolygon",
+          "type": "function",
+          "line": 40
+        },
+        {
+          "name": "calculateZoneAreas",
+          "type": "function",
+          "line": 123
+        },
+        {
+          "name": "calculateCutAnalysis",
+          "type": "function",
+          "line": 206
+        },
+        {
+          "name": "distance",
+          "type": "function",
+          "line": 259
+        },
+        {
+          "name": "svgCoords",
+          "type": "function",
+          "line": 264
+        },
+        {
+          "name": "angleFromBrahma",
+          "type": "function",
+          "line": 277
+        }
+      ],
+      "imports": [],
+      "functions": [
+        {
+          "name": "polygonArea",
+          "line": 15,
+          "exported": true
+        },
+        {
+          "name": "polygonCentroid",
+          "line": 26,
+          "exported": true
+        },
+        {
+          "name": "pointInPolygon",
+          "line": 40,
+          "exported": true
+        },
+        {
+          "name": "lineIntersect",
+          "line": 54,
+          "exported": false
+        },
+        {
+          "name": "isInsideHalfPlane",
+          "line": 61,
+          "exported": false
+        },
+        {
+          "name": "clipPolygonByEdge",
+          "line": 65,
+          "exported": false
+        },
+        {
+          "name": "zoneWedgePolygon",
+          "line": 88,
+          "exported": false
+        },
+        {
+          "name": "calculateZoneAreas",
+          "line": 123,
+          "exported": true
+        },
+        {
+          "name": "calculateCutAnalysis",
+          "line": 206,
+          "exported": true
+        },
+        {
+          "name": "distance",
+          "line": 259,
+          "exported": true
+        },
+        {
+          "name": "svgCoords",
+          "line": 264,
+          "exported": true
+        },
+        {
+          "name": "angleFromBrahma",
+          "line": 277,
+          "exported": true
+        }
+      ],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 8,
+      "role": "Geometric calculation library for Vastu analysis providing polygon operations, area calculations, point-in-polygon testing, and zone intersection analysis.",
+      "plain": "This does the math behind Vastu analysis - calculating areas of different zones, figuring out if points are inside shapes, and measuring how building features affect energy flow.",
+      "notes": [
+        "line:15, polygonArea uses shoelace formula for precise area calculations",
+        "line:26, polygonCentroid calculates exact geometric center of irregular shapes",
+        "line:40, pointInPolygon uses ray casting algorithm to test point containment",
+        "line:1-3, comments indicate this handles polygon clipping for precise zone analysis"
+      ]
+    },
+    {
+      "id": "src-lib-vastu-knowledge-base-ts",
+      "path": "src/lib/vastu/knowledge-base.ts",
+      "label": "knowledge-base.ts",
+      "cluster": "services",
+      "critical": false,
+      "dead": true,
+      "exports": [
+        {
+          "name": "KNOWLEDGE_BASE",
+          "type": "variable",
+          "line": 15
+        },
+        {
+          "name": "getKnowledgeForZone",
+          "type": "function",
+          "line": 110
+        },
+        {
+          "name": "getKnowledgeByTopic",
+          "type": "function",
+          "line": 117
+        }
+      ],
+      "imports": [],
+      "functions": [
+        {
+          "name": "getKnowledgeForZone",
+          "line": 110,
+          "exported": true
+        },
+        {
+          "name": "getKnowledgeByTopic",
+          "line": 117,
+          "exported": true
+        }
+      ],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 0,
+      "role": "Defines a structured knowledge base containing Vastu Shastra rules, remedies, and zone-specific guidance with classical text references for use as fallback data when AI responses are unavailable.",
+      "plain": "This is like a digital encyclopedia of ancient Indian architectural rules. It stores information about different zones of a house (like northeast, southwest), what problems can occur in each zone, and traditional solutions to fix those problems without demolishing anything.",
+      "notes": [
+        "line:5-12, defines the structure for knowledge entries with zone, topic, title, content, source and tags",
+        "line:14, exports a large array containing curated Vastu knowledge organized by zones",
+        "line:18-25, contains critical information about Northeast cuts being the most severe Vastu defects",
+        "line:26-33, provides non-demolition remedies like placing copper pyramids and water elements"
+      ]
+    },
+    {
+      "id": "src-lib-vastu-zones-ts",
+      "path": "src/lib/vastu/zones.ts",
+      "label": "zones.ts",
+      "cluster": "services",
+      "critical": false,
+      "dead": true,
+      "exports": [
+        {
+          "name": "VASTU_ZONES",
+          "type": "variable",
+          "line": 19
+        },
+        {
+          "name": "getZoneForAngle",
+          "type": "function",
+          "line": 247
+        },
+        {
+          "name": "getZoneForPoint",
+          "type": "function",
+          "line": 258
+        },
+        {
+          "name": "IDEAL_ZONE_PCT",
+          "type": "variable",
+          "line": 271
+        },
+        {
+          "name": "CUT_SEVERITY",
+          "type": "variable",
+          "line": 274
+        },
+        {
+          "name": "getCutSeverity",
+          "type": "function",
+          "line": 280
+        },
+        {
+          "name": "ENTRANCE_PADAS",
+          "type": "variable",
+          "line": 287
+        }
+      ],
+      "imports": [],
+      "functions": [
+        {
+          "name": "getZoneForAngle",
+          "line": 247,
+          "exported": true
+        },
+        {
+          "name": "getZoneForPoint",
+          "line": 258,
+          "exported": true
+        },
+        {
+          "name": "getCutSeverity",
+          "line": 280,
+          "exported": true
+        }
+      ],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 7,
+      "role": "Implements the authentic 16-zone Vastu Shakti Chakra system with 22.5-degree divisions, zone calculations, and severity assessments for cuts and deficiencies.",
+      "plain": "This divides a house into 16 compass-based zones (like slicing a pie), each governed by different deities and elements. It calculates which zone any point in the house belongs to and determines how serious any structural problems are in each zone.",
+      "notes": [
+        "line:5-18, defines the VastuZone interface with properties like deity, element, planet, and ideal usage",
+        "line:247-254, function to determine which zone a given angle belongs to based on compass direction",
+        "line:258-268, function to find which zone a specific point in the house falls into",
+        "line:280+, function to assess the severity of cuts or missing areas in zones"
+      ]
+    },
+    {
+      "id": "src-store-canvasStore-ts",
+      "path": "src/store/canvasStore.ts",
+      "label": "canvasStore.ts",
+      "cluster": "other",
+      "critical": false,
+      "dead": true,
+      "exports": [
+        {
+          "name": "isCanvasStoreHydrated",
+          "type": "function",
+          "line": 12
+        },
+        {
+          "name": "onCanvasStoreHydrated",
+          "type": "function",
+          "line": 13
+        },
+        {
+          "name": "useCanvasStore",
+          "type": "variable",
+          "line": 195
+        }
+      ],
+      "imports": [
+        {
+          "source": "zustand",
+          "specifiers": [
+            {
+              "local": "create",
+              "imported": "create",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 2
+        },
+        {
+          "source": "zustand/middleware",
+          "specifiers": [
+            {
+              "local": "devtools",
+              "imported": "devtools",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "persist",
+              "imported": "persist",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        },
+        {
+          "source": "@/lib/vastu/geometry",
+          "specifiers": [
+            {
+              "local": "Point",
+              "imported": "Point",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 4
+        },
+        {
+          "source": "@/lib/types",
+          "specifiers": [
+            {
+              "local": "CanvasState",
+              "imported": "CanvasState",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Cut",
+              "imported": "Cut",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "EntranceMarker",
+              "imported": "EntranceMarker",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "Floor",
+              "imported": "Floor",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "ScaleCalibration",
+              "imported": "ScaleCalibration",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "ZoneAnalysis",
+              "imported": "ZoneAnalysis",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 5
+        },
+        {
+          "source": "@/lib/vastu/geometry",
+          "specifiers": [
+            {
+              "local": "polygonCentroid",
+              "imported": "polygonCentroid",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 6
+        }
+      ],
+      "functions": [
+        {
+          "name": "isCanvasStoreHydrated",
+          "line": 12,
+          "exported": true
+        },
+        {
+          "name": "onCanvasStoreHydrated",
+          "line": 13,
+          "exported": true
+        },
+        {
+          "name": "makeFloor",
+          "line": 50,
+          "exported": false
+        }
+      ],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 9,
+      "role": "Manages the interactive canvas state for drawing floor plans, including tool selection, perimeter points, cuts, entrances, and undo/redo functionality using Zustand state management.",
+      "plain": "This controls the drawing board where users sketch their house layout. It remembers what drawing tool they're using (like selecting, drawing walls, marking doors), stores all the points they've drawn, and lets them undo mistakes.",
+      "notes": [
+        "line:12-20, provides functions to check if the store data has loaded and run callbacks when ready",
+        "line:25-32, defines the different drawing tools users can select like perimeter, cut, entrance marking",
+        "line:44-50, sets up the default blank canvas state with initial values for compass direction and center point",
+        "line:50-59, helper function to create a new floor with default settings"
+      ]
+    },
+    {
+      "id": "src-store-projectStore-ts",
+      "path": "src/store/projectStore.ts",
+      "label": "projectStore.ts",
+      "cluster": "other",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "useProjectStore",
+          "type": "variable",
+          "line": 27
+        }
+      ],
+      "imports": [
+        {
+          "source": "zustand",
+          "specifiers": [
+            {
+              "local": "create",
+              "imported": "create",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 2
+        },
+        {
+          "source": "zustand/middleware",
+          "specifiers": [
+            {
+              "local": "devtools",
+              "imported": "devtools",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        },
+        {
+          "source": "@/lib/types",
+          "specifiers": [
+            {
+              "local": "Project",
+              "imported": "Project",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "ProjectStatus",
+              "imported": "ProjectStatus",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 4
+        }
+      ],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 6,
+      "role": "Manages project-level state including CRUD operations, search filtering, and status management for Vastu consultation projects using Zustand.",
+      "plain": "This keeps track of all the house projects a consultant is working on. It can add new projects, update existing ones, delete them, and filter the list when searching for specific projects by name or status.",
+      "notes": [
+        "line:7-21, defines the complete interface for project management operations and filtering",
+        "line:27-31, initializes the store with empty state and default filter settings",
+        "line:37-42, handles adding new projects or updating existing ones if they already exist",
+        "line:44-49, updates project properties and automatically sets the modification timestamp"
+      ]
+    },
+    {
+      "id": "src-store-reportStore-ts",
+      "path": "src/store/reportStore.ts",
+      "label": "reportStore.ts",
+      "cluster": "other",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "useReportStore",
+          "type": "variable",
+          "line": 14
+        }
+      ],
+      "imports": [
+        {
+          "source": "zustand",
+          "specifiers": [
+            {
+              "local": "create",
+              "imported": "create",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 2
+        },
+        {
+          "source": "zustand/middleware",
+          "specifiers": [
+            {
+              "local": "devtools",
+              "imported": "devtools",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "persist",
+              "imported": "persist",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        },
+        {
+          "source": "@/lib/types",
+          "specifiers": [
+            {
+              "local": "Report",
+              "imported": "Report",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 4
+        }
+      ],
+      "functions": [],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 1,
+      "role": "Manages generated Vastu reports with CRUD operations and project association, persisting data to browser storage while excluding large binary data during serialization.",
+      "plain": "This stores all the final Vastu consultation reports that get generated for clients. It saves them in the browser so they don't disappear when the page refreshes, but removes large files like PDFs to save space.",
+      "notes": [
+        "line:6-12, defines functions for managing reports including add, update, delete, and project-based retrieval",
+        "line:18-23, prevents duplicate reports by checking if a report ID already exists before adding",
+        "line:25-31, updates report properties and automatically timestamps the modification",
+        "line:40-45, excludes large binary data like PDF files when saving to browser storage to prevent quota issues"
+      ]
+    },
+    {
+      "id": "src-app-admin-activity-page-tsx",
+      "path": "src/app/admin/activity/page.tsx",
+      "label": "page.tsx",
+      "cluster": "other",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "AdminActivityPage",
+          "type": "default",
+          "line": 20
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "useEffect",
+              "imported": "useEffect",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useState",
+              "imported": "useState",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useCallback",
+              "imported": "useCallback",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        }
+      ],
+      "functions": [
+        {
+          "name": "AdminActivityPage",
+          "line": 20,
+          "exported": false
+        }
+      ],
+      "classes": [],
+      "apiCalls": [
+        {
+          "method": "fetch",
+          "line": 27
+        }
+      ],
+      "importDepth": 0,
+      "role": "Displays an administrative audit trail showing platform-wide user actions with filtering and formatting capabilities for monitoring system activity.",
+      "plain": "This shows administrators a log of everything that happens on the platform - like when users upgrade their accounts, change settings, or perform important actions. It helps track what's happening across the entire system.",
+      "notes": [
+        "line:5-10, defines the structure for activity log entries including action type, timestamp, and user information",
+        "line:12-16, maps different action types to color-coded badges for visual categorization",
+        "line:20-27, sets up component state for activity data, loading status, and configurable row limit",
+        "line:37-41, formats timestamps to Indian locale and capitalizes action labels for display"
+      ]
+    },
+    {
+      "id": "src-app-admin-ai-usage-page-tsx",
+      "path": "src/app/admin/ai-usage/page.tsx",
+      "label": "page.tsx",
+      "cluster": "other",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "AdminAiUsagePage",
+          "type": "default",
+          "line": 16
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "useEffect",
+              "imported": "useEffect",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useState",
+              "imported": "useState",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        }
+      ],
+      "functions": [
+        {
+          "name": "AdminAiUsagePage",
+          "line": 16,
+          "exported": false
+        }
+      ],
+      "classes": [],
+      "apiCalls": [
+        {
+          "method": "fetch",
+          "line": 22
+        },
+        {
+          "method": "fetch",
+          "line": 23
+        }
+      ],
+      "importDepth": 0,
+      "role": "Provides an administrative dashboard for monitoring AI token consumption and estimated costs across all users, aggregating usage statistics by subscription tier.",
+      "plain": "This shows administrators how much AI (artificial intelligence) each user is consuming and how much it's costing. It helps track which users are using the AI features heavily and calculates the total expense for the business.",
+      "notes": [
+        "line:5-13, defines the user statistics structure including token counts and cost estimates",
+        "line:16-23, fetches user data and usage statistics from multiple API endpoints simultaneously",
+        "line:24-33, enriches user data with AI usage metrics and calculates estimated costs per user",
+        "line:37-39, calculates total platform-wide token usage and estimated costs using Claude AI pricing"
+      ]
+    },
+    {
+      "id": "src-app-admin-layout-tsx",
+      "path": "src/app/admin/layout.tsx",
+      "label": "layout.tsx",
+      "cluster": "other",
+      "critical": false,
+      "dead": true,
+      "exports": [
+        {
+          "name": "metadata",
+          "type": "variable",
+          "line": 5
+        },
+        {
+          "name": "AdminLayout",
+          "type": "default",
+          "line": 7
+        }
+      ],
+      "imports": [
+        {
+          "source": "next/navigation",
+          "specifiers": [
+            {
+              "local": "redirect",
+              "imported": "redirect",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 1
+        },
+        {
+          "source": "@/lib/supabase/server",
+          "specifiers": [
+            {
+              "local": "createClient",
+              "imported": "createClient",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 2
+        },
+        {
+          "source": "@/components/admin/AdminSidebar",
+          "specifiers": [
+            {
+              "local": "AdminSidebar",
+              "imported": "default",
+              "type": "ImportDefaultSpecifier"
+            }
+          ],
+          "line": 3
+        }
+      ],
+      "functions": [
+        {
+          "name": "AdminLayout",
+          "line": 7,
+          "exported": false
+        }
+      ],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 0,
+      "role": "Provides authentication and authorization wrapper for admin pages, ensuring only admin users can access administrative functionality and redirecting others appropriately.",
+      "plain": "This acts like a security guard for the admin section. It checks if someone is logged in and has admin permissions before letting them see admin pages. If they don't have permission, it redirects them to the regular user area.",
+      "notes": [
+        "line:7-10, authenticates the user and redirects to login if not signed in",
+        "line:12-17, queries the database to check if the user has admin privileges",
+        "line:19, redirects non-admin users to the regular dashboard",
+        "line:21-27, renders the admin layout with sidebar navigation for authorized admin users"
+      ]
+    },
+    {
+      "id": "src-app-admin-overview-page-tsx",
+      "path": "src/app/admin/overview/page.tsx",
+      "label": "page.tsx",
+      "cluster": "routes",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "AdminOverviewPage",
+          "type": "default",
+          "line": 39
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "useEffect",
+              "imported": "useEffect",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useState",
+              "imported": "useState",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            {
+              "local": "cn",
+              "imported": "cn",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 4
+        }
+      ],
+      "functions": [
+        {
+          "name": "StatCard",
+          "line": 18,
+          "exported": false
+        },
+        {
+          "name": "AdminOverviewPage",
+          "line": 39,
+          "exported": false
+        }
+      ],
+      "classes": [],
+      "apiCalls": [
+        {
+          "method": "fetch",
+          "line": 44
+        }
+      ],
+      "importDepth": 0,
+      "role": "Displays the main administrative dashboard with key platform metrics, user statistics, revenue data, and AI usage costs in a card-based layout.",
+      "plain": "This is the main admin homepage showing a bird's eye view of the business - how many users signed up, how many projects were created, how much money was made, and how much the AI features are costing to run.",
+      "notes": [
+        "line:5-15, defines the complete statistics interface including user counts, revenue, and AI token usage",
+        "line:18-27, creates reusable statistic display cards with optional accent styling for important metrics",
+        "line:30-36, defines quick navigation links to other admin sections",
+        "line:41-45, fetches platform statistics from the API and handles loading states"
+      ]
+    },
+    {
+      "id": "src-app-admin-page-tsx",
+      "path": "src/app/admin/page.tsx",
+      "label": "page.tsx",
+      "cluster": "other",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "AdminRoot",
+          "type": "default",
+          "line": 2
+        }
+      ],
+      "imports": [
+        {
+          "source": "next/navigation",
+          "specifiers": [
+            {
+              "local": "redirect",
+              "imported": "redirect",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 1
+        }
+      ],
+      "functions": [
+        {
+          "name": "AdminRoot",
+          "line": 2,
+          "exported": false
+        }
+      ],
+      "classes": [],
+      "apiCalls": [],
+      "importDepth": 0,
+      "role": "Serves as a redirect handler that automatically forwards admin root path requests to the overview dashboard page.",
+      "plain": "This is just a simple redirect - when someone goes to the admin section without specifying which page, it automatically sends them to the overview dashboard page.",
+      "notes": [
+        "line:1, imports Next.js redirect function for server-side navigation",
+        "line:2, immediately redirects any requests from /admin to /admin/overview"
+      ]
+    },
+    {
+      "id": "src-app-admin-settings-page-tsx",
+      "path": "src/app/admin/settings/page.tsx",
+      "label": "page.tsx",
+      "cluster": "other",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "AdminSettingsPage",
+          "type": "default",
+          "line": 17
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "useEffect",
+              "imported": "useEffect",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useState",
+              "imported": "useState",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            {
+              "local": "cn",
+              "imported": "cn",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 4
+        }
+      ],
+      "functions": [
+        {
+          "name": "AdminSettingsPage",
+          "line": 17,
+          "exported": false
+        }
+      ],
+      "classes": [],
+      "apiCalls": [
+        {
+          "method": "fetch",
+          "line": 35
+        },
+        {
+          "method": "fetch",
+          "line": 57
+        },
+        {
+          "method": "fetch",
+          "line": 84
+        }
+      ],
+      "importDepth": 0,
+      "role": "Admin settings page component that manages platform-wide configuration including maintenance mode, AI usage limits, and administrative data purge operations.",
+      "plain": "This is the admin control panel page where administrators can turn on maintenance mode, set limits on AI features, and clean up old data from the platform.",
+      "notes": [
+        "line:17, main component function that renders the admin settings interface",
+        "line:18-24, defines default settings including maintenance mode toggle and AI usage caps",
+        "line:35, fetches current settings from the API when the page loads",
+        "line:28-34, manages various UI states like loading, saving, and error handling"
+      ]
+    },
+    {
+      "id": "src-app-admin-tiers-page-tsx",
+      "path": "src/app/admin/tiers/page.tsx",
+      "label": "page.tsx",
+      "cluster": "other",
+      "critical": false,
+      "dead": false,
+      "exports": [
+        {
+          "name": "AdminTiersPage",
+          "type": "default",
+          "line": 80
+        }
+      ],
+      "imports": [
+        {
+          "source": "react",
+          "specifiers": [
+            {
+              "local": "useEffect",
+              "imported": "useEffect",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useState",
+              "imported": "useState",
+              "type": "ImportSpecifier"
+            },
+            {
+              "local": "useCallback",
+              "imported": "useCallback",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 3
+        },
+        {
+          "source": "@/lib/utils",
+          "specifiers": [
+            {
+              "local": "cn",
+              "imported": "cn",
+              "type": "ImportSpecifier"
+            }
+          ],
+          "line": 4
+        }
+      ],
+      "functions": [
+        {
+          "name": "limitDisplay",
+          "line": 69,
+          "exported": false
+        },
+        {
+          "name": "numVal",
+          "line": 70,
+          "exported": false
+        },
+        {
+          "name": "AdminTiersPage",
+          "line": 80,
+          "exported": false
+        },
+        {
+          "name": "TierModal",
+          "line": 552,
+          "exported": false
+        }
+      ],
+      "classes": [],
+      "apiCalls": [
+        {
+          "method": "fetch",
+          "line": 100
+        },
+        {
+          "method": "fetch",
+          "line": 101
+        },
+        {
+          "method": "fetch",
+          "line": 102
+        },
+        {
+          "method": "fetch",
+          "line": 116
+        },
+        {
+          "method": "fetch",
+          "line": 129
+        },
+        {
+          "method": "fetch",
+          "line": 143
+        },
+        {
+          "method": "fetch",
+          "line": 156
+        },
+        {
+          "method": "fetch",
+          "line": 167
+        },
+        {
+          "method": "fetch",
+          "line": 194
+        }
+      ],
+      "importDepth": 0,
+      "role": "Admin dashboard component for managing subscription tiers, promotional codes, and referral programs with full CRUD operations.",
+      "plain": "This is where administrators manage the different subscription plans customers can choose from, including pricing, features, discount codes, and referral bonuses.",
+      "notes": [
+        "line:69, utility function that displays unlimited values as infinity symbol for tier limits",
+        "line:70, helper function to safely convert unknown values to numbers for form inputs",
+        "line:80, main component that handles the tier management interface",
+        "line:8-28, defines the complete structure of a subscription tier including pricing and feature flags"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "src-components-admin-AdminSidebar-tsx",
+      "to": "src-lib-utils-index-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-canvas-BrahmasthanDot-tsx",
+      "to": "src-store-canvasStore-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-canvas-VastuCanvas-tsx",
+      "to": "src-store-canvasStore-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-canvas-VastuCanvas-tsx",
+      "to": "src-hooks-useCanvas-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-canvas-VastuCanvas-tsx",
+      "to": "src-components-canvas-ShaktiChakra-tsx",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-canvas-VastuCanvas-tsx",
+      "to": "src-components-canvas-BrahmasthanDot-tsx",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-canvas-VastuCanvas-tsx",
+      "to": "src-components-canvas-NorthArrow-tsx",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-canvas-VastuCanvas-tsx",
+      "to": "src-lib-vastu-geometry-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-canvas-VastuCanvas-tsx",
+      "to": "src-lib-vastu-zones-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-dashboard-ActivityFeed-tsx",
+      "to": "src-store-projectStore-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-dashboard-ActivityFeed-tsx",
+      "to": "src-components-ui-CollapsibleCard-tsx",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-dashboard-AnalyticsCard-tsx",
+      "to": "src-store-projectStore-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-dashboard-AnalyticsCard-tsx",
+      "to": "src-components-ui-CollapsibleCard-tsx",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-dashboard-RecentProjects-tsx",
+      "to": "src-store-projectStore-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-dashboard-RecentProjects-tsx",
+      "to": "src-components-ui-CollapsibleCard-tsx",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-dashboard-RecentProjects-tsx",
+      "to": "src-components-ui-Badge-tsx",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-dashboard-StatsBar-tsx",
+      "to": "src-store-projectStore-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-dashboard-StatsBar-tsx",
+      "to": "src-hooks-useReports-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-layout-AppShell-tsx",
+      "to": "src-components-layout-Sidebar-tsx",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-layout-AppShell-tsx",
+      "to": "src-components-ui-Toast-tsx",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-layout-Sidebar-tsx",
+      "to": "src-lib-utils-index-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-layout-Sidebar-tsx",
+      "to": "src-hooks-useUser-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-layout-Topbar-tsx",
+      "to": "src-components-ui-Button-tsx",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-panels-AnalysisPanel-tsx",
+      "to": "src-store-canvasStore-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-panels-AnalysisPanel-tsx",
+      "to": "src-lib-vastu-zones-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-panels-AnalysisPanel-tsx",
+      "to": "src-lib-vastu-geometry-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-panels-AnalysisPanel-tsx",
+      "to": "src-components-ui-Button-tsx",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-panels-ChatPanel-tsx",
+      "to": "src-store-canvasStore-ts",
+      "kind": "api",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-panels-ChatPanel-tsx",
+      "to": "src-lib-vastu-geometry-ts",
+      "kind": "api",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-panels-ChatPanel-tsx",
+      "to": "src-lib-vastu-zones-ts",
+      "kind": "api",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-panels-ChatPanel-tsx",
+      "to": "src-hooks-useUser-ts",
+      "kind": "api",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-panels-ChatPanel-tsx",
+      "to": "src-lib-types-index-ts",
+      "kind": "api",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-panels-NorthPanel-tsx",
+      "to": "src-hooks-useNorth-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-panels-NorthPanel-tsx",
+      "to": "src-components-ui-Toast-tsx",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-panels-NorthPanel-tsx",
+      "to": "src-components-ui-Button-tsx",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-panels-RightPanel-tsx",
+      "to": "src-components-panels-AnalysisPanel-tsx",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-panels-RightPanel-tsx",
+      "to": "src-components-panels-NorthPanel-tsx",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-panels-RightPanel-tsx",
+      "to": "src-components-panels-ChatPanel-tsx",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-panels-RightPanel-tsx",
+      "to": "src-components-panels-SummaryPanel-tsx",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-panels-RightPanel-tsx",
+      "to": "src-lib-utils-index-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-panels-SummaryPanel-tsx",
+      "to": "src-store-canvasStore-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-reports-ReportBuilder-tsx",
+      "to": "src-lib-supabase-client-ts",
+      "kind": "api",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-reports-ReportBuilder-tsx",
+      "to": "src-store-canvasStore-ts",
+      "kind": "api",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-reports-ReportBuilder-tsx",
+      "to": "src-store-projectStore-ts",
+      "kind": "api",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-reports-ReportBuilder-tsx",
+      "to": "src-store-reportStore-ts",
+      "kind": "api",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-reports-ReportBuilder-tsx",
+      "to": "src-hooks-useUser-ts",
+      "kind": "api",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-reports-ReportBuilder-tsx",
+      "to": "src-lib-vastu-zones-ts",
+      "kind": "api",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-reports-ReportBuilder-tsx",
+      "to": "src-lib-vastu-geometry-ts",
+      "kind": "api",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-reports-ReportBuilder-tsx",
+      "to": "src-lib-utils-index-ts",
+      "kind": "critical",
+      "label": "",
+      "critical": true
+    },
+    {
+      "from": "src-components-reports-ReportBuilder-tsx",
+      "to": "src-lib-types-index-ts",
+      "kind": "api",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-reports-ReportBuilder-tsx",
+      "to": "src-lib-types-index-ts",
+      "kind": "api",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-reports-ReportBuilder-tsx",
+      "to": "src-components-reports-ReportDocument-tsx",
+      "kind": "api",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-reports-ReportBuilder-tsx",
+      "to": "src-components-reports-ReportDocument-tsx",
+      "kind": "api",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-reports-ReportBuilder-tsx",
+      "to": "src-lib-vastu-canvasSnapshot-ts",
+      "kind": "api",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-reports-ReportBuilder-tsx",
+      "to": "src-lib-vastu-canvasSnapshot-ts",
+      "kind": "api",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-reports-ReportDocument-tsx",
+      "to": "src-lib-types-index-ts",
+      "kind": "api",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-reports-ReportDocument-tsx",
+      "to": "src-lib-types-index-ts",
+      "kind": "api",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-reports-ReportDocument-tsx",
+      "to": "src-lib-vastu-geometry-ts",
+      "kind": "api",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-reports-ReportDocument-tsx",
+      "to": "src-lib-vastu-zones-ts",
+      "kind": "api",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-ui-Badge-tsx",
+      "to": "src-lib-utils-index-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-ui-Badge-tsx",
+      "to": "src-lib-types-index-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-ui-Button-tsx",
+      "to": "src-lib-utils-index-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-ui-CollapsibleCard-tsx",
+      "to": "src-lib-utils-index-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-components-ui-Modal-tsx",
+      "to": "src-lib-utils-index-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-hooks-useCanvas-ts",
+      "to": "src-store-canvasStore-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-hooks-useCanvas-ts",
+      "to": "src-lib-vastu-geometry-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-hooks-useCanvas-ts",
+      "to": "src-lib-vastu-geometry-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-hooks-useCanvas-ts",
+      "to": "src-lib-vastu-zones-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-hooks-useCanvas-ts",
+      "to": "src-lib-types-index-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-hooks-useNorth-ts",
+      "to": "src-store-canvasStore-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-hooks-useProjects-ts",
+      "to": "src-store-projectStore-ts",
+      "kind": "api",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-hooks-useProjects-ts",
+      "to": "src-store-canvasStore-ts",
+      "kind": "api",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-hooks-useProjects-ts",
+      "to": "src-lib-types-index-ts",
+      "kind": "api",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-hooks-useUser-ts",
+      "to": "src-lib-supabase-client-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-lib-supabase-client-ts",
+      "to": "src-lib-types-index-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-lib-supabase-server-ts",
+      "to": "src-lib-types-index-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-lib-types-index-ts",
+      "to": "src-lib-vastu-geometry-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-lib-vastu-canvasSnapshot-ts",
+      "to": "src-lib-types-index-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-lib-vastu-canvasSnapshot-ts",
+      "to": "src-lib-vastu-zones-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-store-canvasStore-ts",
+      "to": "src-lib-vastu-geometry-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-store-canvasStore-ts",
+      "to": "src-lib-types-index-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-store-canvasStore-ts",
+      "to": "src-lib-vastu-geometry-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-store-projectStore-ts",
+      "to": "src-lib-types-index-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-store-reportStore-ts",
+      "to": "src-lib-types-index-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-app-admin-layout-tsx",
+      "to": "src-lib-supabase-server-ts",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-app-admin-layout-tsx",
+      "to": "src-components-admin-AdminSidebar-tsx",
+      "kind": "normal",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-app-admin-overview-page-tsx",
+      "to": "src-lib-utils-index-ts",
+      "kind": "api",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-app-admin-settings-page-tsx",
+      "to": "src-lib-utils-index-ts",
+      "kind": "api",
+      "label": "",
+      "critical": false
+    },
+    {
+      "from": "src-app-admin-tiers-page-tsx",
+      "to": "src-lib-utils-index-ts",
+      "kind": "api",
+      "label": "",
+      "critical": false
+    }
+  ],
+  "imports": {
+    "src/components/PromoTracker.tsx": [],
+    "src/components/admin/AdminSidebar.tsx": [
+      "src/lib/utils/index.ts"
+    ],
+    "src/components/canvas/BrahmasthanDot.tsx": [
+      "src/store/canvasStore.ts"
+    ],
+    "src/components/canvas/NorthArrow.tsx": [],
+    "src/components/canvas/ShaktiChakra.tsx": [],
+    "src/components/canvas/VastuCanvas.tsx": [
+      "src/store/canvasStore.ts",
+      "src/hooks/useCanvas.ts",
+      "src/components/canvas/ShaktiChakra.tsx",
+      "src/components/canvas/BrahmasthanDot.tsx",
+      "src/components/canvas/NorthArrow.tsx",
+      "src/lib/vastu/geometry.ts",
+      "src/lib/vastu/zones.ts"
+    ],
+    "src/components/dashboard/ActivityFeed.tsx": [
+      "src/store/projectStore.ts",
+      "src/components/ui/CollapsibleCard.tsx"
+    ],
+    "src/components/dashboard/AnalyticsCard.tsx": [
+      "src/store/projectStore.ts",
+      "src/components/ui/CollapsibleCard.tsx"
+    ],
+    "src/components/dashboard/RecentProjects.tsx": [
+      "src/store/projectStore.ts",
+      "src/components/ui/CollapsibleCard.tsx",
+      "src/components/ui/Badge.tsx"
+    ],
+    "src/components/dashboard/StatsBar.tsx": [
+      "src/store/projectStore.ts",
+      "src/hooks/useReports.ts"
+    ],
+    "src/components/layout/AppShell.tsx": [
+      "src/components/layout/Sidebar.tsx",
+      "src/components/ui/Toast.tsx"
+    ],
+    "src/components/layout/Sidebar.tsx": [
+      "src/lib/utils/index.ts",
+      "src/hooks/useUser.ts"
+    ],
+    "src/components/layout/Topbar.tsx": [
+      "src/components/ui/Button.tsx"
+    ],
+    "src/components/panels/AnalysisPanel.tsx": [
+      "src/store/canvasStore.ts",
+      "src/lib/vastu/zones.ts",
+      "src/lib/vastu/geometry.ts",
+      "src/components/ui/Button.tsx"
+    ],
+    "src/components/panels/ChatPanel.tsx": [
+      "src/store/canvasStore.ts",
+      "src/lib/vastu/geometry.ts",
+      "src/lib/vastu/zones.ts",
+      "src/hooks/useUser.ts",
+      "src/lib/types/index.ts"
+    ],
+    "src/components/panels/NorthPanel.tsx": [
+      "src/hooks/useNorth.ts",
+      "src/components/ui/Toast.tsx",
+      "src/components/ui/Button.tsx"
+    ],
+    "src/components/panels/RightPanel.tsx": [
+      "src/components/panels/AnalysisPanel.tsx",
+      "src/components/panels/NorthPanel.tsx",
+      "src/components/panels/ChatPanel.tsx",
+      "src/components/panels/SummaryPanel.tsx",
+      "src/lib/utils/index.ts"
+    ],
+    "src/components/panels/SummaryPanel.tsx": [
+      "src/store/canvasStore.ts"
+    ],
+    "src/components/reports/ReportBuilder.tsx": [
+      "src/lib/supabase/client.ts",
+      "src/store/canvasStore.ts",
+      "src/store/projectStore.ts",
+      "src/store/reportStore.ts",
+      "src/hooks/useUser.ts",
+      "src/lib/vastu/zones.ts",
+      "src/lib/vastu/geometry.ts",
+      "src/lib/utils/index.ts",
+      "src/lib/types/index.ts",
+      "src/lib/types/index.ts",
+      "src/components/reports/ReportDocument.tsx",
+      "src/components/reports/ReportDocument.tsx",
+      "src/lib/vastu/canvasSnapshot.ts",
+      "src/lib/vastu/canvasSnapshot.ts"
+    ],
+    "src/components/reports/ReportDocument.tsx": [
+      "src/lib/types/index.ts",
+      "src/lib/types/index.ts",
+      "src/lib/vastu/geometry.ts",
+      "src/lib/vastu/zones.ts"
+    ],
+    "src/components/ui/Badge.tsx": [
+      "src/lib/utils/index.ts",
+      "src/lib/types/index.ts"
+    ],
+    "src/components/ui/Button.tsx": [
+      "src/lib/utils/index.ts"
+    ],
+    "src/components/ui/CollapsibleCard.tsx": [
+      "src/lib/utils/index.ts"
+    ],
+    "src/components/ui/ErrorBoundary.tsx": [],
+    "src/components/ui/Modal.tsx": [
+      "src/lib/utils/index.ts"
+    ],
+    "src/components/ui/Toast.tsx": [],
+    "src/hooks/useCanvas.ts": [
+      "src/store/canvasStore.ts",
+      "src/lib/vastu/geometry.ts",
+      "src/lib/vastu/geometry.ts",
+      "src/lib/vastu/zones.ts",
+      "src/lib/types/index.ts"
+    ],
+    "src/hooks/useNorth.ts": [
+      "src/store/canvasStore.ts"
+    ],
+    "src/hooks/useProjects.ts": [
+      "src/store/projectStore.ts",
+      "src/store/canvasStore.ts",
+      "src/lib/types/index.ts"
+    ],
+    "src/hooks/useReports.ts": [],
+    "src/hooks/useUser.ts": [
+      "src/lib/supabase/client.ts"
+    ],
+    "src/lib/env.ts": [],
+    "src/lib/rateLimit.ts": [],
+    "src/lib/supabase/client.ts": [
+      "src/lib/types/index.ts"
+    ],
+    "src/lib/supabase/server.ts": [
+      "src/lib/types/index.ts"
+    ],
+    "src/lib/types/index.ts": [
+      "src/lib/vastu/geometry.ts"
+    ],
+    "src/lib/utils/index.ts": [],
+    "src/lib/validate.ts": [],
+    "src/lib/vastu/canvasSnapshot.ts": [
+      "src/lib/types/index.ts",
+      "src/lib/vastu/zones.ts"
+    ],
+    "src/lib/vastu/geometry.ts": [],
+    "src/lib/vastu/knowledge-base.ts": [],
+    "src/lib/vastu/zones.ts": [],
+    "src/store/canvasStore.ts": [
+      "src/lib/vastu/geometry.ts",
+      "src/lib/types/index.ts",
+      "src/lib/vastu/geometry.ts"
+    ],
+    "src/store/projectStore.ts": [
+      "src/lib/types/index.ts"
+    ],
+    "src/store/reportStore.ts": [
+      "src/lib/types/index.ts"
+    ],
+    "src/app/admin/activity/page.tsx": [],
+    "src/app/admin/ai-usage/page.tsx": [],
+    "src/app/admin/layout.tsx": [
+      "src/lib/supabase/server.ts",
+      "src/components/admin/AdminSidebar.tsx"
+    ],
+    "src/app/admin/overview/page.tsx": [
+      "src/lib/utils/index.ts"
+    ],
+    "src/app/admin/page.tsx": [],
+    "src/app/admin/settings/page.tsx": [
+      "src/lib/utils/index.ts"
+    ],
+    "src/app/admin/tiers/page.tsx": [
+      "src/lib/utils/index.ts"
+    ]
+  },
+  "exports": {
+    "src/components/PromoTracker.tsx": [
+      "PromoTracker"
+    ],
+    "src/components/admin/AdminSidebar.tsx": [
+      "AdminSidebar"
+    ],
+    "src/components/canvas/BrahmasthanDot.tsx": [
+      "BrahmasthanDot"
+    ],
+    "src/components/canvas/NorthArrow.tsx": [
+      "CompassRose"
+    ],
+    "src/components/canvas/ShaktiChakra.tsx": [
+      "ShaktiChakra"
+    ],
+    "src/components/canvas/VastuCanvas.tsx": [
+      "VastuCanvas"
+    ],
+    "src/components/dashboard/ActivityFeed.tsx": [
+      "ActivityFeed"
+    ],
+    "src/components/dashboard/AnalyticsCard.tsx": [
+      "AnalyticsCard"
+    ],
+    "src/components/dashboard/RecentProjects.tsx": [
+      "RecentProjects"
+    ],
+    "src/components/dashboard/StatsBar.tsx": [
+      "StatsBar"
+    ],
+    "src/components/layout/AppShell.tsx": [
+      "AppShell"
+    ],
+    "src/components/layout/Sidebar.tsx": [
+      "Sidebar"
+    ],
+    "src/components/layout/Topbar.tsx": [
+      "Topbar"
+    ],
+    "src/components/panels/AnalysisPanel.tsx": [
+      "AnalysisPanel"
+    ],
+    "src/components/panels/ChatPanel.tsx": [
+      "ChatPanel"
+    ],
+    "src/components/panels/NorthPanel.tsx": [
+      "NorthPanel"
+    ],
+    "src/components/panels/RightPanel.tsx": [
+      "RightPanel"
+    ],
+    "src/components/panels/SummaryPanel.tsx": [
+      "SummaryPanel"
+    ],
+    "src/components/reports/ReportBuilder.tsx": [
+      "ReportBuilder"
+    ],
+    "src/components/reports/ReportDocument.tsx": [
+      "VastuReportDocument",
+      "blobUrlToBase64",
+      "generateAndDownloadPDF",
+      "generatePDFDataUrl"
+    ],
+    "src/components/ui/Badge.tsx": [
+      "Badge"
+    ],
+    "src/components/ui/Button.tsx": [
+      "default"
+    ],
+    "src/components/ui/CollapsibleCard.tsx": [
+      "CollapsibleCard"
+    ],
+    "src/components/ui/ErrorBoundary.tsx": [
+      "ErrorBoundary"
+    ],
+    "src/components/ui/Modal.tsx": [
+      "Modal"
+    ],
+    "src/components/ui/Toast.tsx": [
+      "ToastProvider",
+      "useToast"
+    ],
+    "src/hooks/useCanvas.ts": [
+      "useCanvas"
+    ],
+    "src/hooks/useNorth.ts": [
+      "useNorth"
+    ],
+    "src/hooks/useProjects.ts": [
+      "useProjects"
+    ],
+    "src/hooks/useReports.ts": [
+      "useReports"
+    ],
+    "src/hooks/useUser.ts": [
+      "useUser"
+    ],
+    "src/lib/env.ts": [
+      "validateEnv"
+    ],
+    "src/lib/rateLimit.ts": [
+      "rateLimit",
+      "rateLimitResponse"
+    ],
+    "src/lib/supabase/client.ts": [
+      "createClient"
+    ],
+    "src/lib/supabase/server.ts": [
+      "createClient",
+      "createAdminClient"
+    ],
+    "src/lib/types/index.ts": [
+      "REPORT_PAGE_META",
+      "REPORT_PRESET_PAGES"
+    ],
+    "src/lib/utils/index.ts": [
+      "cn",
+      "formatArea",
+      "formatPct",
+      "formatDate",
+      "formatRelative",
+      "hexToRgba",
+      "toSVGRad",
+      "clamp",
+      "generateId",
+      "STATUS_CONFIG",
+      "getGreeting",
+      "SEVERITY_COLORS"
+    ],
+    "src/lib/validate.ts": [
+      "validateString",
+      "validateEnum",
+      "validateNumber",
+      "validationFail"
+    ],
+    "src/lib/vastu/canvasSnapshot.ts": [
+      "SNAP_W",
+      "SNAP_H",
+      "PANCHABHUTA",
+      "snapshotPlanOnly",
+      "snapshotPlanWithBrahma",
+      "snapshotPlanWithChakraOnly",
+      "snapshotPlanWithPerimeter",
+      "snapshotCutsOnly",
+      "snapshotPerimeterAndCuts",
+      "snapshotPlanFull",
+      "snapshotZoneLines16",
+      "snapshotZoneLines8",
+      "snapshotPanchabhuta",
+      "generateAllSnapshots"
+    ],
+    "src/lib/vastu/geometry.ts": [
+      "polygonArea",
+      "polygonCentroid",
+      "pointInPolygon",
+      "calculateZoneAreas",
+      "calculateCutAnalysis",
+      "distance",
+      "svgCoords",
+      "angleFromBrahma"
+    ],
+    "src/lib/vastu/knowledge-base.ts": [
+      "KNOWLEDGE_BASE",
+      "getKnowledgeForZone",
+      "getKnowledgeByTopic"
+    ],
+    "src/lib/vastu/zones.ts": [
+      "VASTU_ZONES",
+      "getZoneForAngle",
+      "getZoneForPoint",
+      "IDEAL_ZONE_PCT",
+      "CUT_SEVERITY",
+      "getCutSeverity",
+      "ENTRANCE_PADAS"
+    ],
+    "src/store/canvasStore.ts": [
+      "isCanvasStoreHydrated",
+      "onCanvasStoreHydrated",
+      "useCanvasStore"
+    ],
+    "src/store/projectStore.ts": [
+      "useProjectStore"
+    ],
+    "src/store/reportStore.ts": [
+      "useReportStore"
+    ],
+    "src/app/admin/activity/page.tsx": [
+      "AdminActivityPage"
+    ],
+    "src/app/admin/ai-usage/page.tsx": [
+      "AdminAiUsagePage"
+    ],
+    "src/app/admin/layout.tsx": [
+      "metadata",
+      "AdminLayout"
+    ],
+    "src/app/admin/overview/page.tsx": [
+      "AdminOverviewPage"
+    ],
+    "src/app/admin/page.tsx": [
+      "AdminRoot"
+    ],
+    "src/app/admin/settings/page.tsx": [
+      "AdminSettingsPage"
+    ],
+    "src/app/admin/tiers/page.tsx": [
+      "AdminTiersPage"
+    ]
+  },
+  "callers": {
+    "src/components/PromoTracker.tsx:PromoTracker": [],
+    "src/components/admin/AdminSidebar.tsx:AdminSidebar": [
+      "src/app/admin/layout.tsx:3"
+    ],
+    "src/components/canvas/BrahmasthanDot.tsx:BrahmasthanDot": [
+      "src/components/canvas/VastuCanvas.tsx:7"
+    ],
+    "src/components/canvas/NorthArrow.tsx:CompassRose": [
+      "src/components/canvas/VastuCanvas.tsx:8"
+    ],
+    "src/components/canvas/ShaktiChakra.tsx:ShaktiChakra": [
+      "src/components/canvas/VastuCanvas.tsx:6"
+    ],
+    "src/components/canvas/VastuCanvas.tsx:VastuCanvas": [],
+    "src/components/dashboard/ActivityFeed.tsx:ActivityFeed": [],
+    "src/components/dashboard/AnalyticsCard.tsx:AnalyticsCard": [],
+    "src/components/dashboard/RecentProjects.tsx:RecentProjects": [],
+    "src/components/dashboard/StatsBar.tsx:StatsBar": [],
+    "src/components/layout/AppShell.tsx:AppShell": [],
+    "src/components/layout/Sidebar.tsx:Sidebar": [
+      "src/components/layout/AppShell.tsx:4"
+    ],
+    "src/components/layout/Topbar.tsx:Topbar": [],
+    "src/components/panels/AnalysisPanel.tsx:AnalysisPanel": [
+      "src/components/panels/RightPanel.tsx:4"
+    ],
+    "src/components/panels/ChatPanel.tsx:ChatPanel": [
+      "src/components/panels/RightPanel.tsx:6"
+    ],
+    "src/components/panels/NorthPanel.tsx:NorthPanel": [
+      "src/components/panels/RightPanel.tsx:5"
+    ],
+    "src/components/panels/RightPanel.tsx:RightPanel": [],
+    "src/components/panels/SummaryPanel.tsx:SummaryPanel": [
+      "src/components/panels/RightPanel.tsx:7"
+    ],
+    "src/components/reports/ReportBuilder.tsx:ReportBuilder": [],
+    "src/components/reports/ReportDocument.tsx:VastuReportDocument": [],
+    "src/components/reports/ReportDocument.tsx:blobUrlToBase64": [
+      "src/components/reports/ReportBuilder.tsx:28"
+    ],
+    "src/components/reports/ReportDocument.tsx:generateAndDownloadPDF": [
+      "src/components/reports/ReportBuilder.tsx:28"
+    ],
+    "src/components/reports/ReportDocument.tsx:generatePDFDataUrl": [
+      "src/components/reports/ReportBuilder.tsx:28"
+    ],
+    "src/components/ui/Badge.tsx:Badge": [
+      "src/components/dashboard/RecentProjects.tsx:6"
+    ],
+    "src/components/ui/Button.tsx:default": [
+      "src/components/layout/Topbar.tsx:3",
+      "src/components/panels/AnalysisPanel.tsx:11",
+      "src/components/panels/NorthPanel.tsx:6"
+    ],
+    "src/components/ui/CollapsibleCard.tsx:CollapsibleCard": [
+      "src/components/dashboard/ActivityFeed.tsx:4",
+      "src/components/dashboard/AnalyticsCard.tsx:4",
+      "src/components/dashboard/RecentProjects.tsx:5"
+    ],
+    "src/components/ui/ErrorBoundary.tsx:ErrorBoundary": [],
+    "src/components/ui/Modal.tsx:Modal": [],
+    "src/components/ui/Toast.tsx:ToastProvider": [
+      "src/components/layout/AppShell.tsx:5"
+    ],
+    "src/components/ui/Toast.tsx:useToast": [
+      "src/components/panels/NorthPanel.tsx:5"
+    ],
+    "src/hooks/useCanvas.ts:useCanvas": [
+      "src/components/canvas/VastuCanvas.tsx:5"
+    ],
+    "src/hooks/useNorth.ts:useNorth": [
+      "src/components/panels/NorthPanel.tsx:4"
+    ],
+    "src/hooks/useProjects.ts:useProjects": [],
+    "src/hooks/useReports.ts:useReports": [
+      "src/components/dashboard/StatsBar.tsx:4"
+    ],
+    "src/hooks/useUser.ts:useUser": [
+      "src/components/layout/Sidebar.tsx:6",
+      "src/components/panels/ChatPanel.tsx:7",
+      "src/components/reports/ReportBuilder.tsx:10"
+    ],
+    "src/lib/env.ts:validateEnv": [],
+    "src/lib/rateLimit.ts:rateLimit": [],
+    "src/lib/rateLimit.ts:rateLimitResponse": [],
+    "src/lib/supabase/client.ts:createClient": [
+      "src/components/reports/ReportBuilder.tsx:6",
+      "src/hooks/useUser.ts:4"
+    ],
+    "src/lib/supabase/server.ts:createClient": [
+      "src/app/admin/layout.tsx:2"
+    ],
+    "src/lib/supabase/server.ts:createAdminClient": [],
+    "src/lib/types/index.ts:REPORT_PAGE_META": [
+      "src/components/reports/ReportBuilder.tsx:23",
+      "src/components/reports/ReportDocument.tsx:19"
+    ],
+    "src/lib/types/index.ts:REPORT_PRESET_PAGES": [
+      "src/components/reports/ReportBuilder.tsx:23"
+    ],
+    "src/lib/utils/index.ts:cn": [
+      "src/components/admin/AdminSidebar.tsx:4",
+      "src/components/layout/Sidebar.tsx:5",
+      "src/components/panels/RightPanel.tsx:8",
+      "src/components/reports/ReportBuilder.tsx:13",
+      "src/components/ui/Badge.tsx:1",
+      "src/components/ui/Button.tsx:4",
+      "src/components/ui/CollapsibleCard.tsx:4",
+      "src/components/ui/Modal.tsx:4",
+      "src/app/admin/overview/page.tsx:4",
+      "src/app/admin/settings/page.tsx:4",
+      "src/app/admin/tiers/page.tsx:4"
+    ],
+    "src/lib/utils/index.ts:formatArea": [],
+    "src/lib/utils/index.ts:formatPct": [],
+    "src/lib/utils/index.ts:formatDate": [],
+    "src/lib/utils/index.ts:formatRelative": [],
+    "src/lib/utils/index.ts:hexToRgba": [],
+    "src/lib/utils/index.ts:toSVGRad": [],
+    "src/lib/utils/index.ts:clamp": [],
+    "src/lib/utils/index.ts:generateId": [],
+    "src/lib/utils/index.ts:STATUS_CONFIG": [],
+    "src/lib/utils/index.ts:getGreeting": [],
+    "src/lib/utils/index.ts:SEVERITY_COLORS": [],
+    "src/lib/validate.ts:validateString": [],
+    "src/lib/validate.ts:validateEnum": [],
+    "src/lib/validate.ts:validateNumber": [],
+    "src/lib/validate.ts:validationFail": [],
+    "src/lib/vastu/canvasSnapshot.ts:SNAP_W": [],
+    "src/lib/vastu/canvasSnapshot.ts:SNAP_H": [],
+    "src/lib/vastu/canvasSnapshot.ts:PANCHABHUTA": [],
+    "src/lib/vastu/canvasSnapshot.ts:snapshotPlanOnly": [],
+    "src/lib/vastu/canvasSnapshot.ts:snapshotPlanWithBrahma": [],
+    "src/lib/vastu/canvasSnapshot.ts:snapshotPlanWithChakraOnly": [],
+    "src/lib/vastu/canvasSnapshot.ts:snapshotPlanWithPerimeter": [],
+    "src/lib/vastu/canvasSnapshot.ts:snapshotCutsOnly": [],
+    "src/lib/vastu/canvasSnapshot.ts:snapshotPerimeterAndCuts": [],
+    "src/lib/vastu/canvasSnapshot.ts:snapshotPlanFull": [],
+    "src/lib/vastu/canvasSnapshot.ts:snapshotZoneLines16": [],
+    "src/lib/vastu/canvasSnapshot.ts:snapshotZoneLines8": [],
+    "src/lib/vastu/canvasSnapshot.ts:snapshotPanchabhuta": [],
+    "src/lib/vastu/canvasSnapshot.ts:generateAllSnapshots": [
+      "src/components/reports/ReportBuilder.tsx:29"
+    ],
+    "src/lib/vastu/geometry.ts:polygonArea": [],
+    "src/lib/vastu/geometry.ts:polygonCentroid": [
+      "src/store/canvasStore.ts:6"
+    ],
+    "src/lib/vastu/geometry.ts:pointInPolygon": [],
+    "src/lib/vastu/geometry.ts:calculateZoneAreas": [
+      "src/components/panels/AnalysisPanel.tsx:7",
+      "src/components/panels/ChatPanel.tsx:5",
+      "src/components/reports/ReportBuilder.tsx:12",
+      "src/hooks/useCanvas.ts:6"
+    ],
+    "src/lib/vastu/geometry.ts:calculateCutAnalysis": [
+      "src/components/panels/AnalysisPanel.tsx:7",
+      "src/components/reports/ReportBuilder.tsx:12"
+    ],
+    "src/lib/vastu/geometry.ts:distance": [],
+    "src/lib/vastu/geometry.ts:svgCoords": [],
+    "src/lib/vastu/geometry.ts:angleFromBrahma": [],
+    "src/lib/vastu/knowledge-base.ts:KNOWLEDGE_BASE": [],
+    "src/lib/vastu/knowledge-base.ts:getKnowledgeForZone": [],
+    "src/lib/vastu/knowledge-base.ts:getKnowledgeByTopic": [],
+    "src/lib/vastu/zones.ts:VASTU_ZONES": [
+      "src/components/canvas/VastuCanvas.tsx:10",
+      "src/components/panels/AnalysisPanel.tsx:6",
+      "src/components/panels/ChatPanel.tsx:6",
+      "src/components/reports/ReportBuilder.tsx:11",
+      "src/hooks/useCanvas.ts:7",
+      "src/lib/vastu/canvasSnapshot.ts:6"
+    ],
+    "src/lib/vastu/zones.ts:getZoneForAngle": [],
+    "src/lib/vastu/zones.ts:getZoneForPoint": [],
+    "src/lib/vastu/zones.ts:IDEAL_ZONE_PCT": [],
+    "src/lib/vastu/zones.ts:CUT_SEVERITY": [],
+    "src/lib/vastu/zones.ts:getCutSeverity": [],
+    "src/lib/vastu/zones.ts:ENTRANCE_PADAS": [],
+    "src/store/canvasStore.ts:isCanvasStoreHydrated": [],
+    "src/store/canvasStore.ts:onCanvasStoreHydrated": [],
+    "src/store/canvasStore.ts:useCanvasStore": [
+      "src/components/canvas/BrahmasthanDot.tsx:4",
+      "src/components/canvas/VastuCanvas.tsx:4",
+      "src/components/panels/AnalysisPanel.tsx:5",
+      "src/components/panels/ChatPanel.tsx:4",
+      "src/components/panels/SummaryPanel.tsx:3",
+      "src/components/reports/ReportBuilder.tsx:7",
+      "src/hooks/useCanvas.ts:4",
+      "src/hooks/useNorth.ts:4",
+      "src/hooks/useProjects.ts:5"
+    ],
+    "src/store/projectStore.ts:useProjectStore": [
+      "src/components/dashboard/ActivityFeed.tsx:3",
+      "src/components/dashboard/AnalyticsCard.tsx:3",
+      "src/components/dashboard/RecentProjects.tsx:4",
+      "src/components/dashboard/StatsBar.tsx:3",
+      "src/components/reports/ReportBuilder.tsx:8",
+      "src/hooks/useProjects.ts:4"
+    ],
+    "src/store/reportStore.ts:useReportStore": [
+      "src/components/reports/ReportBuilder.tsx:9"
+    ],
+    "src/app/admin/activity/page.tsx:AdminActivityPage": [],
+    "src/app/admin/ai-usage/page.tsx:AdminAiUsagePage": [],
+    "src/app/admin/layout.tsx:metadata": [],
+    "src/app/admin/layout.tsx:AdminLayout": [],
+    "src/app/admin/overview/page.tsx:AdminOverviewPage": [],
+    "src/app/admin/page.tsx:AdminRoot": [],
+    "src/app/admin/settings/page.tsx:AdminSettingsPage": [],
+    "src/app/admin/tiers/page.tsx:AdminTiersPage": []
+  },
+  "criticalPath": [
+    "src/components/reports/ReportBuilder.tsx",
+    "src/lib/utils/index.ts"
+  ],
+  "deadCode": [
+    {
+      "file": "src/components/reports/ReportDocument.tsx",
+      "name": "VastuReportDocument",
+      "type": "function",
+      "line": 1186
+    },
+    {
+      "file": "src/hooks/useProjects.ts",
+      "name": "useProjects",
+      "type": "function",
+      "line": 35
+    },
+    {
+      "file": "src/lib/env.ts",
+      "name": "validateEnv",
+      "type": "function",
+      "line": 10
+    },
+    {
+      "file": "src/lib/rateLimit.ts",
+      "name": "rateLimit",
+      "type": "function",
+      "line": 13
+    },
+    {
+      "file": "src/lib/rateLimit.ts",
+      "name": "rateLimitResponse",
+      "type": "function",
+      "line": 22
+    },
+    {
+      "file": "src/lib/supabase/server.ts",
+      "name": "createAdminClient",
+      "type": "function",
+      "line": 27
+    },
+    {
+      "file": "src/lib/utils/index.ts",
+      "name": "formatArea",
+      "type": "function",
+      "line": 10
+    },
+    {
+      "file": "src/lib/utils/index.ts",
+      "name": "formatPct",
+      "type": "function",
+      "line": 17
+    },
+    {
+      "file": "src/lib/utils/index.ts",
+      "name": "formatDate",
+      "type": "function",
+      "line": 22
+    },
+    {
+      "file": "src/lib/utils/index.ts",
+      "name": "formatRelative",
+      "type": "function",
+      "line": 29
+    },
+    {
+      "file": "src/lib/utils/index.ts",
+      "name": "hexToRgba",
+      "type": "function",
+      "line": 42
+    },
+    {
+      "file": "src/lib/utils/index.ts",
+      "name": "toSVGRad",
+      "type": "function",
+      "line": 50
+    },
+    {
+      "file": "src/lib/utils/index.ts",
+      "name": "clamp",
+      "type": "function",
+      "line": 55
+    },
+    {
+      "file": "src/lib/utils/index.ts",
+      "name": "generateId",
+      "type": "function",
+      "line": 60
+    },
+    {
+      "file": "src/lib/utils/index.ts",
+      "name": "STATUS_CONFIG",
+      "type": "variable",
+      "line": 65
+    },
+    {
+      "file": "src/lib/utils/index.ts",
+      "name": "getGreeting",
+      "type": "function",
+      "line": 72
+    },
+    {
+      "file": "src/lib/utils/index.ts",
+      "name": "SEVERITY_COLORS",
+      "type": "variable",
+      "line": 80
+    },
+    {
+      "file": "src/lib/validate.ts",
+      "name": "validateString",
+      "type": "function",
+      "line": 5
+    },
+    {
+      "file": "src/lib/validate.ts",
+      "name": "validateEnum",
+      "type": "function",
+      "line": 21
+    },
+    {
+      "file": "src/lib/validate.ts",
+      "name": "validateNumber",
+      "type": "function",
+      "line": 32
+    },
+    {
+      "file": "src/lib/validate.ts",
+      "name": "validationFail",
+      "type": "function",
+      "line": 48
+    },
+    {
+      "file": "src/lib/vastu/canvasSnapshot.ts",
+      "name": "SNAP_W",
+      "type": "variable",
+      "line": 9
+    },
+    {
+      "file": "src/lib/vastu/canvasSnapshot.ts",
+      "name": "SNAP_H",
+      "type": "variable",
+      "line": 10
+    },
+    {
+      "file": "src/lib/vastu/canvasSnapshot.ts",
+      "name": "PANCHABHUTA",
+      "type": "variable",
+      "line": 418
+    },
+    {
+      "file": "src/lib/vastu/canvasSnapshot.ts",
+      "name": "snapshotPlanOnly",
+      "type": "function",
+      "line": 441
+    },
+    {
+      "file": "src/lib/vastu/canvasSnapshot.ts",
+      "name": "snapshotPlanWithBrahma",
+      "type": "function",
+      "line": 458
+    },
+    {
+      "file": "src/lib/vastu/canvasSnapshot.ts",
+      "name": "snapshotPlanWithChakraOnly",
+      "type": "function",
+      "line": 479
+    },
+    {
+      "file": "src/lib/vastu/canvasSnapshot.ts",
+      "name": "snapshotPlanWithPerimeter",
+      "type": "function",
+      "line": 503
+    },
+    {
+      "file": "src/lib/vastu/canvasSnapshot.ts",
+      "name": "snapshotCutsOnly",
+      "type": "function",
+      "line": 521
+    },
+    {
+      "file": "src/lib/vastu/canvasSnapshot.ts",
+      "name": "snapshotPerimeterAndCuts",
+      "type": "function",
+      "line": 539
+    },
+    {
+      "file": "src/lib/vastu/canvasSnapshot.ts",
+      "name": "snapshotPlanFull",
+      "type": "function",
+      "line": 558
+    },
+    {
+      "file": "src/lib/vastu/canvasSnapshot.ts",
+      "name": "snapshotZoneLines16",
+      "type": "function",
+      "line": 595
+    },
+    {
+      "file": "src/lib/vastu/canvasSnapshot.ts",
+      "name": "snapshotZoneLines8",
+      "type": "function",
+      "line": 632
+    },
+    {
+      "file": "src/lib/vastu/canvasSnapshot.ts",
+      "name": "snapshotPanchabhuta",
+      "type": "function",
+      "line": 669
+    },
+    {
+      "file": "src/lib/vastu/geometry.ts",
+      "name": "polygonArea",
+      "type": "function",
+      "line": 15
+    },
+    {
+      "file": "src/lib/vastu/geometry.ts",
+      "name": "pointInPolygon",
+      "type": "function",
+      "line": 40
+    },
+    {
+      "file": "src/lib/vastu/geometry.ts",
+      "name": "distance",
+      "type": "function",
+      "line": 259
+    },
+    {
+      "file": "src/lib/vastu/geometry.ts",
+      "name": "svgCoords",
+      "type": "function",
+      "line": 264
+    },
+    {
+      "file": "src/lib/vastu/geometry.ts",
+      "name": "angleFromBrahma",
+      "type": "function",
+      "line": 277
+    },
+    {
+      "file": "src/lib/vastu/knowledge-base.ts",
+      "name": "KNOWLEDGE_BASE",
+      "type": "variable",
+      "line": 15
+    },
+    {
+      "file": "src/lib/vastu/knowledge-base.ts",
+      "name": "getKnowledgeForZone",
+      "type": "function",
+      "line": 110
+    },
+    {
+      "file": "src/lib/vastu/knowledge-base.ts",
+      "name": "getKnowledgeByTopic",
+      "type": "function",
+      "line": 117
+    },
+    {
+      "file": "src/lib/vastu/zones.ts",
+      "name": "getZoneForAngle",
+      "type": "function",
+      "line": 247
+    },
+    {
+      "file": "src/lib/vastu/zones.ts",
+      "name": "getZoneForPoint",
+      "type": "function",
+      "line": 258
+    },
+    {
+      "file": "src/lib/vastu/zones.ts",
+      "name": "IDEAL_ZONE_PCT",
+      "type": "variable",
+      "line": 271
+    },
+    {
+      "file": "src/lib/vastu/zones.ts",
+      "name": "CUT_SEVERITY",
+      "type": "variable",
+      "line": 274
+    },
+    {
+      "file": "src/lib/vastu/zones.ts",
+      "name": "getCutSeverity",
+      "type": "function",
+      "line": 280
+    },
+    {
+      "file": "src/lib/vastu/zones.ts",
+      "name": "ENTRANCE_PADAS",
+      "type": "variable",
+      "line": 287
+    },
+    {
+      "file": "src/store/canvasStore.ts",
+      "name": "isCanvasStoreHydrated",
+      "type": "function",
+      "line": 12
+    },
+    {
+      "file": "src/store/canvasStore.ts",
+      "name": "onCanvasStoreHydrated",
+      "type": "function",
+      "line": 13
+    },
+    {
+      "file": "src/app/admin/layout.tsx",
+      "name": "metadata",
+      "type": "variable",
+      "line": 5
+    }
+  ],
+  "securityFindings": [
+    {
+      "ruleId": "sql-injection",
+      "severity": "critical",
+      "title": "Potential SQL injection",
+      "description": "String concatenation in SQL queries can lead to SQL injection",
+      "file": "src/components/reports/ReportDocument.tsx",
+      "line": 326,
+      "code": "<PageFooter label={`Supplementary Insert — ${attachment.name}`} page={pageNum} total={total} />",
+      "explanation": "This appears to be a false positive. The code shows JSX template literal usage for a UI component label, not SQL query construction. The string concatenation is happening in a React component prop, not in a database query context. However, if 'attachment.name' comes from user input without sanitization, it could potentially lead to XSS vulnerabilities in the rendered HTML.",
+      "fix": "Ensure 'attachment.name' is properly sanitized/escaped before rendering. Use a sanitization library or ensure the data source validates and escapes HTML special characters. Consider using React's built-in XSS protection by avoiding dangerouslySetInnerHTML and relying on JSX's automatic escaping.",
+      "priority": "consider"
+    }
+  ],
+  "executiveSummary": {
+    "headline": "A Next.js TypeScript application for building and managing reports with utility functions",
+    "architecture": "The application follows a standard Next.js architecture with TypeScript, organized into components, hooks, services, and routes clusters. The critical path centers around a ReportBuilder component that leverages shared utility functions, suggesting a report generation or dashboard system.",
+    "strengths": [
+      "Strong TypeScript adoption for type safety",
+      "Well-organized component-based architecture with clear separation of concerns"
+    ],
+    "concerns": [
+      "Extremely high dead code ratio (91% - 51/56 files unused)",
+      "Minimal critical path suggests potential over-engineering or incomplete implementation"
+    ],
+    "healthScore": 25
+  },
+  "enrichedAt": "2026-06-02T04:27:13.034Z"
+}
