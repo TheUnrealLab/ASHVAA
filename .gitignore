@@ -4,3 +4,13 @@ node_modules
 
 # macOS
 .DS_Store
+server/data/**/*.json
+server/data/*.json
+# Runtime-generated data (users generate their own)
+server/data/
+
+# Claude Code local settings
+.claude/
+
+# Local uploads/design files
+project/uploads/
