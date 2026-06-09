@@ -9,7 +9,10 @@ const codeAnalyzer = require('../services/codeAnalyzer');
 const securityScanner = require('../services/securityScanner');
 const enricher = require('../services/enricher');
 
-const REPOS_FILE = path.join(__dirname, '../data/repos.json');
+const DATA_DIR = path.join(__dirname, '../data');
+const REPOS_FILE = path.join(DATA_DIR, 'repos.json');
+
+fs.mkdirSync(DATA_DIR, { recursive: true });
 
 // Load repos from file
 function loadRepos() {

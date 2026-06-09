@@ -2,7 +2,10 @@ const fs = require('fs');
 const path = require('path');
 const { v4: uuidv4 } = require('uuid');
 
-const JOBS_FILE = path.join(__dirname, '../data/jobs.json');
+const DATA_DIR = path.join(__dirname, '../data');
+const JOBS_FILE = path.join(DATA_DIR, 'jobs.json');
+
+fs.mkdirSync(DATA_DIR, { recursive: true });
 
 // In-memory job store (persisted to disk)
 let jobs = {};
